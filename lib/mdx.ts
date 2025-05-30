@@ -86,3 +86,49 @@ export async function getBlogPost(slug: string): Promise<BlogPost | null> {
     return null;
   }
 }
+
+const projectsDirectory = path.join(process.cwd(), 'content/projects');
+
+export interface Project {
+  slug: string;
+  title: string;
+  date: string;
+  excerpt: string;
+  content: string;
+}
+
+export async function getProjects(): Promise<Omit<Project, 'content'>[]> {
+  const fileNames = fs.readdirSync(projectsDirectory);
+  const projects = fileNames
+    .filter((fileName) => fileName.endsWith('.mdx'))
+    .map((fileName) => {
+      const slug = fileName.replace(/\.mdx$/, '');
+      const fullPath = path.join(projectsDirectory, fileName);
+      const fileContents = fs.readFileSync(fullPath, 'utf8');
+      const { data } = matter(fileContents);
+
+      return {
+        slug,
+        title: data.title,
+        date: data.date,
+        excerpt: data.excerpt,
+      };
+    })
+    .sort((a, b) => (a.date < b.date ? 1 : -1));
+
+  return projects;
+}
+
+export async function getProjectBySlug(slug: string): Promise<Project> {
+  const fullPath = path.join(projectsDirectory, `${slug}.mdx`);
+  const fileContents = fs.readFileSync(fullPath, 'utf8');
+  const { data, content } = matter(fileContents);
+
+  return {
+    slug,
+    title: data.title,
+    date: data.date,
+    excerpt: data.excerpt,
+    content,
+  };
+}
