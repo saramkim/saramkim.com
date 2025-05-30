@@ -7,6 +7,7 @@ import Footer from '@components/footer';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://saramkim.com'),
   title: 'Saram Kim',
   description: 'Personal website and blog of Saram Kim - Frontend Developer',
   keywords: ['Saram Kim', 'Software Engineer', 'Frontend Developer', 'Blog', 'Portfolio'],
@@ -20,7 +21,13 @@ export const metadata: Metadata = {
     siteName: 'Saram Kim',
     locale: 'en_US',
     type: 'website',
-    images: ['/og-image.jpg'],
+    images: ['/og-image.png'],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Saram Kim',
+    description: 'Personal website and blog of Saram Kim - Frontend Developer',
+    images: ['/og-image.png'],
   },
   robots: {
     index: true,
