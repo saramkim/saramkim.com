@@ -23,7 +23,7 @@ const MDXComponents = {
   ),
   code: ({ className, children }: { className?: string; children: React.ReactNode }) => {
     if (!className) {
-      return <code className='bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm'>{children}</code>;
+      return <code className='bg-gray-100 px-1.5 py-0.5 rounded-sm font-mono text-sm'>{children}</code>;
     }
 
     const language = className.replace('language-', '');
@@ -45,7 +45,7 @@ const MDXComponents = {
   ),
   td: ({ children }: { children: React.ReactNode }) => <td className='border border-gray-200 px-4 py-2'>{children}</td>,
   img: ({ src, alt }: { src?: string; alt?: string }) => (
-    <img src={src} alt={alt || ''} className='max-w-full my-4 rounded' />
+    <img src={src} alt={alt || ''} className='max-w-full my-4 rounded-sm' />
   ),
 };
 

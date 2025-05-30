@@ -16,7 +16,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang='en'>
       <body className={`${inter.className} bg-white text-black min-h-screen flex flex-col`}>
         <Header />
-        <main className='flex-grow container mx-auto px-4 py-8 md:px-6 md:py-12'>{children}</main>
+        <main className='grow container mx-auto px-4 py-8 md:px-6 md:py-12'>{children}</main>
         <Footer />
       </body>
     </html>
