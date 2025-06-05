@@ -9,13 +9,12 @@ export default async function Home() {
   return (
     <div className='max-w-2xl mx-auto'>
       <section className='mb-12'>
-        <h1 className='text-3xl md:text-4xl font-bold mb-6'>Hello, I'm Saram Kim</h1>
-        <p className='text-lg mb-4'>
-          Welcome to my personal website. I'm a developer focused on creating meaningful digital experiences.
-        </p>
-        <p className='text-lg'>
-          This site contains my thoughts, projects, and experiences that I'd like to share with the world.
-        </p>
+        <h1 className='text-3xl md:text-4xl font-bold mb-6'>Saram Kim</h1>
+        <div className='flex flex-col gap-4'>
+          <p>Frontend Developer.</p>
+          <p>Essence. Intention. Clarity.</p>
+          <p>Less code. Clear message. Real value.</p>
+        </div>
       </section>
 
       <section className='mb-12'>
