@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import Header from '@components/header';
 import Footer from '@components/footer';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -49,6 +50,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Header />
         <main className='grow container mx-auto px-4 py-8 md:px-6 md:py-12'>{children}</main>
         <Footer />
+        <SpeedInsights />
       </body>
     </html>
   );
