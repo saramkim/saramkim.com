@@ -1,7 +1,11 @@
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
+import { getProjects } from '@lib/mdx';
+import { ProjectCard } from '@components/project-card';
 
-export default function Home() {
+export default async function Home() {
+  const projects = await getProjects();
+
   return (
     <div className='max-w-2xl mx-auto'>
       <section className='mb-12'>
@@ -17,19 +21,9 @@ export default function Home() {
       <section className='mb-12'>
         <h2 className='text-2xl font-bold mb-4'>Projects</h2>
         <div className='space-y-6'>
-          <div className='border border-gray-200 p-6 rounded-md'>
-            <h3 className='text-xl font-semibold mb-2'>Play Plus</h3>
-            <p className='mb-4 text-gray-700'>
-              A project focused on enhancing interactive experiences. Details coming soon.
-            </p>
-            <div className='text-gray-500'>Coming soon</div>
-          </div>
-
-          <div className='border border-gray-200 p-6 rounded-md'>
-            <h3 className='text-xl font-semibold mb-2'>IMJS</h3>
-            <p className='mb-4 text-gray-700'>An innovative JavaScript-based solution. Details coming soon.</p>
-            <div className='text-gray-500'>Coming soon</div>
-          </div>
+          {projects.map((project) => (
+            <ProjectCard key={project.slug} project={project} />
+          ))}
         </div>
       </section>
 
