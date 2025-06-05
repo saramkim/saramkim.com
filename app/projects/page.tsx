@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import { getProjects } from '@lib/mdx';
-import { format } from 'date-fns';
 
 export default async function ProjectPage() {
   const projects = await getProjects();
@@ -14,11 +13,10 @@ export default async function ProjectPage() {
           <Link
             key={project.slug}
             href={`/projects/${project.slug}`}
-            className='block border p-6 bg-white rounded-lg hover:bg-gray-50 transition-colors'
+            className='flex flex-col gap-2 border p-6 bg-white rounded-lg hover:bg-gray-50 transition-colors'
           >
-            <h2 className='text-2xl font-semibold mb-2'>{project.title}</h2>
-            <p className='text-gray-600 mb-4'>{project.excerpt}</p>
-            <time className='text-sm text-gray-500'>{format(new Date(project.date), 'MMMM d, yyyy')}</time>
+            <h2 className='text-2xl font-semibold'>{project.title}</h2>
+            <p className='text-gray-600'>{project.description}</p>
           </Link>
         ))}
       </div>

@@ -4,7 +4,6 @@ import { MDXRemote } from 'next-mdx-remote/rsc';
 import MDXComponents from '@components/mdx-components';
 import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
-import { format } from 'date-fns';
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -14,7 +13,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const project = await getProjectBySlug((await params).slug);
   return {
     title: project.title,
-    description: project.excerpt,
+    description: project.description,
   };
 }
 
@@ -38,11 +37,10 @@ export default async function ProjectPage({ params }: Props) {
       <article>
         <header className='mb-8 pb-8 border-b border-gray-200'>
           <h1 className='text-3xl md:text-4xl font-bold mb-4'>{project.title}</h1>
-          <time className='text-gray-500'>{format(new Date(project.date), 'MMMM d, yyyy')}</time>
+          <p className='text-gray-600'>{project.description}</p>
         </header>
 
         <div className='prose prose-black max-w-none'>
-          {' '}
           <MDXRemote source={project.content} components={MDXComponents} />
         </div>
       </article>
