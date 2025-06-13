@@ -1,8 +1,9 @@
 'use client';
 
 import React from 'react';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { tomorrow } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { Prism, SyntaxHighlighterProps } from 'react-syntax-highlighter';
+
+import { tomorrow } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 
 const MDXComponents = {
   h1: ({ children }: { children: React.ReactNode }) => <h1 className='text-3xl font-bold mt-8 mb-4'>{children}</h1>,
@@ -27,6 +28,7 @@ const MDXComponents = {
     }
 
     const language = className.replace('language-', '');
+    const SyntaxHighlighter = Prism as typeof React.Component<SyntaxHighlighterProps>;
     return (
       <SyntaxHighlighter language={language} style={tomorrow} className='rounded-md my-4'>
         {String(children).trim()}
