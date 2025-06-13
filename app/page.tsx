@@ -1,10 +1,11 @@
-import Link from 'next/link';
-import { ArrowRight } from 'lucide-react';
-import { getProjects } from '@lib/mdx';
+import { getBlogPosts, getProjects } from '@lib/mdx';
 import { Card } from '@components/card';
+import { format } from 'date-fns';
 
 export default async function Home() {
   const projects = await getProjects();
+  const posts = await getBlogPosts();
+  const latestPost = posts[0];
 
   return (
     <div className='max-w-2xl mx-auto'>
@@ -31,12 +32,18 @@ export default async function Home() {
         </div>
       </section>
 
-      <section>
-        <h2 className='text-2xl font-bold mb-4'>Latest Writings</h2>
-        <Link href='/blog' className='inline-flex items-center group'>
-          <span className='mr-2 group-hover:underline'>Visit my blog</span>
-          <ArrowRight size={16} className='transition-transform group-hover:translate-x-1' />
-        </Link>
+      <section className='space-y-4'>
+        <div className='flex items-baseline gap-2'>
+          <h2 className='text-2xl font-bold'>Latest Post</h2>
+          {latestPost && (
+            <time className='text-sm text-gray-500'>{format(new Date(latestPost.date), 'MMMM d, yyyy')}</time>
+          )}
+        </div>
+        {latestPost ? (
+          <Card href={`/blog/${latestPost.slug}`} title={latestPost.title} description={latestPost.excerpt} />
+        ) : (
+          <p>No posts yet</p>
+        )}
       </section>
     </div>
   );
