@@ -1,5 +1,5 @@
 import { getProjects } from '@lib/mdx';
-import { ProjectCard } from '@components/project-card';
+import { Card } from '@components/card';
 
 export default async function ProjectPage() {
   const projects = await getProjects();
@@ -10,7 +10,12 @@ export default async function ProjectPage() {
 
       <div className='space-y-10'>
         {projects.map((project) => (
-          <ProjectCard key={project.slug} project={project} />
+          <Card
+            key={project.slug}
+            href={`/projects/${project.slug}`}
+            title={project.title}
+            description={project.description}
+          />
         ))}
       </div>
     </div>

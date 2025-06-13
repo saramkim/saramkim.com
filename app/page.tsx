@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import { getProjects } from '@lib/mdx';
-import { ProjectCard } from '@components/project-card';
+import { Card } from '@components/card';
 
 export default async function Home() {
   const projects = await getProjects();
@@ -21,7 +21,12 @@ export default async function Home() {
         <h2 className='text-2xl font-bold mb-4'>Projects</h2>
         <div className='space-y-6'>
           {projects.map((project) => (
-            <ProjectCard key={project.slug} project={project} />
+            <Card
+              key={project.slug}
+              href={`/projects/${project.slug}`}
+              title={project.title}
+              description={project.description}
+            />
           ))}
         </div>
       </section>
