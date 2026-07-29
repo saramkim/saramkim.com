@@ -1,28 +1,51 @@
-import { MetadataRoute } from 'next';
+import type { MetadataRoute } from 'next';
+import { newestDate } from '@lib/format';
 import { getBlogPosts, getProjects } from '@lib/mdx';
 
 export const dynamic = 'force-static';
 
-export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = 'https://saramkim.com';
+const baseUrl = 'https://www.saramkim.com';
+const asDate = (date: string | undefined) => (date ? new Date(`${date}T00:00:00Z`) : undefined);
 
-  const staticPages = ['', '/projects', '/blog'].map((route) => ({
-    url: `${baseUrl}${route}`,
-    lastModified: new Date(),
-    priority: route === '' ? 1 : 0.8,
-  }));
+export default function sitemap(): MetadataRoute.Sitemap {
+  const projects = getProjects();
+  const blogPosts = getBlogPosts();
+  const latestProjectDate = newestDate(projects.map((project) => project.updated));
+  const latestBlogDate = newestDate(blogPosts.map((post) => post.updated ?? post.date));
+  const latestSiteDate = newestDate([latestProjectDate, latestBlogDate]);
 
-  const projects = await getProjects();
-  const projectPages = projects.map((project) => ({
+  const staticPages: MetadataRoute.Sitemap = [
+    {
+      url: baseUrl,
+      lastModified: asDate(latestSiteDate),
+      changeFrequency: 'monthly',
+      priority: 1,
+    },
+    {
+      url: `${baseUrl}/projects`,
+      lastModified: asDate(latestProjectDate),
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/blog`,
+      lastModified: asDate(latestBlogDate),
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+  ];
+
+  const projectPages: MetadataRoute.Sitemap = projects.map((project) => ({
     url: `${baseUrl}/projects/${project.slug}`,
-    lastModified: new Date(),
+    lastModified: asDate(project.updated),
+    changeFrequency: 'monthly',
     priority: 0.7,
   }));
 
-  const blogPosts = await getBlogPosts();
-  const blogPages = blogPosts.map((post) => ({
+  const blogPages: MetadataRoute.Sitemap = blogPosts.map((post) => ({
     url: `${baseUrl}/blog/${post.slug}`,
-    lastModified: new Date(post.date),
+    lastModified: asDate(post.updated ?? post.date),
+    changeFrequency: 'yearly',
     priority: 0.6,
   }));
 

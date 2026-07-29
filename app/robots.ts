@@ -1,4 +1,4 @@
-import { MetadataRoute } from 'next';
+import type { MetadataRoute } from 'next';
 
 export const dynamic = 'force-static';
 
@@ -7,8 +7,8 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: '*',
       allow: '/',
-      disallow: ['/private/', '/admin/', '/accounts/'],
     },
-    sitemap: 'https://saramkim.com/sitemap.xml',
+    host: 'https://www.saramkim.com',
+    sitemap: 'https://www.saramkim.com/sitemap.xml',
   };
 }
