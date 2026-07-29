@@ -1,35 +1,56 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
-import { format } from 'date-fns';
+import { ArrowUpRight } from 'lucide-react';
+import { formatContentDate } from '@lib/format';
 import { getBlogPosts } from '@lib/mdx';
 
-export default async function BlogPage() {
-  const posts = await getBlogPosts();
+export const metadata: Metadata = {
+  title: '글',
+  description: '개발, AI, 언어와 생각하는 일에 관해 김사람이 쓴 글.',
+  alternates: { canonical: '/blog' },
+  openGraph: {
+    title: '글 | saramkim',
+    description: '개발, AI, 언어와 생각하는 일에 관해 김사람이 쓴 글.',
+    url: '/blog',
+  },
+};
+
+export default function BlogPage() {
+  const posts = getBlogPosts();
 
   return (
-    <div className='max-w-2xl mx-auto'>
-      <h1 className='text-3xl md:text-4xl font-bold mb-8'>Blog</h1>
+    <div className='site-container page-shell'>
+      <header className='page-intro'>
+        <p className='eyebrow'>Writing</p>
+        <h1 className='page-title'>생각을 더 선명하게 만드는 글</h1>
+        <p className='page-description'>
+          개발과 AI, 언어 그리고 스스로 생각하는 일에 관해 씁니다. 이미 충분히 있는 정보보다 직접 관찰하고 고민한 것을 남깁니다.
+        </p>
+      </header>
 
-      {posts.length === 0 ? (
-        <div className='text-center py-12'>
-          <p className='text-lg text-gray-600 mb-4'>No blog posts yet.</p>
-          <p className='text-gray-500'>Check back soon for new content!</p>
-        </div>
-      ) : (
-        <div className='space-y-10'>
-          {posts.map((post) => (
-            <article key={post.slug} className='border-b border-gray-200 pb-8 last:border-0'>
-              <Link href={`/blog/${post.slug}`}>
-                <h2 className='text-2xl font-bold mb-2 hover:underline'>{post.title}</h2>
-              </Link>
-              <time className='text-sm text-gray-500 block mb-3'>{format(new Date(post.date), 'MMMM d, yyyy')}</time>
-              {post.excerpt && <p className='text-gray-700'>{post.excerpt}</p>}
-              <Link href={`/blog/${post.slug}`} className='inline-block mt-4 text-gray-800 hover:underline'>
-                Read more
-              </Link>
-            </article>
-          ))}
-        </div>
-      )}
+      <div className='divide-y divide-stone-200 border-y border-stone-200'>
+        {posts.map((post) => (
+          <article key={post.slug}>
+            <Link href={`/blog/${post.slug}`} className='article-row group'>
+              <div>
+                <time className='text-sm tabular-nums text-stone-500' dateTime={post.date}>
+                  {formatContentDate(post.date, post.locale)}
+                </time>
+                {post.updated && post.updated !== post.date && (
+                  <span className='ml-3 text-xs text-stone-400'>수정 {formatContentDate(post.updated, post.locale)}</span>
+                )}
+              </div>
+              <div>
+                <h2 className='text-2xl font-semibold tracking-tight group-hover:underline group-hover:decoration-1 group-hover:underline-offset-4'>
+                  {post.title}
+                </h2>
+                <p className='mt-2 max-w-2xl leading-7 text-stone-600'>{post.excerpt}</p>
+              </div>
+              <ArrowUpRight className='hidden text-stone-400 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 md:block' aria-hidden='true' size={20} />
+            </Link>
+          </article>
+        ))}
+      </div>
     </div>
   );
 }

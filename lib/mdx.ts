@@ -1,130 +1,156 @@
-import fs from 'fs';
-import path from 'path';
+import fs from 'node:fs';
+import path from 'node:path';
 import matter from 'gray-matter';
-import { compileMDX } from 'next-mdx-remote/rsc';
-import remarkGfm from 'remark-gfm';
 
-export type BlogPost = {
+type Frontmatter = Record<string, unknown>;
+
+export type BlogPostSummary = {
   slug: string;
   title: string;
   date: string;
+  updated?: string;
   excerpt: string;
-  content: any;
+  locale: string;
+  ogImage?: string;
 };
 
-const postsDirectory = path.join(process.cwd(), 'content/blog');
+export type BlogPost = BlogPostSummary & {
+  content: string;
+};
 
-export async function getBlogPosts(): Promise<Omit<BlogPost, 'content'>[]> {
-  // Create directory if it doesn't exist
-  if (!fs.existsSync(postsDirectory)) {
-    fs.mkdirSync(postsDirectory, { recursive: true });
-  }
-
-  // Get file names under /content/blog
-  const fileNames = fs.readdirSync(postsDirectory);
-  const allPostsData = await Promise.all(
-    fileNames
-      .filter((fileName) => fileName.endsWith('.mdx'))
-      .map(async (fileName) => {
-        // Remove ".mdx" from file name to get slug
-        const slug = fileName.replace(/\.mdx$/, '');
-
-        // Read markdown file as string
-        const fullPath = path.join(postsDirectory, fileName);
-        const fileContents = fs.readFileSync(fullPath, 'utf8');
-
-        // Use gray-matter to parse the post metadata section
-        const { data } = matter(fileContents);
-
-        // Combine the data with the slug
-        return {
-          slug,
-          title: data.title || 'Untitled',
-          date: data.date || new Date().toISOString(),
-          excerpt: data.excerpt || '',
-        };
-      })
-  );
-
-  // Sort posts by date
-  return allPostsData.sort((a, b) => {
-    if (a.date < b.date) {
-      return 1;
-    } else {
-      return -1;
-    }
-  });
-}
-
-export async function getBlogPost(slug: string): Promise<BlogPost | null> {
-  try {
-    const fullPath = path.join(postsDirectory, `${slug}.mdx`);
-    const fileContents = fs.readFileSync(fullPath, 'utf8');
-
-    // Use gray-matter to parse the post metadata section
-    const { data, content } = matter(fileContents);
-
-    // Compile MDX
-    const mdxSource = await compileMDX({
-      source: content,
-      options: {
-        mdxOptions: {
-          remarkPlugins: [remarkGfm],
-        },
-      },
-    });
-
-    return {
-      slug,
-      title: data.title || 'Untitled',
-      date: data.date || new Date().toISOString(),
-      excerpt: data.excerpt || '',
-      content: mdxSource.content,
-    };
-  } catch (error) {
-    console.error(`Error getting blog post for slug ${slug}:`, error);
-    return null;
-  }
-}
-
-const projectsDirectory = path.join(process.cwd(), 'content/projects');
-
-export interface Project {
+export type ProjectSummary = {
   slug: string;
   title: string;
   description: string;
+  updated?: string;
+  locale: string;
+  ogImage?: string;
+};
+
+export type Project = ProjectSummary & {
   content: string;
+};
+
+const contentDirectory = path.join(process.cwd(), 'content');
+const postsDirectory = path.join(contentDirectory, 'blog');
+const projectsDirectory = path.join(contentDirectory, 'projects');
+const datePattern = /^\d{4}-\d{2}-\d{2}$/;
+
+function listMdxFiles(directory: string): string[] {
+  if (!fs.existsSync(directory)) {
+    throw new Error(`Content directory does not exist: ${directory}`);
+  }
+
+  return fs
+    .readdirSync(directory, { withFileTypes: true })
+    .filter((entry) => entry.isFile() && entry.name.endsWith('.mdx'))
+    .map((entry) => entry.name);
 }
 
-export async function getProjects(): Promise<Omit<Project, 'content'>[]> {
-  const fileNames = fs.readdirSync(projectsDirectory);
-  const projects = fileNames
-    .filter((fileName) => fileName.endsWith('.mdx'))
-    .map((fileName) => {
-      const slug = fileName.replace(/\.mdx$/, '');
-      const fullPath = path.join(projectsDirectory, fileName);
-      const fileContents = fs.readFileSync(fullPath, 'utf8');
-      const { data } = matter(fileContents);
-
-      return {
-        slug,
-        title: data.title,
-        description: data.description,
-      };
-    });
-
-  return projects;
+function readMdxFile(directory: string, slug: string) {
+  const filePath = path.join(directory, `${slug}.mdx`);
+  const fileContents = fs.readFileSync(filePath, 'utf8');
+  return matter(fileContents);
 }
 
-export async function getProjectBySlug(slug: string): Promise<Project> {
-  const fullPath = path.join(projectsDirectory, `${slug}.mdx`);
-  const fileContents = fs.readFileSync(fullPath, 'utf8');
-  const { data, content } = matter(fileContents);
+function requiredString(data: Frontmatter, key: string, source: string): string {
+  const value = data[key];
+  if (typeof value !== 'string' || value.trim().length === 0) {
+    throw new Error(`Missing or invalid "${key}" in ${source}`);
+  }
+
+  return value.trim();
+}
+
+function optionalString(data: Frontmatter, key: string, source: string): string | undefined {
+  const value = data[key];
+  if (value === undefined) {
+    return undefined;
+  }
+  if (typeof value !== 'string' || value.trim().length === 0) {
+    throw new Error(`Invalid "${key}" in ${source}`);
+  }
+
+  return value.trim();
+}
+
+function contentDate(data: Frontmatter, key: string, source: string, required = false): string | undefined {
+  const value = required ? requiredString(data, key, source) : optionalString(data, key, source);
+  if (value === undefined) {
+    return undefined;
+  }
+  if (!datePattern.test(value) || Number.isNaN(Date.parse(`${value}T00:00:00Z`))) {
+    throw new Error(`Invalid "${key}" date in ${source}; expected YYYY-MM-DD`);
+  }
+
+  return value;
+}
+
+function parseBlogSummary(fileName: string): BlogPostSummary {
+  const slug = fileName.replace(/\.mdx$/, '');
+  const { data } = readMdxFile(postsDirectory, slug);
 
   return {
     slug,
-    title: data.title,
-    description: data.description,
-    content,
+    title: requiredString(data, 'title', fileName),
+    date: contentDate(data, 'date', fileName, true)!,
+    updated: contentDate(data, 'updated', fileName),
+    excerpt: requiredString(data, 'excerpt', fileName),
+    locale: optionalString(data, 'locale', fileName) ?? 'ko',
+    ogImage: optionalString(data, 'ogImage', fileName),
   };
+}
+
+function parseProjectSummary(fileName: string): ProjectSummary {
+  const slug = fileName.replace(/\.mdx$/, '');
+  const { data } = readMdxFile(projectsDirectory, slug);
+
+  return {
+    slug,
+    title: requiredString(data, 'title', fileName),
+    description: requiredString(data, 'description', fileName),
+    updated: contentDate(data, 'updated', fileName),
+    locale: optionalString(data, 'locale', fileName) ?? 'ko',
+    ogImage: optionalString(data, 'ogImage', fileName),
+  };
+}
+
+export function getBlogPosts(): BlogPostSummary[] {
+  return listMdxFiles(postsDirectory)
+    .map(parseBlogSummary)
+    .sort((a, b) => b.date.localeCompare(a.date));
+}
+
+export function getBlogPost(slug: string): BlogPost | null {
+  const fileName = `${slug}.mdx`;
+
+  try {
+    const summary = parseBlogSummary(fileName);
+    const { content } = readMdxFile(postsDirectory, slug);
+    return { ...summary, content };
+  } catch (error) {
+    if (error instanceof Error && 'code' in error && error.code === 'ENOENT') {
+      return null;
+    }
+    throw error;
+  }
+}
+
+export function getProjects(): ProjectSummary[] {
+  return listMdxFiles(projectsDirectory).map(parseProjectSummary);
+}
+
+export function getProjectBySlug(slug: string): Project | null {
+  const fileName = `${slug}.mdx`;
+
+  try {
+    const summary = parseProjectSummary(fileName);
+    const { content } = readMdxFile(projectsDirectory, slug);
+    return { ...summary, content };
+  } catch (error) {
+    if (error instanceof Error && 'code' in error && error.code === 'ENOENT') {
+      return null;
+    }
+    throw error;
+  }
 }
