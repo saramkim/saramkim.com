@@ -25,6 +25,11 @@ export type ProjectSummary = {
   updated?: string;
   locale: string;
   ogImage?: string;
+  meta?: string;
+  users?: string;
+  rating?: string;
+  websiteUrl?: string;
+  storeUrl?: string;
 };
 
 export type Project = ProjectSummary & {
@@ -112,6 +117,11 @@ function parseProjectSummary(fileName: string): ProjectSummary {
     updated: contentDate(data, 'updated', fileName),
     locale: optionalString(data, 'locale', fileName) ?? 'ko',
     ogImage: optionalString(data, 'ogImage', fileName),
+    meta: optionalString(data, 'meta', fileName),
+    users: optionalString(data, 'users', fileName),
+    rating: optionalString(data, 'rating', fileName),
+    websiteUrl: optionalString(data, 'websiteUrl', fileName),
+    storeUrl: optionalString(data, 'storeUrl', fileName),
   };
 }
 
