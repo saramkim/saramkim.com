@@ -56,6 +56,19 @@ export default async function ProjectPage({ params }: Props) {
     notFound();
   }
 
+  const stats = [
+    project.users ? { label: 'Users', value: project.users } : null,
+    project.rating ? { label: 'Rating', value: project.rating } : null,
+    project.updated
+      ? { label: 'Updated', value: formatContentDate(project.updated, project.locale) }
+      : null,
+  ].filter((stat): stat is { label: string; value: string } => stat !== null);
+
+  const links = [
+    project.websiteUrl ? { label: '웹사이트', href: project.websiteUrl } : null,
+    project.storeUrl ? { label: 'Chrome 웹 스토어', href: project.storeUrl } : null,
+  ].filter((link): link is { label: string; href: string } => link !== null);
+
   return (
     <div className='site-container article-shell'>
       <Link href='/projects' className='back-link'>
@@ -69,32 +82,33 @@ export default async function ProjectPage({ params }: Props) {
           <h1 className='article-title'>{project.title}</h1>
           <p className='mt-5 max-w-2xl text-lg leading-8 text-stone-600'>{project.description}</p>
 
-          <dl className='mt-9 grid gap-5 border-y border-stone-200 py-6 sm:grid-cols-3'>
-            <div>
-              <dt className='stat-label'>Users</dt>
-              <dd className='stat-value'>5,000+</dd>
-            </div>
-            <div>
-              <dt className='stat-label'>Rating</dt>
-              <dd className='stat-value'>5.0 · 44 ratings</dd>
-            </div>
-            <div>
-              <dt className='stat-label'>Updated</dt>
-              <dd className='stat-value text-base'>
-                {project.updated ? formatContentDate(project.updated, project.locale) : '지속 개선 중'}
-              </dd>
-            </div>
-          </dl>
+          {stats.length > 0 && (
+            <dl className='mt-9 grid gap-5 border-y border-stone-200 py-6 sm:grid-cols-3'>
+              {stats.map((stat) => (
+                <div key={stat.label}>
+                  <dt className='stat-label'>{stat.label}</dt>
+                  <dd className='stat-value text-base'>{stat.value}</dd>
+                </div>
+              ))}
+            </dl>
+          )}
 
-          <a
-            href='https://chromewebstore.google.com/detail/dmpmihmopccgeieooepklikeacdhkbki'
-            target='_blank'
-            rel='noreferrer'
-            className='button-primary mt-8'
-          >
-            Chrome 웹 스토어
-            <ArrowUpRight aria-hidden='true' size={17} />
-          </a>
+          {links.length > 0 && (
+            <div className='mt-8 flex flex-wrap gap-3'>
+              {links.map((link, index) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  target='_blank'
+                  rel='noreferrer'
+                  className={index === 0 ? 'button-primary' : 'button-secondary'}
+                >
+                  {link.label}
+                  <ArrowUpRight aria-hidden='true' size={17} />
+                </a>
+              ))}
+            </div>
+          )}
         </header>
 
         <div className='prose prose-stone prose-lg max-w-none'>

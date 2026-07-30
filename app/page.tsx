@@ -86,7 +86,7 @@ export default function Home() {
               href={`/projects/${project.slug}`}
               title={project.title}
               description={project.description}
-              meta='Chrome extension · 5,000+ users'
+              meta={project.meta}
             />
           ))}
         </div>
