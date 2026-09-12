@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
@@ -21,6 +23,10 @@ const Footer = () => {
           >
             saramkimm@gmail.com
           </a>
+          <span aria-hidden='true' className='hidden h-4 w-px bg-stone-300 sm:block' />
+          <Link href='/relay/privacy' lang='en' className='text-link'>
+            Relay Privacy
+          </Link>
           <span aria-hidden='true' className='hidden h-4 w-px bg-stone-300 sm:block' />
           <span className='basis-full text-stone-500 sm:basis-auto'>© {currentYear} saramkim</span>
         </div>

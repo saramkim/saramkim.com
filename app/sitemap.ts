@@ -16,6 +16,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const staticPages: MetadataRoute.Sitemap = [
     {
+      url: `${baseUrl}/relay`,
+      lastModified: asDate('2026-09-13'),
+      changeFrequency: 'yearly',
+      priority: 0.5,
+    },
+    {
+      url: `${baseUrl}/relay/privacy`,
+      lastModified: asDate('2026-09-13'),
+      changeFrequency: 'yearly',
+      priority: 0.3,
+    },
+    {
       url: baseUrl,
       lastModified: asDate(latestSiteDate),
       changeFrequency: 'monthly',
