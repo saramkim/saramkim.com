@@ -59,6 +59,10 @@ yarn audit
 
 Yarn audit의 `brace-expansion` advisory는 ESLint 9가 사용하는 `minimatch` 3 계열의 전이 의존성입니다. 패치된 `brace-expansion` 5를 강제로 연결하면 ESLint가 동작하지 않으며, 이 경로에는 저장소가 관리하는 glob만 입력됩니다. 따라서 advisory ID `1124334`만 `.yarnrc.yml`에서 근거와 함께 예외 처리하고 나머지 high-severity 항목은 CI에서 계속 차단합니다.
 
+추가로 `braces` 3.0.3의 [GHSA-vfj7-8cjw-p6xm](https://github.com/advisories/GHSA-vfj7-8cjw-p6xm) (advisory ID `1240992`)는 2026-10-15 현재 공식 수정 버전이 없어 운영자 승인으로 해당 ID만 예외 처리합니다. 깊게 중첩된 glob 패턴이 Node.js 호출 스택을 고갈시키는 취약점은 패키지에 남아 있으며, 예외 처리가 이를 수정하지는 않습니다.
+
+확인한 의존 경로는 `eslint-config-next → @next/eslint-plugin-next → fast-glob → micromatch → braces`입니다. 이 사이트는 정적 HTML로 배포되고 ESLint의 `settings.next.rootDir`도 설정하지 않아, 현재 구성에서는 방문자 입력이 해당 경로에 도달하지 않습니다. 저장소가 관리하는 빌드·lint 입력만 사용한다는 조건으로 예외를 한정합니다. 외부 입력으로 glob을 만들거나 해당 설정·실행 경로를 바꾸기 전에 재검토하고, 공식 수정 버전이 나오면 업데이트 후 예외를 제거합니다. 나머지 high-severity 경고는 계속 CI를 실패시킵니다.
+
 ## 배포
 
 `yarn build`는 정적 사이트를 `out/`에 내보냅니다. 현재 운영 도메인은 `https://www.saramkim.com`이며, 배포 플랫폼에는 다음 원칙을 적용합니다.
