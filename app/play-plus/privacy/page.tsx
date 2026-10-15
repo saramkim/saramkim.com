@@ -1,21 +1,21 @@
 import type { Metadata } from 'next';
 
-const description = 'Play Plus의 자발적 의견 보내기 기능에서 처리하는 정보, 90일 보관, Cloudflare 이용 및 문의·삭제 요청 방법을 안내합니다.';
+const description = 'Play Plus의 설정 동기화, 자막·저장한 문장, 선택적 의견 전송에서 처리하는 정보와 보관·삭제 방법을 안내합니다.';
 
 export const metadata: Metadata = {
-  title: 'Play Plus 의견 보내기 개인정보 처리방침',
+  title: 'Play Plus 개인정보처리방침',
   description,
   alternates: { canonical: '/play-plus/privacy' },
-  openGraph: { title: 'Play Plus Feedback Privacy', description, url: '/play-plus/privacy', locale: 'ko_KR' },
-  twitter: { title: 'Play Plus Feedback Privacy', description },
+  openGraph: { title: 'Play Plus Privacy', description, url: '/play-plus/privacy', locale: 'ko_KR' },
+  twitter: { title: 'Play Plus Privacy', description },
 };
 
 export default function PlayPlusPrivacyPage() {
   return (
     <article className='site-container article-shell'>
       <header className='article-header'>
-        <h1 className='article-title'>Play Plus 의견 보내기 개인정보 처리방침</h1>
-        <p className='mt-7 text-sm text-stone-600'>최종 수정일: <time dateTime='2026-10-15'>2026년 10월 15일</time></p>
+        <h1 className='article-title'>Play Plus 개인정보처리방침</h1>
+        <p className='mt-7 text-sm text-stone-600'>최종 수정일: <time dateTime='2026-10-16'>2026년 10월 16일</time></p>
         <nav aria-label='문서 언어 / Document language' className='mt-5 flex flex-wrap gap-5'>
           <a className='text-link' href='#korean' lang='ko'>한국어</a>
           <a className='text-link' href='#english' lang='en'>English</a>
@@ -24,9 +24,24 @@ export default function PlayPlusPrivacyPage() {
       <div className='prose prose-stone prose-lg max-w-none break-words'>
         <section id='korean' lang='ko' aria-labelledby='korean-title'>
           <h2 id='korean-title'>적용 범위와 운영자</h2>
-          <p>이 방침은 Play Plus 확장 프로그램의 선택적 ‘의견 보내기’ 기능에 적용됩니다. 운영자 및 개인정보 문의 담당자는 김유준이며, 문의처는 <a href='mailto:saramkimm@gmail.com'>saramkimm@gmail.com</a>입니다. 의견 수집은 해당 기능이 활성화된 버전에서만 이루어집니다.</p>
+          <p>이 방침은 Play Plus 확장 프로그램의 자막 학습·재생 제어와 선택적 의견 보내기 기능에 적용됩니다. Play Plus는 별도 회원가입이나 로그인을 요구하지 않으며, 쿠팡플레이 이용에는 해당 서비스의 계정과 이용 조건이 적용됩니다. 운영자 및 개인정보 문의 담당자는 김유준이며, 문의처는 <a href='mailto:saramkimm@gmail.com'>saramkimm@gmail.com</a>입니다. 의견 수집은 해당 기능이 활성화된 버전에서만 이루어집니다.</p>
 
-          <h2>어떤 정보를 왜 처리하나요?</h2>
+          <h2>기본 기능에서 처리하는 정보</h2>
+          <ul>
+            <li><strong>설정:</strong> 자막 언어·표시 스타일, 단축키, 이동·반복·재생 속도 설정을 Chrome의 동기화 저장소(chrome.storage.sync)에 저장합니다. Chrome 동기화를 켜면 Google의 동기화 기능을 통해 로그인한 다른 Chrome에 설정이 전달될 수 있습니다. 동기화를 끄면 기기에 저장됩니다. 개발자의 서버로 보내는 정보가 아니며, <a href='https://policies.google.com/privacy'>Google 개인정보처리방침</a>과 Chrome 동기화 설정이 적용됩니다.</li>
+            <li><strong>업로드한 자막:</strong> 사용자가 선택한 파일의 자막 내용, 제목, 언어, 등록 시각과 지연 설정을 기기의 확장 프로그램 저장소(chrome.storage.local)에 저장하여 표시·편집합니다. 파일을 개발자 서버에 업로드하지 않습니다.</li>
+            <li><strong>저장한 문장:</strong> 저장 기능을 사용하면 자막 본문, 영상 주소, 재생 위치와 저장 시각을 기기에 보관하여 복습하거나 해당 장면을 다시 엽니다. 복사 기능을 사용하면 선택한 자막을 시스템 클립보드에 씁니다. 클립보드 내용을 읽어 수집하지 않습니다.</li>
+            <li><strong>탭·재생·기본 자막:</strong> 패널 연결과 영상 탐지를 위해 활성 탭의 주소·제목 등 탭 정보, 영상 식별값·재생 상태와 쿠팡플레이 자막을 처리합니다. 저장한 장면을 열 때 열린 탭의 주소를 비교합니다. 연결 상태, 자막, 처리 대기 정보는 메모리와 Chrome 세션 저장소에 일시 보관합니다. 일반 웹 탐색 이력을 개발자에게 전송하지 않습니다.</li>
+            <li><strong>화면 상태:</strong> 테마, 마지막 패널 화면, 시작 안내 완료 여부와 배너를 닫았는지를 기기의 패널 저장소(localStorage)에 저장합니다.</li>
+          </ul>
+          <p>기본 자막을 불러올 때 쿠팡플레이의 재생 정보 요청 주소와 요청 헤더를 이용하여 해당 서비스에 요청하고, 제공된 자막 주소에서 자막을 가져옵니다. 연결 준비 중에는 요청 주소와 헤더가 세션 저장소에 잠시 남을 수 있습니다. 이러한 요청에는 쿠팡플레이 서비스가 요구하는 인증 정보가 포함될 수 있으며, 개발자의 의견 서버로 전달하지 않습니다. 쿠팡플레이의 계정·재생 서비스에서 이루어지는 처리는 해당 서비스의 개인정보처리방침이 적용됩니다.</p>
+
+          <h2>기본 기능의 보관·삭제와 권한</h2>
+          <p>업로드한 자막과 저장한 문장은 사용자가 해당 목록에서 삭제할 때까지 기기에 남습니다. 확장 프로그램을 제거하면 기기의 확장 프로그램 저장 데이터가 삭제됩니다. 동기화된 설정은 Chrome의 동기화·데이터 관리 기능으로 관리할 수 있습니다. 일시적인 세션 저장소는 확장 프로그램을 다시 로드하거나 브라우저를 재시작하면 지워집니다. 운영자는 기기에만 저장된 자막이나 문장을 원격으로 열람·삭제할 수 없습니다.</p>
+          <p>저장소 권한은 설정과 자막 보관에, unlimitedStorage는 자막 저장 용량에, tabs는 활성 탭 연결과 저장한 장면 열기에, webRequest와 쿠팡플레이 사이트 접근 권한은 재생 정보·자막 감지와 페이지 내 기능에, sidePanel은 사이드 패널 제공에 사용합니다. 의견 서버 접근은 별도의 선택적 권한입니다.</p>
+          <p>Play Plus는 Chrome Web Store 사용자 데이터 정책과 제한적 사용(Limited Use) 요건에 따라 데이터를 설명된 사용자 기능 제공·개선에만 사용합니다. 데이터를 판매하거나 개인 맞춤 광고에 사용·전달하지 않습니다. 운영자가 읽는 정보는 사용자가 명시적으로 전송에 동의한 의견이나 직접 보낸 문의 내용이며, 기기의 자막·저장한 문장을 자동 수집해 읽지 않습니다.</p>
+
+          <h2>선택적 의견 보내기: 어떤 정보를 왜 처리하나요?</h2>
           <p>운영자는 의견을 읽고 오류를 파악하거나 기능과 사용성을 개선하기 위해 다음 정보를 처리합니다.</p>
           <ul>
             <li>사용자가 직접 작성하여 보낸 의견 본문: 앞뒤 공백을 제외한 1~1,000자</li>
@@ -38,13 +53,13 @@ export default function PlayPlusPrivacyPage() {
           <p>접수 ID는 사람을 추적하는 고정 식별자가 아닙니다. 운영자는 의견 데이터를 판매하거나 광고 타기팅에 사용하지 않습니다. 익명 의견에 대한 개별 답변은 보장하지 않습니다.</p>
 
           <h2>언제 전송되며 거부할 수 있나요?</h2>
-          <p>사용자가 전송 안내를 읽고 ‘보내기’를 누른 경우에만 전송을 시도합니다. 설치, 안내 열기, 입력, 배너 닫기만으로 의견을 전송하지 않습니다. 최초 전송 시 Chrome이 수집 서버에 대한 선택적 접근 권한을 요청할 수 있습니다. 거부하거나 의견을 보내지 않아도 기존 자막·재생 기능을 계속 사용할 수 있습니다.</p>
+          <p>‘보내기’를 누르면 전송 안내 확인창이 열립니다. 안내를 읽고 ‘동의하고 보내기’를 누른 경우에만 서버 접근 권한을 요청하고 전송을 시도합니다. 확인창에서 ‘돌아가기’를 누르거나 Escape 키로 닫으면 작성한 글을 유지하며 전송하지 않습니다. 설치, 안내 열기, 입력, 배너 닫기만으로 의견을 전송하지 않습니다. 최초 전송 시 Chrome이 수집 서버에 대한 선택적 접근 권한을 요청할 수 있습니다. 거부하거나 의견을 보내지 않아도 기존 자막·재생 기능을 계속 사용할 수 있습니다.</p>
           <p>전송 전 초안은 열린 패널 메모리에만 있으며, 취소하거나 패널을 닫으면 사라질 수 있습니다. 실패 시 패널 안에 글을 남겨 직접 재시도할 수 있게 합니다. 서버 저장이 확인된 경우에만 성공으로 표시합니다. 배너를 닫았는지는 기기의 확장 프로그램 저장소에 기록하며 의견 서버로 보내지 않습니다.</p>
 
           <h2>Cloudflare 처리와 국외 처리</h2>
           <p>수집 API와 데이터베이스는 미국 법인 Cloudflare, Inc.의 Workers 및 D1 서비스를 사용합니다. 의견 전송 시 HTTPS 통신으로 위 정보가 Cloudflare에 전달되어 처리·보관됩니다. 네트워크 요청은 Cloudflare의 글로벌 인프라에서 처리될 수 있으며, 국내 전용 처리·보관을 보장하지 않습니다.</p>
           <p>Cloudflare는 서비스 제공과 보안·남용 방지를 위해 IP 주소 등 연결 정보를 처리할 수 있습니다. Play Plus Worker는 연결 IP를 일시적인 요청 횟수 제한에 사용하지만 의견 데이터베이스에 IP나 브라우저 정보를 저장하지 않으며, 의견 본문을 애플리케이션 로그에 기록하지 않습니다. 플랫폼 자체의 연결 정보 처리는 Cloudflare의 정책에 따릅니다.</p>
-          <p>수탁 서비스의 자세한 설명은 <a href='https://www.cloudflare.com/privacypolicy/'>Cloudflare 개인정보 처리방침</a>과 <a href='https://www.cloudflare.com/cloudflare-customer-dpa/'>데이터 처리 부속계약</a>에서 확인할 수 있습니다. Cloudflare의 개인정보 문의처는 <a href='mailto:privacyquestions@cloudflare.com'>privacyquestions@cloudflare.com</a>입니다. 전송을 원하지 않으면 ‘보내기’를 누르지 않거나 선택적 서버 권한을 거부하면 됩니다.</p>
+          <p>수탁 서비스의 자세한 설명은 <a href='https://www.cloudflare.com/privacypolicy/'>Cloudflare 개인정보 처리방침</a>과 <a href='https://www.cloudflare.com/cloudflare-customer-dpa/'>데이터 처리 부속계약</a>에서 확인할 수 있습니다. Cloudflare의 개인정보 문의처는 <a href='mailto:privacyquestions@cloudflare.com'>privacyquestions@cloudflare.com</a>입니다. 전송을 원하지 않으면 ‘동의하고 보내기’를 누르지 않거나 선택적 서버 권한을 거부하면 됩니다.</p>
 
           <h2>보관과 삭제</h2>
           <p>의견 원문과 접수 정보는 접수일부터 90일간 보관한 뒤 매일 실행하는 정리 작업에서 삭제합니다. 실행 간격에 따라 실제 삭제까지 최대 하루가 더 걸릴 수 있습니다. 정리 작업이 실패하면 운영자가 확인하고 복구합니다.</p>
@@ -62,21 +77,36 @@ export default function PlayPlusPrivacyPage() {
         <hr />
 
         <section id='english' lang='en' aria-labelledby='english-title'>
-          <h2 id='english-title'>Play Plus feedback privacy policy</h2>
-          <p>This policy covers the optional Send feedback feature when enabled in Play Plus. The operator and privacy contact is Kim Yujun (김유준), reachable at <a href='mailto:saramkimm@gmail.com'>saramkimm@gmail.com</a>. Last updated: October 15, 2026.</p>
+          <h2 id='english-title'>Play Plus privacy policy</h2>
+          <p>This policy covers subtitle learning, playback controls and optional feedback in the Play Plus extension. Play Plus does not require its own account or login; using Coupang Play remains subject to that service’s account requirements and terms. Feedback is collected only in versions where the feature is enabled. The operator and privacy contact is Kim Yujun (김유준), reachable at <a href='mailto:saramkimm@gmail.com'>saramkimm@gmail.com</a>. Last updated: October 16, 2026.</p>
 
-          <h3>Information and purpose</h3>
+          <h3>Information used by the core features</h3>
+          <ul>
+            <li><strong>Settings:</strong> subtitle language and appearance, shortcuts, skipping, looping and playback-speed settings are stored in Chrome sync storage (chrome.storage.sync). With Chrome sync enabled, Google’s sync service may transfer these settings to other signed-in Chrome browsers. With sync disabled, they stay on the device. They are not sent to the developer’s server. <a href='https://policies.google.com/privacy'>Google’s privacy policy</a> and your Chrome sync settings apply.</li>
+            <li><strong>Imported subtitles:</strong> subtitle text from a file you select, its title, language, registration time and delay are stored in the extension’s device storage (chrome.storage.local) for display and editing. Importing does not upload the file to the developer.</li>
+            <li><strong>Saved lines:</strong> when you save a line, its text, video URL, playback position and save time are kept on your device for review and reopening the scene. Copying writes the selected subtitle to the system clipboard. The extension does not read and collect clipboard contents.</li>
+            <li><strong>Tabs, playback and native subtitles:</strong> active-tab information such as URL and title, video identity, playback state and Coupang Play subtitles are processed to connect the panel and detect the player. Open-tab URLs are compared when reopening a saved scene. Connection state, subtitles and pending actions are held temporarily in memory and Chrome session storage. General browsing history is not transmitted to the developer.</li>
+            <li><strong>Interface state:</strong> theme, last panel screen, onboarding completion and banner dismissal are kept in the panel’s device storage (localStorage).</li>
+          </ul>
+          <p>To retrieve native subtitles, the extension uses the URL and headers of Coupang Play’s playback-information request to request data from that service, then fetches subtitles from the provided subtitle URLs. Pending request URLs and headers may be held briefly in session storage while a connection is established. These requests may include authentication information required by Coupang Play; it is not forwarded to the developer’s feedback server. Coupang Play’s own privacy policy governs its account and playback services.</p>
+
+          <h3>Core-feature retention, deletion and permissions</h3>
+          <p>Imported subtitles and saved lines remain on the device until you delete them from their lists. Removing the extension clears its device storage. Synced settings can be managed through Chrome’s sync and data controls. Temporary session storage is cleared when the extension reloads or the browser restarts. The operator cannot remotely read or delete subtitles or lines stored only on your device.</p>
+          <p>Storage permissions retain settings and subtitles; unlimitedStorage supports subtitle storage capacity. The tabs permission connects the active tab and reopens saved scenes. WebRequest and Coupang Play site access support playback-information and subtitle detection and in-page features. SidePanel provides the side panel. Feedback-server access is a separate optional permission.</p>
+          <p>Play Plus follows the Chrome Web Store User Data Policy, including Limited Use requirements, and uses data only to provide or improve the described user-facing features. Data is not sold or used or transferred for personalized advertising. The operator reads feedback you explicitly agree to send or inquiries you send directly; device subtitles and saved lines are not automatically collected for human review.</p>
+
+          <h3>Optional feedback: information and purpose</h3>
           <p>The developer reads voluntarily submitted feedback to understand issues and improve features and usability. The database stores only your message (1–1,000 characters after trimming), extension version, a random per-submission receipt ID for duplicate prevention, and a server-generated UTC receipt time.</p>
           <p>There are no name, email, phone or account fields. Viewing history, video URLs or titles, subtitles, uploaded files, Coupang account information and cookies are not automatically attached. Free text may still contain personal information; please do not include names, contact details or sensitive information about yourself or others. The receipt ID is not a persistent person identifier. The operator does not sell feedback or use it for advertising targeting. Individual replies to anonymous feedback are not guaranteed.</p>
 
           <h3>Your choice and transmission</h3>
-          <p>A submission is attempted only when you select Send after reading the notice. Installing, opening, typing or dismissing the banner does not submit feedback. Chrome may request optional access to the feedback server on the first submission. Declining or choosing not to send does not prevent existing subtitle or playback features from working.</p>
+          <p>Selecting Send opens a confirmation dialog. Server access is requested and a submission attempted only after you read the notice and select Agree and send. Go back or Escape closes the confirmation without sending and preserves your draft. Installing, opening, typing or dismissing the banner does not submit feedback. Chrome may request optional access to the feedback server on the first submission. Declining or choosing not to send does not prevent existing subtitle or playback features from working.</p>
           <p>Unsent text stays in the open panel&apos;s memory and may be lost when you cancel or close it. On failure, the panel keeps the text for a manual retry. Success is shown only after confirmed server storage. Banner dismissal is stored on your device and is not sent to the feedback server.</p>
 
           <h3>Cloudflare and international processing</h3>
           <p>The API and database use Workers and D1 provided by Cloudflare, Inc., a United States company. When you send, the information described above is transmitted over HTTPS to Cloudflare for processing and storage. Requests may be processed through Cloudflare&apos;s global infrastructure; Korea-only processing or storage is not guaranteed.</p>
           <p>Cloudflare may process connection metadata such as IP addresses to deliver and secure its services. The Play Plus Worker uses the connecting IP transiently for rate limiting, but does not store it or browser information in the feedback database and does not log message contents. Cloudflare&apos;s own metadata processing follows its policies.</p>
-          <p>See <a href='https://www.cloudflare.com/privacypolicy/'>Cloudflare&apos;s privacy policy</a> and <a href='https://www.cloudflare.com/cloudflare-customer-dpa/'>data processing addendum</a>. Its privacy contact is <a href='mailto:privacyquestions@cloudflare.com'>privacyquestions@cloudflare.com</a>. To decline transmission, do not select Send or deny the optional server permission.</p>
+          <p>See <a href='https://www.cloudflare.com/privacypolicy/'>Cloudflare&apos;s privacy policy</a> and <a href='https://www.cloudflare.com/cloudflare-customer-dpa/'>data processing addendum</a>. Its privacy contact is <a href='mailto:privacyquestions@cloudflare.com'>privacyquestions@cloudflare.com</a>. To decline transmission, do not select Agree and send or deny the optional server permission.</p>
 
           <h3>Retention and deletion</h3>
           <p>Messages and receipt information are retained for 90 days, then removed by a daily cleanup. The schedule can add up to one day before deletion. Failed cleanup requires operator investigation and recovery. Deleted data may remain in the current free D1 plan&apos;s recovery history for up to seven additional days. Recovery history is used for incident recovery, not routine feedback review; expired or deleted feedback must be cleaned up after a restore. Real feedback is not copied verbatim into public repositories or public issues.</p>
