@@ -36,4 +36,12 @@ const optimizedImage = path.join(outputDirectory, 'images', 'language-still-matt
 assert.ok(fs.statSync(optimizedImage).size < 250_000, 'The primary article image must remain below 250 KB');
 assert.ok(!fs.existsSync(path.join(outputDirectory, 'og-image.png')), 'Legacy social image must not be exported');
 
+const feedbackPolicy = readOutput(path.join('play-plus', 'privacy.html'));
+assert.ok(feedbackPolicy.includes('https://www.saramkim.com/play-plus/privacy'), 'Feedback policy must use its own canonical URL');
+assert.ok(feedbackPolicy.includes('id="korean"') && feedbackPolicy.includes('id="english"'), 'Feedback policy must provide both languages');
+assert.ok(feedbackPolicy.includes('김유준') && feedbackPolicy.includes('mailto:saramkimm@gmail.com'), 'Feedback policy must identify the approved operator and contact');
+assert.ok(feedbackPolicy.includes('90일') && feedbackPolicy.includes('seven additional days'), 'Feedback policy must explain live and recovery retention');
+assert.ok(sitemap.includes('https://www.saramkim.com/play-plus/privacy'), 'Sitemap must include the feedback policy');
+assert.ok(home.includes('href="/play-plus/privacy"'), 'Footer must link to the feedback policy');
+
 console.log('Static export verification passed.');

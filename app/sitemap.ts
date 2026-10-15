@@ -16,6 +16,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const staticPages: MetadataRoute.Sitemap = [
     {
+      url: `${baseUrl}/play-plus/privacy`,
+      lastModified: asDate('2026-10-15'),
+      changeFrequency: 'yearly',
+      priority: 0.3,
+    },
+    {
       url: `${baseUrl}/relay`,
       lastModified: asDate('2026-09-13'),
       changeFrequency: 'yearly',
