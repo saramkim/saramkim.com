@@ -28,6 +28,8 @@ const Footer = () => {
             Relay Privacy
           </Link>
           <span aria-hidden='true' className='hidden h-4 w-px bg-stone-300 sm:block' />
+          <Link href='/play-plus/privacy' className='text-link'>Play Plus 개인정보</Link>
+          <span aria-hidden='true' className='hidden h-4 w-px bg-stone-300 sm:block' />
           <span className='basis-full text-stone-500 sm:basis-auto'>© {currentYear} saramkim</span>
         </div>
       </div>
