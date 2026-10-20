@@ -16,6 +16,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const staticPages: MetadataRoute.Sitemap = [
     {
+      url: `${baseUrl}/worktrace`,
+      lastModified: asDate('2026-10-20'),
+      changeFrequency: 'yearly',
+      priority: 0.5,
+    },
+    {
+      url: `${baseUrl}/worktrace/privacy`,
+      lastModified: asDate('2026-10-20'),
+      changeFrequency: 'yearly',
+      priority: 0.3,
+    },
+    {
       url: `${baseUrl}/play-plus/privacy`,
       lastModified: asDate('2026-10-16'),
       changeFrequency: 'yearly',
