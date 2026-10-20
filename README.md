@@ -57,6 +57,8 @@ yarn audit
 
 `yarn check`는 lint, typecheck, 정적 빌드, 내보낸 HTML·메타데이터 검증을 순서대로 실행합니다. Pull Request와 `main` 브랜치 push에서도 같은 검증과 high-severity 의존성 audit을 GitHub Actions가 실행합니다.
 
+Windows에서는 Turbopack의 PostCSS 자식 프로세스 소켓 연결이 종료되는 오류를 피하도록 `next.config.js`의 `experimental.turbopackPluginRuntimeStrategy`를 `workerThreads`로 설정합니다. Turbopack은 계속 사용하며, 다른 운영체제에서는 기본 설정을 유지합니다. 현재 Next.js 16.3.8·Node.js 22에서 검증했으며, Next.js 업데이트 시 이 실험 옵션의 지원 여부를 확인합니다.
+
 Yarn audit의 `brace-expansion` advisory는 ESLint 9가 사용하는 `minimatch` 3 계열의 전이 의존성입니다. 패치된 `brace-expansion` 5를 강제로 연결하면 ESLint가 동작하지 않으며, 이 경로에는 저장소가 관리하는 glob만 입력됩니다. 따라서 advisory ID `1124334`만 `.yarnrc.yml`에서 근거와 함께 예외 처리하고 나머지 high-severity 항목은 CI에서 계속 차단합니다.
 
 추가로 `braces` 3.0.3의 [GHSA-vfj7-8cjw-p6xm](https://github.com/advisories/GHSA-vfj7-8cjw-p6xm) (advisory ID `1240992`)는 2026-10-15 현재 공식 수정 버전이 없어 운영자 승인으로 해당 ID만 예외 처리합니다. 깊게 중첩된 glob 패턴이 Node.js 호출 스택을 고갈시키는 취약점은 패키지에 남아 있으며, 예외 처리가 이를 수정하지는 않습니다.
@@ -73,3 +75,12 @@ Yarn audit의 `brace-expansion` advisory는 ESLint 9가 사용하는 `minimatch`
 - Node.js 22와 저장소에 지정된 Yarn 버전을 사용합니다.
 
 배포는 호스팅 플랫폼에서 `main` 브랜치를 기준으로 수행합니다. 프로덕션 배포 전에는 CI가 모두 통과했는지 확인합니다.
+
+## Worktrace Backup 공개 안내
+
+개인용 수동 백업 소개는 `app/worktrace/page.tsx`, 한국어·영어 개인정보처리방침은 `app/worktrace/privacy/page.tsx`에서 관리합니다. 기존 레이아웃과 성능 측정만 재사용하는 정적 페이지이며 OAuth 연결이나 백업을 실행하지 않습니다.
+
+- 홈페이지 및 canonical: `https://www.saramkim.com/worktrace`
+- 개인정보처리방침 및 canonical: `https://www.saramkim.com/worktrace/privacy`
+
+별도 승인 후 commit·push하여 `main` 기반 배포를 완료하고, 두 URL의 공개 접근·canonical·상호 링크를 확인한 뒤 Google OAuth 앱 설정에 입력합니다. 페이지 작성이나 배포는 Google 설정 완료·심사 통과 또는 실제 계정 연결·Drive 업로드의 증거가 아닙니다.

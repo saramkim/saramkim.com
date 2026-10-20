@@ -44,4 +44,19 @@ assert.ok(feedbackPolicy.includes('90일') && feedbackPolicy.includes('seven add
 assert.ok(sitemap.includes('https://www.saramkim.com/play-plus/privacy'), 'Sitemap must include the feedback policy');
 assert.ok(home.includes('href="/play-plus/privacy"'), 'Footer must link to the feedback policy');
 
+for (const route of ['worktrace', 'worktrace/privacy']) {
+  const page = readOutput(`${route}.html`);
+  const url = `https://www.saramkim.com/${route}`;
+  assert.ok(page.includes(`<link rel="canonical" href="${url}"`), `${route} must use its own canonical URL`);
+  assert.ok(page.includes(`<meta property="og:url" content="${url}"`), `${route} must use its own Open Graph URL`);
+  assert.ok(page.includes('id="korean" lang="ko"') && page.includes('id="english" lang="en"'), `${route} must provide both languages`);
+  assert.ok(page.includes('김유준') && page.includes('mailto:saramkimm@gmail.com'), `${route} must identify the operator and contact`);
+  assert.ok(home.includes(`href="/${route}"`), `Footer must link to ${route}`);
+  assert.ok(sitemap.includes(`<loc>${url}</loc>`), `Sitemap must include ${route}`);
+}
+const backupHome = readOutput('worktrace.html');
+const backupPolicy = readOutput(path.join('worktrace', 'privacy.html'));
+assert.ok(backupHome.includes('href="/worktrace/privacy"'), 'Backup homepage must link to its privacy policy');
+assert.ok(backupPolicy.includes('href="/worktrace"'), 'Backup policy must link to its homepage');
+
 console.log('Static export verification passed.');
