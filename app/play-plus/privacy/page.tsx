@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 
-const description = 'Play Plus의 설정 동기화, 자막·저장한 문장, 선택적 의견 전송에서 처리하는 정보와 보관·삭제 방법을 안내합니다.';
+const description = 'Play Plus의 설정 동기화, 자막·저장한 문장, 선택적 OpenSubtitles 검색·다운로드와 의견 전송에서 처리하는 정보와 보관·삭제 방법을 안내합니다.';
 
 export const metadata: Metadata = {
   title: 'Play Plus 개인정보처리방침',
@@ -15,7 +15,7 @@ export default function PlayPlusPrivacyPage() {
     <article className='site-container article-shell'>
       <header className='article-header'>
         <h1 className='article-title'>Play Plus 개인정보처리방침</h1>
-        <p className='mt-7 text-sm text-stone-600'>최종 수정일: <time dateTime='2026-10-16'>2026년 10월 16일</time></p>
+        <p className='mt-7 text-sm text-stone-600'>최종 수정일: <time dateTime='2026-10-27'>2026년 10월 27일</time></p>
         <nav aria-label='문서 언어 / Document language' className='mt-5 flex flex-wrap gap-5'>
           <a className='text-link' href='#korean' lang='ko'>한국어</a>
           <a className='text-link' href='#english' lang='en'>English</a>
@@ -24,7 +24,7 @@ export default function PlayPlusPrivacyPage() {
       <div className='prose prose-stone prose-lg max-w-none break-words'>
         <section id='korean' lang='ko' aria-labelledby='korean-title'>
           <h2 id='korean-title'>적용 범위와 운영자</h2>
-          <p>이 방침은 Play Plus 확장 프로그램의 자막 학습·재생 제어와 선택적 의견 보내기 기능에 적용됩니다. Play Plus는 별도 회원가입이나 로그인을 요구하지 않으며, 쿠팡플레이 이용에는 해당 서비스의 계정과 이용 조건이 적용됩니다. 운영자 및 개인정보 문의 담당자는 김유준이며, 문의처는 <a href='mailto:saramkimm@gmail.com'>saramkimm@gmail.com</a>입니다. 의견 수집은 해당 기능이 활성화된 버전에서만 이루어집니다.</p>
+          <p>이 방침은 Play Plus 확장 프로그램의 자막 학습·재생 제어, 선택적 OpenSubtitles 검색·다운로드와 의견 보내기 기능에 적용됩니다. Play Plus는 별도 회원가입이나 로그인을 요구하지 않으며, 쿠팡플레이 이용에는 해당 서비스의 계정과 이용 조건이 적용됩니다. 운영자 및 개인정보 문의 담당자는 김유준이며, 문의처는 <a href='mailto:saramkimm@gmail.com'>saramkimm@gmail.com</a>입니다. 의견 수집은 해당 기능이 활성화된 버전에서만 이루어집니다.</p>
 
           <h2>기본 기능에서 처리하는 정보</h2>
           <ul>
@@ -38,8 +38,15 @@ export default function PlayPlusPrivacyPage() {
 
           <h2>기본 기능의 보관·삭제와 권한</h2>
           <p>업로드한 자막과 저장한 문장은 사용자가 해당 목록에서 삭제할 때까지 기기에 남습니다. 확장 프로그램을 제거하면 기기의 확장 프로그램 저장 데이터가 삭제됩니다. 동기화된 설정은 Chrome의 동기화·데이터 관리 기능으로 관리할 수 있습니다. 일시적인 세션 저장소는 확장 프로그램을 다시 로드하거나 브라우저를 재시작하면 지워집니다. 운영자는 기기에만 저장된 자막이나 문장을 원격으로 열람·삭제할 수 없습니다.</p>
-          <p>저장소 권한은 설정과 자막 보관에, unlimitedStorage는 자막 저장 용량에, tabs는 활성 탭 연결과 저장한 장면 열기에, webRequest와 쿠팡플레이 사이트 접근 권한은 재생 정보·자막 감지와 페이지 내 기능에, sidePanel은 사이드 패널 제공에 사용합니다. 의견 서버 접근은 별도의 선택적 권한입니다.</p>
+          <p>저장소 권한은 설정과 자막 보관에, unlimitedStorage는 자막 저장 용량에, 기존 버전에서 요청하는 tabs 권한은 활성 탭 연결과 저장한 장면 열기를 위한 탭 정보 조회에 사용합니다. 이 권한을 제거한 버전은 쿠팡플레이 사이트 접근 권한으로 해당 사이트의 탭 정보를 확인합니다. webRequest와 쿠팡플레이 사이트 접근 권한은 재생 정보·자막 감지와 페이지 내 기능에, sidePanel은 사이드 패널 제공에 사용합니다. 의견 서버 접근은 별도의 선택적 권한입니다.</p>
           <p>Play Plus는 Chrome Web Store 사용자 데이터 정책과 제한적 사용(Limited Use) 요건에 따라 데이터를 설명된 사용자 기능 제공·개선에만 사용합니다. 데이터를 판매하거나 개인 맞춤 광고에 사용·전달하지 않습니다. 운영자가 읽는 정보는 사용자가 명시적으로 전송에 동의한 의견이나 직접 보낸 문의 내용이며, 기기의 자막·저장한 문장을 자동 수집해 읽지 않습니다.</p>
+
+          <h2 id='online-subtitles'>선택적 OpenSubtitles 검색·다운로드</h2>
+          <p>온라인 자막 검색을 지원하는 버전에서는 사용자가 해당 화면에서 검색을 켠 경우에만 OpenSubtitles 검색 API(api.opensubtitles.com)에 요청합니다. 현재 작품의 제목, 자막 언어, 작품 유형, 시즌·회차가 검색 조건으로 전송되며, 사용자가 검색어를 수정하거나 연도를 입력하면 그 값도 전송됩니다. 결과 페이지를 요청하면 페이지 번호도 포함됩니다. 검색이 켜진 화면에서 작품이 바뀌면 자동으로 다시 검색합니다.</p>
+          <p>요청에는 Play Plus의 앱 API 식별 정보와 확장 프로그램 버전이 포함됩니다. OpenSubtitles는 요청을 처리하면서 IP 주소 등 연결 정보를 처리할 수 있으며, 제목·회차 등의 검색 조건으로 관심 작품이나 시청 중인 작품을 추정할 수 있습니다. 쿠팡 계정 정보, 쿠팡 쿠키, 영상 주소, 업로드한 자막 파일과 저장한 문장을 OpenSubtitles에 보내지 않습니다. 별도의 OpenSubtitles 로그인이나 계정 정보 입력을 요구하지 않고, API·다운로드 요청에 쿠키를 첨부하지 않습니다.</p>
+          <p>‘받아서 등록’을 누르면 선택한 자막의 파일 ID와 요청 형식을 OpenSubtitles 다운로드 API로 보내고, 응답으로 받은 www.opensubtitles.com의 다운로드 주소에서 자막 파일을 가져옵니다. 다운로드 요청은 실패하거나 취소해도 서비스 이용 한도에 반영될 수 있습니다. 받은 자막의 내용·제목·언어 등 등록 정보는 기기의 확장 프로그램 저장소(chrome.storage.local)에 저장하며, 자막 관리에서 삭제할 수 있습니다. Play Plus 개발자의 의견 서버로 검색 조건이나 다운로드한 파일을 보내지 않습니다.</p>
+          <p>검색 켜기 여부는 기기에 저장하고, 검색 조건과 결과는 열린 화면의 메모리에서 처리합니다. 검색을 끄거나 해당 화면을 나가면 이후 자동 검색을 멈추고 진행 중인 요청의 취소를 시도합니다. 검색을 끄거나 확장 프로그램을 제거해도 OpenSubtitles에 이미 전달된 정보가 삭제되는 것은 아닙니다. 검색을 사용하지 않아도 직접 자막 파일을 추가하는 기능과 기존 재생 기능을 이용할 수 있습니다.</p>
+          <p>OpenSubtitles는 Play Plus 운영자와 별개의 외부 서비스입니다. 외부 서비스의 보관·삭제와 요청에 관한 처리는 <a href='https://opensubtitles.tawk.help/article/privacy-policy'>OpenSubtitles 개인정보처리방침</a>과 해당 서비스의 문의 절차를 따릅니다. 이 안내는 외부 API의 특정 보관 기간이나 국내 전용 처리를 보장하지 않습니다.</p>
 
           <h2>선택적 의견 보내기: 어떤 정보를 왜 처리하나요?</h2>
           <p>운영자는 의견을 읽고 오류를 파악하거나 기능과 사용성을 개선하기 위해 다음 정보를 처리합니다.</p>
@@ -78,7 +85,7 @@ export default function PlayPlusPrivacyPage() {
 
         <section id='english' lang='en' aria-labelledby='english-title'>
           <h2 id='english-title'>Play Plus privacy policy</h2>
-          <p>This policy covers subtitle learning, playback controls and optional feedback in the Play Plus extension. Play Plus does not require its own account or login; using Coupang Play remains subject to that service’s account requirements and terms. Feedback is collected only in versions where the feature is enabled. The operator and privacy contact is Kim Yujun (김유준), reachable at <a href='mailto:saramkimm@gmail.com'>saramkimm@gmail.com</a>. Last updated: October 16, 2026.</p>
+          <p>This policy covers subtitle learning, playback controls, optional OpenSubtitles search and downloads, and feedback in the Play Plus extension. Play Plus does not require its own account or login; using Coupang Play remains subject to that service’s account requirements and terms. Feedback is collected only in versions where the feature is enabled. The operator and privacy contact is Kim Yujun (김유준), reachable at <a href='mailto:saramkimm@gmail.com'>saramkimm@gmail.com</a>. Last updated: October 27, 2026.</p>
 
           <h3>Information used by the core features</h3>
           <ul>
@@ -92,8 +99,15 @@ export default function PlayPlusPrivacyPage() {
 
           <h3>Core-feature retention, deletion and permissions</h3>
           <p>Imported subtitles and saved lines remain on the device until you delete them from their lists. Removing the extension clears its device storage. Synced settings can be managed through Chrome’s sync and data controls. Temporary session storage is cleared when the extension reloads or the browser restarts. The operator cannot remotely read or delete subtitles or lines stored only on your device.</p>
-          <p>Storage permissions retain settings and subtitles; unlimitedStorage supports subtitle storage capacity. The tabs permission connects the active tab and reopens saved scenes. WebRequest and Coupang Play site access support playback-information and subtitle detection and in-page features. SidePanel provides the side panel. Feedback-server access is a separate optional permission.</p>
+          <p>Storage permissions retain settings and subtitles; unlimitedStorage supports subtitle storage capacity. Older versions request the tabs permission to inspect tab information for connecting the active tab and reopening saved scenes. Versions without that permission use Coupang Play site access to inspect tabs on that site. WebRequest and Coupang Play site access support playback-information and subtitle detection and in-page features. SidePanel provides the side panel. Feedback-server access is a separate optional permission.</p>
           <p>Play Plus follows the Chrome Web Store User Data Policy, including Limited Use requirements, and uses data only to provide or improve the described user-facing features. Data is not sold or used or transferred for personalized advertising. The operator reads feedback you explicitly agree to send or inquiries you send directly; device subtitles and saved lines are not automatically collected for human review.</p>
+
+          <h3 id='online-subtitles-en'>Optional OpenSubtitles search and downloads</h3>
+          <p>In versions that support online subtitle search, requests to the OpenSubtitles search API (api.opensubtitles.com) start only after you enable search in that view. Search terms include the current title, subtitle language, content type, season and episode, plus any query you edit or year you enter. A result-page request also includes its page number. When the title changes while the enabled view is open, it searches again automatically.</p>
+          <p>Requests include the Play Plus app API identifier and extension version. OpenSubtitles may process connection data such as your IP address, and search terms such as the title and episode can reveal what you are interested in or watching. Coupang account details, Coupang cookies, video URLs, imported subtitle files and saved lines are not sent to OpenSubtitles. No separate OpenSubtitles login or account details are required, and API and download requests omit cookies.</p>
+          <p>Selecting Download &amp; add sends the selected subtitle file ID and requested format to the OpenSubtitles download API, then retrieves the subtitle file from the returned www.opensubtitles.com download URL. Failed or cancelled requests may still count against the service allowance. The downloaded subtitle and registration information such as its title and language are stored in extension storage on your device (chrome.storage.local) and can be deleted in subtitle management. Search terms and downloaded files are not sent to the Play Plus developer&apos;s feedback server.</p>
+          <p>The enabled preference is stored on your device; search terms and results are held in the open view&apos;s memory. Turning search off or leaving the view stops subsequent automatic searches and attempts to cancel pending requests. Turning it off or removing the extension does not delete information already delivered to OpenSubtitles. You can still add local subtitle files and use existing playback features without enabling online search.</p>
+          <p>OpenSubtitles is an external service separate from the Play Plus operator. Its retention, deletion and request handling are governed by the <a href='https://opensubtitles.tawk.help/article/privacy-policy'>OpenSubtitles privacy policy</a> and its contact procedures. This notice does not promise a particular external API retention period or processing only in Korea.</p>
 
           <h3>Optional feedback: information and purpose</h3>
           <p>The developer reads voluntarily submitted feedback to understand issues and improve features and usability. The database stores only your message (1–1,000 characters after trimming), extension version, a random per-submission receipt ID for duplicate prevention, and a server-generated UTC receipt time.</p>
