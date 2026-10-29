@@ -1,162 +1,186 @@
 import Link from 'next/link';
-import { ArrowUpRight } from 'lucide-react';
-import { Card } from '@components/card';
-import { formatContentDate } from '@lib/format';
-import { getBlogPosts, getProjects } from '@lib/mdx';
-
-const principles = [
-  {
-    name: 'Essence',
-    description: '기능보다 먼저, 사용자가 실제로 해결하려는 문제를 찾습니다.',
-  },
-  {
-    name: 'Intention',
-    description: '관성으로 만들지 않고 모든 선택에 분명한 이유를 둡니다.',
-  },
-  {
-    name: 'Clarity',
-    description: '코드와 화면, 메시지를 이해하기 쉬운 형태로 정리합니다.',
-  },
-];
+import { ArrowDown, ArrowRight, ArrowUpRight, Bookmark, Captions, FileText, Repeat2 } from 'lucide-react';
+import { ProductMark } from '@components/product-mark';
+import { playPlusStoreUrl, webSubtitleUrl } from '@lib/products';
 
 export default function Home() {
-  const projects = getProjects();
-  const posts = getBlogPosts();
-
   return (
     <>
-      <section className='border-b border-stone-200'>
-        <div className='site-container grid gap-12 py-20 md:grid-cols-[minmax(0,1fr)_16rem] md:items-end md:py-28'>
-          <div className='max-w-3xl'>
-            <p className='eyebrow'>Frontend developer · Product-minded</p>
-            <h1 className='mt-5 text-balance text-5xl font-semibold tracking-[-0.045em] text-stone-950 sm:text-6xl md:text-7xl'>
-              복잡한 문제를,
+      <section className='home-hero site-container'>
+        <div className='hero-topline'>
+          <p className='eyebrow'>Independent tools by saramkim</p>
+          <span className='hero-note'>작은 도구로, 더 편한 일상</span>
+        </div>
+        <div className='hero-grid'>
+          <div>
+            <h1 className='home-title'>
+              영상에 필요한 도구,
               <br />
-              명료한 제품으로.
+              <span>브라우저 안에서.</span>
             </h1>
-            <p className='mt-7 max-w-2xl text-pretty text-lg leading-8 text-stone-600 md:text-xl'>
-              사용자가 실제로 겪는 불편을 관찰하고, 더 적은 코드로 오래 쓰이는 웹 제품을 만듭니다.
+            <p className='hero-description'>
+              자막을 더하고, 놓친 구간을 다시 보고.
+              <br className='hidden sm:block' /> 익숙한 시청 환경에서 쓰는 확장 프로그램을 만듭니다.
             </p>
-            <div className='mt-9 flex flex-wrap gap-3'>
-              <Link href='/projects/play-plus' className='button-primary'>
-                Play Plus 보기
-                <ArrowUpRight aria-hidden='true' size={17} />
+            <a href='#products' className='button-primary mt-8'>
+              제품 살펴보기 <ArrowDown size={17} aria-hidden='true' />
+            </a>
+          </div>
+          <div className='hero-index' aria-label='제품 바로가기'>
+            <span className='eyebrow'>Find your tool</span>
+            <Link href='/play-plus' className='hero-index-link'>
+              <span className='index-number'>01</span>
+              <div>
+                <strong>Play Plus</strong>
+                <span>쿠팡플레이로 언어를 공부할 때</span>
+              </div>
+              <ArrowUpRight size={20} aria-hidden='true' />
+            </Link>
+            <a href={webSubtitleUrl} className='hero-index-link'>
+              <span className='index-number'>02</span>
+              <div>
+                <strong>WebSubtitle</strong>
+                <span>웹 영상에 내 자막이 필요할 때</span>
+              </div>
+              <ArrowUpRight size={20} aria-hidden='true' />
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section id='products' className='site-container products-section' aria-labelledby='products-title'>
+        <div className='product-section-heading'>
+          <h2 id='products-title'>일상에서 쓰는 제품</h2>
+          <p>필요한 도구를 골라보세요.</p>
+        </div>
+        <article className='product-feature product-feature-play' aria-labelledby='play-title'>
+          <div className='product-identity'>
+            <div className='product-tile-top'>
+              <span className='product-category'>COUPANG PLAY · CHROME EXTENSION</span>
+              <span className='product-number'>01</span>
+            </div>
+            <ProductMark product='play-plus' large />
+            <div>
+              <p className='product-tile-name'>Play Plus</p>
+              <p className='product-tile-description'>시청을 공부로 이어주는 도구</p>
+            </div>
+          </div>
+          <div className='product-description'>
+            <p className='eyebrow'>Watch. Repeat. Remember.</p>
+            <h3 id='play-title'>
+              놓친 한 문장까지,
+              <br />내 속도로.
+            </h3>
+            <p className='product-body'>
+              쿠팡플레이에서 두 언어의 자막을 함께 보고, 필요한 구간을 반복하세요. 기억하고 싶은 자막은 저장해
+              다시 살펴볼 수 있습니다.
+            </p>
+            <ul className='feature-tags' aria-label='Play Plus 주요 기능'>
+              <li>
+                <Captions size={16} aria-hidden='true' />
+                이중 자막
+              </li>
+              <li>
+                <Repeat2 size={16} aria-hidden='true' />
+                구간 반복
+              </li>
+              <li>
+                <Bookmark size={16} aria-hidden='true' />
+                자막 저장
+              </li>
+            </ul>
+            <div className='product-actions'>
+              <Link href='/play-plus' className='button-primary'>
+                Play Plus 알아보기 <ArrowRight size={17} aria-hidden='true' />
               </Link>
-              <a className='button-secondary' href='https://github.com/saramkim' target='_blank' rel='noreferrer'>
-                GitHub
-                <ArrowUpRight aria-hidden='true' size={17} />
+              <a href={playPlusStoreUrl} className='text-link'>
+                Chrome에 설치 <ArrowUpRight size={16} aria-hidden='true' />
               </a>
             </div>
           </div>
-
-          <dl className='grid grid-cols-3 gap-4 border-t border-stone-300 pt-5 md:grid-cols-1 md:border-l md:border-t-0 md:pl-7 md:pt-0'>
-            <div>
-              <dt className='text-xs font-medium uppercase tracking-[0.14em] text-stone-500'>Users</dt>
-              <dd className='mt-1 text-2xl font-semibold tracking-tight'>5,000+</dd>
+        </article>
+        <article className='product-feature product-feature-web' aria-labelledby='web-title'>
+          <div className='product-identity'>
+            <div className='product-tile-top'>
+              <span className='product-category'>WEB VIDEO · CHROME EXTENSION</span>
+              <span className='product-number'>02</span>
             </div>
+            <ProductMark product='websubtitle' large />
             <div>
-              <dt className='text-xs font-medium uppercase tracking-[0.14em] text-stone-500'>Rating</dt>
-              <dd className='mt-1 text-2xl font-semibold tracking-tight'>5.0</dd>
+              <p className='product-tile-name'>WebSubtitle</p>
+              <p className='product-tile-description'>보고 있는 영상에, 원하는 자막</p>
             </div>
-            <div>
-              <dt className='text-xs font-medium uppercase tracking-[0.14em] text-stone-500'>Ratings</dt>
-              <dd className='mt-1 text-2xl font-semibold tracking-tight'>44</dd>
+          </div>
+          <div className='product-description'>
+            <p className='eyebrow'>Your video. Your subtitles.</p>
+            <h3 id='web-title'>
+              자막이 필요할 때,
+              <br />
+              보던 곳에서 바로.
+            </h3>
+            <p className='product-body'>
+              지원되는 웹 영상에 원하는 자막을 더하세요. 자막 파일을 불러오고, 영상에 맞춰 싱크와 표시 방식을
+              조절할 수 있습니다.
+            </p>
+            <ul className='feature-tags' aria-label='WebSubtitle 주요 기능'>
+              <li>
+                <FileText size={16} aria-hidden='true' />
+                자막 파일 불러오기
+              </li>
+              <li>
+                <Captions size={16} aria-hidden='true' />
+                표시·싱크 조절
+              </li>
+            </ul>
+            <div className='product-actions'>
+              <a href={webSubtitleUrl} className='button-primary'>
+                WebSubtitle 사이트 <ArrowUpRight size={17} aria-hidden='true' />
+              </a>
+              <span className='product-action-note'>설치와 사용 안내를 한곳에서</span>
             </div>
-          </dl>
-        </div>
+          </div>
+        </article>
       </section>
 
-      <section className='site-container py-16 md:py-24' aria-labelledby='featured-projects'>
-        <div className='section-heading'>
-          <div>
-            <p className='eyebrow'>Selected work</p>
-            <h2 id='featured-projects' className='section-title'>
-              실제 문제에서 시작한 제품
-            </h2>
-          </div>
-          <Link href='/projects' className='text-link'>
-            프로젝트 전체 보기
-            <ArrowUpRight aria-hidden='true' size={16} />
+      <section id='help' className='site-container help-section' aria-labelledby='help-title'>
+        <div>
+          <p className='eyebrow'>Here to help</p>
+          <h2 id='help-title' className='section-title'>
+            사용하다 막히셨나요?
+          </h2>
+          <p className='mt-4 max-w-md leading-7 text-stone-600'>제품에 맞는 문의 경로를 안내해 드릴게요.</p>
+        </div>
+        <div className='help-links'>
+          <Link href='/play-plus#support' className='help-link'>
+            <div>
+              <strong>Play Plus 문의</strong>
+              <span>사용 중 겪은 문제나 개선 의견을 알려주세요.</span>
+            </div>
+            <ArrowRight size={20} aria-hidden='true' />
           </Link>
-        </div>
-        <div className='mt-9 grid gap-5'>
-          {projects.map((project) => (
-            <Card
-              key={project.slug}
-              href={`/projects/${project.slug}`}
-              title={project.title}
-              description={project.description}
-              meta={project.meta}
-            />
-          ))}
-        </div>
-      </section>
-
-      <section className='border-y border-stone-200 bg-white'>
-        <div className='site-container py-16 md:py-24'>
-          <p className='eyebrow'>Working principles</p>
-          <h2 className='section-title max-w-2xl'>좋은 결과는 명확한 판단에서 시작합니다.</h2>
-          <div className='mt-10 grid gap-px overflow-hidden rounded-2xl border border-stone-200 bg-stone-200 md:grid-cols-3'>
-            {principles.map((principle, index) => (
-              <article key={principle.name} className='bg-stone-50 p-7 md:min-h-56'>
-                <span className='text-sm tabular-nums text-stone-400'>0{index + 1}</span>
-                <h3 className='mt-8 text-xl font-semibold tracking-tight'>{principle.name}</h3>
-                <p className='mt-3 leading-7 text-stone-600'>{principle.description}</p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className='site-container py-16 md:py-24' aria-labelledby='recent-writing'>
-        <div className='section-heading'>
-          <div>
-            <p className='eyebrow'>Writing</p>
-            <h2 id='recent-writing' className='section-title'>
-              생각을 언어로 정리합니다
-            </h2>
-          </div>
-          <Link href='/blog' className='text-link'>
-            모든 글 보기
-            <ArrowUpRight aria-hidden='true' size={16} />
-          </Link>
-        </div>
-
-        <div className='mt-9 divide-y divide-stone-200 border-y border-stone-200'>
-          {posts.map((post) => (
-            <article key={post.slug}>
-              <Link
-                href={`/blog/${post.slug}`}
-                className='group grid gap-3 py-7 outline-none transition-colors hover:bg-white focus-visible:bg-white md:grid-cols-[9rem_1fr_auto] md:items-center md:px-4'
-              >
-                <time className='text-sm tabular-nums text-stone-500' dateTime={post.date}>
-                  {formatContentDate(post.date, post.locale)}
-                </time>
-                <div>
-                  <h3 className='text-xl font-semibold tracking-tight group-hover:underline group-hover:decoration-1 group-hover:underline-offset-4'>
-                    {post.title}
-                  </h3>
-                  <p className='mt-1 text-stone-600'>{post.excerpt}</p>
-                </div>
-                <ArrowUpRight className='hidden text-stone-400 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 md:block' aria-hidden='true' size={20} />
-              </Link>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className='border-t border-stone-200 bg-stone-950 text-stone-50'>
-        <div className='site-container py-16 md:flex md:items-end md:justify-between md:py-20'>
-          <div>
-            <p className='eyebrow text-stone-400'>Contact</p>
-            <h2 className='mt-4 max-w-2xl text-3xl font-semibold tracking-[-0.035em] sm:text-4xl'>
-              해결할 가치가 있는 문제가 있다면 이야기해 주세요.
-            </h2>
-          </div>
-          <a className='mt-8 inline-flex items-center gap-2 text-base font-medium underline decoration-stone-500 underline-offset-8 hover:decoration-stone-50 md:mt-0' href='mailto:saramkimm@gmail.com'>
-            saramkimm@gmail.com
-            <ArrowUpRight aria-hidden='true' size={17} />
+          <a href={`${webSubtitleUrl}/help`} className='help-link'>
+            <div>
+              <strong>WebSubtitle 도움말</strong>
+              <span>전용 사이트에서 사용법과 문제 해결을 확인하세요.</span>
+            </div>
+            <ArrowUpRight size={20} aria-hidden='true' />
           </a>
+        </div>
+      </section>
+
+      <section className='maker-section'>
+        <div className='site-container maker-inner'>
+          <div className='maker-avatar' aria-hidden='true'>
+            sk.
+          </div>
+          <div className='maker-copy'>
+            <p className='eyebrow'>Made by a person</p>
+            <h2>안녕하세요, 김사람입니다.</h2>
+            <p>직접 겪은 불편에서 출발해, 계속 쓰고 싶은 웹 제품을 만듭니다.</p>
+          </div>
+          <Link href='/about' className='text-link'>
+            만드는 사람과 기록 <ArrowRight size={17} aria-hidden='true' />
+          </Link>
         </div>
       </section>
     </>
