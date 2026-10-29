@@ -5,12 +5,12 @@ import Footer from '@components/footer';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 
 const siteUrl = 'https://www.saramkim.com';
-const siteDescription = '복잡한 문제를 명료한 웹 제품으로 만드는 프론트엔드 개발자 김사람의 포트폴리오와 글.';
+const siteDescription = '영상에 필요한 도구, 브라우저 안에서. Play Plus와 WebSubtitle의 제품 소개, 설치와 사용 지원을 만나보세요.';
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: 'saramkim — Frontend Developer',
+    default: 'saramkim — 일상에서 쓰는 브라우저 도구',
     template: '%s | saramkim',
   },
   description: siteDescription,
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     canonical: '/',
   },
   openGraph: {
-    title: 'saramkim — Frontend Developer',
+    title: 'saramkim — 일상에서 쓰는 브라우저 도구',
     description: siteDescription,
     url: siteUrl,
     siteName: 'saramkim',
@@ -34,13 +34,13 @@ export const metadata: Metadata = {
         url: '/og.png',
         width: 1200,
         height: 630,
-        alt: 'Saram Kim — Frontend Developer',
+        alt: 'saramkim — Play Plus & WebSubtitle',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'saramkim — Frontend Developer',
+    title: 'saramkim — 일상에서 쓰는 브라우저 도구',
     description: siteDescription,
     images: ['/og.png'],
   },
@@ -63,7 +63,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       <body className='min-h-screen bg-stone-50 text-stone-950 antialiased'>
         <div className='flex min-h-screen flex-col'>
           <Header />
-          <main id='main-content' className='grow'>
+          <main id='main-content' tabIndex={-1} className='grow'>
             {children}
           </main>
           <Footer />

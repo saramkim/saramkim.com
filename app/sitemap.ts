@@ -12,9 +12,22 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const blogPosts = getBlogPosts();
   const latestProjectDate = newestDate(projects.map((project) => project.updated));
   const latestBlogDate = newestDate(blogPosts.map((post) => post.updated ?? post.date));
-  const latestSiteDate = newestDate([latestProjectDate, latestBlogDate]);
+  const productSiteUpdated = '2026-10-29';
+  const latestSiteDate = newestDate([latestProjectDate, latestBlogDate, productSiteUpdated]);
 
   const staticPages: MetadataRoute.Sitemap = [
+    {
+      url: `${baseUrl}/play-plus`,
+      lastModified: asDate(productSiteUpdated),
+      changeFrequency: 'monthly',
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/about`,
+      lastModified: asDate(productSiteUpdated),
+      changeFrequency: 'monthly',
+      priority: 0.5,
+    },
     {
       url: `${baseUrl}/worktrace`,
       lastModified: asDate('2026-10-20'),
@@ -55,13 +68,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${baseUrl}/projects`,
       lastModified: asDate(latestProjectDate),
       changeFrequency: 'monthly',
-      priority: 0.8,
+      priority: 0.5,
     },
     {
       url: `${baseUrl}/blog`,
       lastModified: asDate(latestBlogDate),
       changeFrequency: 'monthly',
-      priority: 0.8,
+      priority: 0.5,
     },
   ];
 

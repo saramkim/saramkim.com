@@ -28,6 +28,7 @@ export type ProjectSummary = {
   meta?: string;
   users?: string;
   rating?: string;
+  statsAsOf?: string;
   websiteUrl?: string;
   storeUrl?: string;
 };
@@ -120,6 +121,7 @@ function parseProjectSummary(fileName: string): ProjectSummary {
     meta: optionalString(data, 'meta', fileName),
     users: optionalString(data, 'users', fileName),
     rating: optionalString(data, 'rating', fileName),
+    statsAsOf: contentDate(data, 'statsAsOf', fileName),
     websiteUrl: optionalString(data, 'websiteUrl', fileName),
     storeUrl: optionalString(data, 'storeUrl', fileName),
   };

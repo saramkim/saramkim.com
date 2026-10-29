@@ -6,9 +6,10 @@ import { Menu, X } from 'lucide-react';
 import { useState } from 'react';
 
 const navLinks = [
-  { name: 'Home', href: '/' },
-  { name: 'Projects', href: '/projects' },
-  { name: 'Blog', href: '/blog' },
+  { name: '제품', href: '/#products' },
+  { name: 'Play Plus', href: '/play-plus' },
+  { name: '도움·문의', href: '/#help' },
+  { name: '만드는 사람', href: '/about' },
 ];
 
 const Header = () => {
@@ -20,10 +21,10 @@ const Header = () => {
   };
 
   const isActive = (href: string) =>
-    href === '/' ? pathname === href : pathname === href || pathname.startsWith(`${href}/`);
+    !href.includes('#') && (pathname === href || pathname.startsWith(`${href}/`));
 
   return (
-    <header className='sticky top-0 z-50 border-b border-stone-200/80 bg-stone-50/90 backdrop-blur-md'>
+    <header className='site-header sticky top-0 z-50 border-b border-stone-200/80 backdrop-blur-md'>
       <a
         href='#main-content'
         className='fixed left-4 top-3 z-[60] -translate-y-20 rounded-md bg-stone-950 px-4 py-2 text-sm font-medium text-white transition-transform focus:translate-y-0'

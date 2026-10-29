@@ -1,6 +1,16 @@
 # saramkim.com
 
-개인 프로젝트와 글을 소개하는 정적 포트폴리오 사이트입니다. Next.js App Router, MDX, Tailwind CSS로 구성하며 빌드 결과는 `out/` 디렉터리에 생성됩니다.
+Play Plus와 WebSubtitle의 제품 발견·설치·사용 지원을 중심으로 운영하는 정적 사이트입니다. Next.js App Router, MDX, Tailwind CSS로 구성하며 빌드 결과는 `out/` 디렉터리에 생성됩니다.
+
+## 페이지 역할
+
+- `/`: 제품 선택과 제품별 문의 진입점. WebSubtitle 사용 지원은 `websubtitle.com`으로 연결합니다.
+- `/play-plus`: 공개 기능에 한정한 제품 소개, 설치와 문의 안내입니다.
+- `/about`: 제작자 소개, 작업 원칙과 글·제작 사례 진입점입니다.
+- `/projects`, `/projects/[slug]`: 기존 제품 제작 사례입니다. `/blog`와 기존 글 주소도 유지합니다.
+- `/play-plus/privacy`, `/relay`, `/relay/privacy`, `/worktrace`, `/worktrace/privacy`: 기존 정책과 OAuth 앱 안내입니다. 본문·주소·언어 앵커·관련 접근 경로를 보존합니다.
+
+기본 사용법과 Play Plus 2.0 변경 안내는 출시 후속 범위입니다. 현재는 해당 경로·준비 중 페이지·링크를 만들지 않으며 정적 출력과 sitemap에도 포함하지 않습니다. 새 기능은 공개 여부와 실제 화면을 확인한 뒤 안내합니다. 제작 사례의 사용자 수·평점은 `statsAsOf` 기준의 과거 기록이며 홈·제품 소개에 최신 성과처럼 재사용하지 않습니다.
 
 ## 로컬 실행
 

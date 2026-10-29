@@ -1,44 +1,53 @@
 import Link from 'next/link';
+import { ArrowUpRight } from 'lucide-react';
+import { contactEmail, webSubtitleUrl } from '@lib/products';
 
-const Footer = () => {
-  const currentYear = new Date().getFullYear();
-
-  return (
-    <footer className='border-t border-stone-200 bg-stone-100/60 px-4 py-8'>
-      <div className='container mx-auto max-w-4xl text-center text-sm text-stone-600'>
-        <div className='flex flex-wrap items-center justify-center gap-x-5 gap-y-3'>
-          <a
-            href='https://github.com/saramkim'
-            target='_blank'
-            rel='noopener noreferrer'
-            className='inline-flex min-h-11 items-center rounded-md font-medium underline-offset-4 transition-colors hover:text-stone-950 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-950 focus-visible:ring-offset-2'
-            aria-label='GitHub profile (opens in a new tab)'
-          >
-            GitHub
+const Footer = () => (
+  <footer className='site-footer'>
+    <div className='site-container'>
+      <div className='footer-grid'>
+        <div className='footer-brand'>
+          <Link href='/' className='text-xl font-semibold tracking-tight'>
+            saramkim<span className='text-teal-700'>.</span>
+          </Link>
+          <p>작은 도구로, 더 편한 일상.</p>
+          <a href={`mailto:${contactEmail}`} className='text-link'>
+            {contactEmail}
           </a>
-          <span aria-hidden='true' className='h-4 w-px bg-stone-300' />
-          <a
-            href='mailto:saramkimm@gmail.com'
-            className='inline-flex min-h-11 items-center rounded-md font-medium underline-offset-4 transition-colors hover:text-stone-950 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-950 focus-visible:ring-offset-2'
-          >
-            saramkimm@gmail.com
+        </div>
+        <nav aria-label='제품 및 도움'>
+          <h2 className='footer-heading'>제품</h2>
+          <Link href='/play-plus'>Play Plus</Link>
+          <a href={webSubtitleUrl}>
+            WebSubtitle <ArrowUpRight size={13} aria-hidden='true' />
           </a>
-          <span aria-hidden='true' className='hidden h-4 w-px bg-stone-300 sm:block' />
-          <Link href='/relay/privacy' lang='en' className='text-link'>
+          <Link href='/#help'>도움·문의</Link>
+        </nav>
+        <nav aria-label='제작자와 기록'>
+          <h2 className='footer-heading'>만드는 사람</h2>
+          <Link href='/about'>소개</Link>
+          <Link href='/blog'>글</Link>
+          <Link href='/projects'>제작 사례</Link>
+          <a href='https://github.com/saramkim'>
+            GitHub <ArrowUpRight size={13} aria-hidden='true' />
+          </a>
+        </nav>
+        <nav aria-label='개인정보 및 앱 안내'>
+          <h2 className='footer-heading'>개인정보·앱 안내</h2>
+          <Link href='/play-plus/privacy'>Play Plus 개인정보</Link>
+          <Link href='/relay/privacy' lang='en'>
             Relay Privacy
           </Link>
-          <span aria-hidden='true' className='hidden h-4 w-px bg-stone-300 sm:block' />
-          <Link href='/play-plus/privacy' className='text-link'>Play Plus 개인정보</Link>
-          <span aria-hidden='true' className='hidden h-4 w-px bg-stone-300 sm:block' />
-          <Link href='/worktrace' lang='en' className='text-link'>Worktrace Backup</Link>
-          <span aria-hidden='true' className='hidden h-4 w-px bg-stone-300 sm:block' />
-          <Link href='/worktrace/privacy' className='text-link'>Worktrace Backup 개인정보</Link>
-          <span aria-hidden='true' className='hidden h-4 w-px bg-stone-300 sm:block' />
-          <span className='basis-full text-stone-500 sm:basis-auto'>© {currentYear} saramkim</span>
-        </div>
+          <Link href='/worktrace'>Worktrace Backup</Link>
+          <Link href='/worktrace/privacy'>Worktrace Backup 개인정보</Link>
+        </nav>
       </div>
-    </footer>
-  );
-};
+      <div className='footer-bottom'>
+        <span>© {new Date().getFullYear()} saramkim</span>
+        <span>독립적으로 만들고, 꾸준히 다듬습니다.</span>
+      </div>
+    </div>
+  </footer>
+);
 
 export default Footer;
