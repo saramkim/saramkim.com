@@ -22,8 +22,9 @@
     "build": "next build",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
+    "test": "node --experimental-strip-types --test scripts/*.test.mjs",
     "verify:export": "node scripts/verify-export.mjs",
-    "check": "yarn lint && yarn typecheck && yarn build && yarn verify:export",
+    "check": "yarn lint && yarn typecheck && yarn test && yarn build && yarn verify:export",
     "audit": "yarn npm audit --all --recursive --severity high"
   },
   "dependencies": {

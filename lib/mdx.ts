@@ -85,7 +85,12 @@ function contentDate(data: Frontmatter, key: string, source: string, required = 
   if (value === undefined) {
     return undefined;
   }
-  if (!datePattern.test(value) || Number.isNaN(Date.parse(`${value}T00:00:00Z`))) {
+  const parsed = new Date(`${value}T00:00:00Z`);
+  if (
+    !datePattern.test(value) ||
+    Number.isNaN(parsed.getTime()) ||
+    parsed.toISOString().slice(0, 10) !== value
+  ) {
     throw new Error(`Invalid "${key}" date in ${source}; expected YYYY-MM-DD`);
   }
 
