@@ -25,7 +25,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version-file: .node-version
 
       - name: Enable Corepack
         run: corepack enable
@@ -48,5 +48,5 @@ jobs:
       - name: Verify exported pages and metadata
         run: yarn verify:export
 
-      - name: Audit high-severity vulnerabilities
+      - name: Audit moderate and higher vulnerabilities
         run: yarn audit
