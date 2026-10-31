@@ -70,6 +70,28 @@
   }
 }
 
+/* The typography plugin sets these in the utilities layer, so they must be overridden there. */
+@layer utilities {
+  .prose.prose {
+    --tw-prose-body: var(--color-body);
+    --tw-prose-headings: var(--color-ink);
+    --tw-prose-lead: var(--color-body);
+    --tw-prose-links: var(--color-ink);
+    --tw-prose-bold: var(--color-ink);
+    --tw-prose-counters: var(--color-muted);
+    --tw-prose-bullets: var(--color-muted);
+    --tw-prose-hr: var(--color-line);
+    --tw-prose-quotes: var(--color-body);
+    --tw-prose-quote-borders: var(--color-accent);
+    --tw-prose-captions: var(--color-muted);
+    --tw-prose-code: var(--color-ink);
+    --tw-prose-pre-code: var(--color-ink);
+    --tw-prose-pre-bg: var(--color-surface);
+    --tw-prose-th-borders: var(--color-line);
+    --tw-prose-td-borders: var(--color-line);
+  }
+}
+
 @layer components {
   /* Shared */
   .site-container {
@@ -167,22 +189,6 @@
   }
 
   .prose {
-    --tw-prose-body: var(--color-body);
-    --tw-prose-headings: var(--color-ink);
-    --tw-prose-lead: var(--color-body);
-    --tw-prose-links: var(--color-ink);
-    --tw-prose-bold: var(--color-ink);
-    --tw-prose-counters: var(--color-muted);
-    --tw-prose-bullets: var(--color-muted);
-    --tw-prose-hr: var(--color-line);
-    --tw-prose-quotes: var(--color-body);
-    --tw-prose-quote-borders: var(--color-accent);
-    --tw-prose-captions: var(--color-muted);
-    --tw-prose-code: var(--color-ink);
-    --tw-prose-pre-code: var(--color-ink);
-    --tw-prose-pre-bg: var(--color-surface);
-    --tw-prose-th-borders: var(--color-line);
-    --tw-prose-td-borders: var(--color-line);
     font-size: 1rem;
     line-height: 1.8;
     word-break: keep-all;
