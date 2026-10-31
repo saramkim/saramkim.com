@@ -57,6 +57,12 @@ ogImage: /og.png
 
 ## 검증
 
+### 로고와 파비콘
+
+`public/brand/wordmark.svg`는 글자를 패스로 만든 흑백 로고이며, `public/brand/icon.svg`는 같은 첫 글자 `s`를 사용합니다. 외부 폰트 없이 표시됩니다. 헤더·푸터는 `components/brand.tsx`의 공통 로고를 사용합니다.
+
+원본 패스는 `scripts/generate-brand.mjs`에서 관리합니다. 수정 후 `yarn brand:generate`로 SVG, 512px 사이트 아이콘, 180px Apple 아이콘, 16·32·48px 프레임이 포함된 favicon.ico를 함께 재생성합니다. PNG 변환에는 현재 Next.js 의존성으로 설치되는 `sharp`가 필요합니다. Next.js 파일 기반 메타데이터가 `app/`의 아이콘을 연결합니다.
+
 ```bash
 yarn lint
 yarn typecheck

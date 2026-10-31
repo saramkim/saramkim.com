@@ -4,6 +4,7 @@ import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import { getBlogPosts } from '@lib/mdx';
 import { formatContentDate } from '@lib/format';
 import { contactEmail } from '@lib/products';
+import { BrandIcon } from '@components/brand';
 
 const description =
   'Play Plus와 WebSubtitle을 만드는 프론트엔드 개발자 김사람. 제품을 만드는 생각과 과정, 글을 소개합니다.';
@@ -47,7 +48,7 @@ export default function AboutPage() {
           </div>
         </div>
         <div className='about-monogram' aria-hidden='true'>
-          sk<span>.</span>
+          <BrandIcon />
         </div>
       </header>
       <section className='about-section' aria-labelledby='principles-title'>

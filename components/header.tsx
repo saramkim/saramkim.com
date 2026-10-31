@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Menu, X } from 'lucide-react';
 import { useState } from 'react';
+import { Wordmark } from '@components/brand';
 
 const navLinks = [
   { name: '제품', href: '/#products' },
@@ -37,7 +38,7 @@ const Header = () => {
           onClick={() => setIsMenuOpen(false)}
           className='rounded-md text-lg font-semibold tracking-[-0.03em] text-stone-950 transition-opacity hover:opacity-65 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-950 focus-visible:ring-offset-4'
         >
-          saramkim
+          <Wordmark />
         </Link>
 
         <nav aria-label='주요 탐색' className='hidden items-center gap-1 md:flex'>

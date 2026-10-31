@@ -1,14 +1,15 @@
 import Link from 'next/link';
 import { ArrowUpRight } from 'lucide-react';
 import { contactEmail, webSubtitleUrl } from '@lib/products';
+import { Wordmark } from '@components/brand';
 
 const Footer = () => (
   <footer className='site-footer'>
     <div className='site-container'>
       <div className='footer-grid'>
         <div className='footer-brand'>
-          <Link href='/' className='text-xl font-semibold tracking-tight'>
-            saramkim<span className='text-teal-700'>.</span>
+          <Link href='/' className='inline-block rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-950 focus-visible:ring-offset-4'>
+            <Wordmark />
           </Link>
           <p>작은 도구로, 더 편한 일상.</p>
           <a href={`mailto:${contactEmail}`} className='text-link'>

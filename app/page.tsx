@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { ArrowDown, ArrowRight, ArrowUpRight, Bookmark, Captions, FileText, Repeat2 } from 'lucide-react';
 import { ProductMark } from '@components/product-mark';
+import { BrandIcon } from '@components/brand';
 import { playPlusStoreUrl, webSubtitleUrl } from '@lib/products';
 
 export default function Home() {
@@ -171,7 +172,7 @@ export default function Home() {
       <section className='maker-section'>
         <div className='site-container maker-inner'>
           <div className='maker-avatar' aria-hidden='true'>
-            sk.
+            <BrandIcon />
           </div>
           <div className='maker-copy'>
             <p className='eyebrow'>Made by a person</p>
