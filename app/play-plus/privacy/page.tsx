@@ -15,13 +15,13 @@ export default function PlayPlusPrivacyPage() {
     <article className='site-container article-shell'>
       <header className='article-header'>
         <h1 className='article-title'>Play Plus 개인정보처리방침</h1>
-        <p className='mt-7 text-sm text-stone-600'>최종 수정일: <time dateTime='2026-10-27'>2026년 10월 27일</time></p>
+        <p className='mt-7 text-sm text-body'>최종 수정일: <time dateTime='2026-10-27'>2026년 10월 27일</time></p>
         <nav aria-label='문서 언어 / Document language' className='mt-5 flex flex-wrap gap-5'>
           <a className='text-link' href='#korean' lang='ko'>한국어</a>
           <a className='text-link' href='#english' lang='en'>English</a>
         </nav>
       </header>
-      <div className='prose prose-stone prose-lg max-w-none break-words'>
+      <div className='prose prose-lg max-w-none break-words'>
         <section id='korean' lang='ko' aria-labelledby='korean-title'>
           <h2 id='korean-title'>적용 범위와 운영자</h2>
           <p>이 방침은 Play Plus 확장 프로그램의 자막 학습·재생 제어, 선택적 OpenSubtitles 검색·다운로드와 의견 보내기 기능에 적용됩니다. Play Plus는 별도 회원가입이나 로그인을 요구하지 않으며, 쿠팡플레이 이용에는 해당 서비스의 계정과 이용 조건이 적용됩니다. 운영자 및 개인정보 문의 담당자는 김유준이며, 문의처는 <a href='mailto:saramkimm@gmail.com'>saramkimm@gmail.com</a>입니다. 의견 수집은 해당 기능이 활성화된 버전에서만 이루어집니다.</p>

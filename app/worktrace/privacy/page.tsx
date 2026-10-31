@@ -16,13 +16,13 @@ export default function WorktracePrivacyPage() {
     <article className='site-container article-shell'>
       <header className='article-header'>
         <h1 className='article-title'>Worktrace Backup 개인정보처리방침</h1>
-        <p className='mt-7 text-sm text-stone-600'>최종 수정일: <time dateTime='2026-10-20'>2026년 10월 20일</time></p>
+        <p className='mt-7 text-sm text-body'>최종 수정일: <time dateTime='2026-10-20'>2026년 10월 20일</time></p>
         <nav aria-label='문서 언어 / Document language' className='mt-5 flex flex-wrap gap-5'>
           <a className='text-link' href='#korean' lang='ko'>한국어</a>
           <a className='text-link' href='#english' lang='en'>English</a>
         </nav>
       </header>
-      <div className='prose prose-stone prose-lg max-w-none break-words'>
+      <div className='prose prose-lg max-w-none break-words'>
         <section id='korean' lang='ko' aria-labelledby='korean-title' className='scroll-mt-24'>
           <h2 id='korean-title'>적용 범위와 운영자</h2>
           <p>이 방침은 <Link href='/worktrace'>Worktrace Backup</Link>의 개인용 수동 백업과 해당 Google OAuth 연결에만 적용됩니다. Worktrace 전체 기능이나 다른 서비스의 처리를 포괄하지 않습니다. 운영자 및 개인정보 문의 담당자는 김유준이며, 문의처는 <a href='mailto:saramkimm@gmail.com'>saramkimm@gmail.com</a>입니다.</p>

@@ -8,7 +8,7 @@ const Footer = () => (
     <div className='site-container'>
       <div className='footer-grid'>
         <div className='footer-brand'>
-          <Link href='/' className='inline-block rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-950 focus-visible:ring-offset-4'>
+          <Link href='/' className='inline-block rounded-sm'>
             <Wordmark />
           </Link>
           <p>작은 도구로, 더 편한 일상.</p>
@@ -46,6 +46,10 @@ const Footer = () => (
       <div className='footer-bottom'>
         <span>© {new Date().getFullYear()} saramkim</span>
         <span>독립적으로 만들고, 꾸준히 다듬습니다.</span>
+      </div>
+      <div className='footer-signature' aria-hidden='true'>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src='/brand/wordmark.svg' alt='' width={807} height={138} loading='lazy' />
       </div>
     </div>
   </footer>

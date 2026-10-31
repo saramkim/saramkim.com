@@ -15,7 +15,7 @@ export default function RelayPage() {
   return (
     <article lang='en' className='site-container article-shell'>
       <h1 className='article-title mb-8'>Relay</h1>
-      <div className='prose prose-stone prose-lg max-w-none'>
+      <div className='prose prose-lg max-w-none'>
         <p>
           Relay is a personal local automation tool used by the owner of saramkim.com to coordinate selected
           Google Drive files and Google Sheets with the user&apos;s workflows. It runs in the user&apos;s local

@@ -69,8 +69,8 @@ export default async function BlogPostPage({ params }: Props) {
         <header className='article-header'>
           <p className='eyebrow'>Writing</p>
           <h1 className='article-title'>{post.title}</h1>
-          <p className='mt-5 max-w-2xl text-lg leading-8 text-stone-600'>{post.excerpt}</p>
-          <div className='mt-7 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-stone-500'>
+          <p className='mt-5 max-w-2xl text-lg leading-8 text-body'>{post.excerpt}</p>
+          <div className='mt-7 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-muted'>
             <time dateTime={post.date}>발행 {formatContentDate(post.date, post.locale)}</time>
             {post.updated && post.updated !== post.date && (
               <time dateTime={post.updated}>수정 {formatContentDate(post.updated, post.locale)}</time>
@@ -78,7 +78,7 @@ export default async function BlogPostPage({ params }: Props) {
           </div>
         </header>
 
-        <div className='prose prose-stone prose-lg max-w-none'>
+        <div className='prose prose-lg max-w-none'>
           <MDXRemote
             source={post.content}
             components={MDXComponents}

@@ -25,10 +25,10 @@ const Header = () => {
     !href.includes('#') && (pathname === href || pathname.startsWith(`${href}/`));
 
   return (
-    <header className='site-header sticky top-0 z-50 border-b border-stone-200/80 backdrop-blur-md'>
+    <header className='site-header sticky top-0 z-50 border-b border-line backdrop-blur-md'>
       <a
         href='#main-content'
-        className='fixed left-4 top-3 z-[60] -translate-y-20 rounded-md bg-stone-950 px-4 py-2 text-sm font-medium text-white transition-transform focus:translate-y-0'
+        className='fixed left-4 top-3 z-[60] -translate-y-20 rounded-md bg-accent px-4 py-2 text-sm font-medium text-canvas transition-transform focus:translate-y-0'
       >
         본문으로 건너뛰기
       </a>
@@ -36,7 +36,7 @@ const Header = () => {
         <Link
           href='/'
           onClick={() => setIsMenuOpen(false)}
-          className='rounded-md text-lg font-semibold tracking-[-0.03em] text-stone-950 transition-opacity hover:opacity-65 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-950 focus-visible:ring-offset-4'
+          className='rounded-md text-lg font-semibold tracking-[-0.03em] text-ink transition-opacity hover:opacity-65'
         >
           <Wordmark />
         </Link>
@@ -47,8 +47,8 @@ const Header = () => {
               key={link.href}
               href={link.href}
               aria-current={isActive(link.href) ? 'page' : undefined}
-              className={`rounded-lg px-3 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-950 ${
-                isActive(link.href) ? 'bg-stone-200/70 text-stone-950' : 'text-stone-600 hover:bg-stone-100 hover:text-stone-950'
+              className={`rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
+                isActive(link.href) ? 'bg-raised text-ink' : 'text-body hover:bg-raised hover:text-ink'
               }`}
             >
               {link.name}
@@ -58,7 +58,7 @@ const Header = () => {
 
         <button
           type='button'
-          className='inline-flex size-11 items-center justify-center rounded-lg text-stone-700 transition-colors hover:bg-stone-200/70 hover:text-stone-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-950 md:hidden'
+          className='inline-flex size-11 items-center justify-center rounded-lg text-body transition-colors hover:bg-raised hover:text-ink md:hidden'
           onClick={toggleMenu}
           aria-label={isMenuOpen ? '메뉴 닫기' : '메뉴 열기'}
           aria-expanded={isMenuOpen}
@@ -72,7 +72,7 @@ const Header = () => {
         id='mobile-navigation'
         aria-label='모바일 탐색'
         hidden={!isMenuOpen}
-        className='border-t border-stone-200 px-4 py-3 md:hidden'
+        className='border-t border-line px-4 py-3 md:hidden'
       >
         <ul className='space-y-1'>
           {navLinks.map((link) => (
@@ -80,8 +80,8 @@ const Header = () => {
               <Link
                 href={link.href}
                 aria-current={isActive(link.href) ? 'page' : undefined}
-                className={`flex min-h-11 items-center rounded-lg px-3 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-950 ${
-                  isActive(link.href) ? 'bg-stone-200/70 text-stone-950' : 'text-stone-600 hover:bg-stone-100 hover:text-stone-950'
+                className={`flex min-h-11 items-center rounded-lg px-3 text-sm font-medium transition-colors ${
+                  isActive(link.href) ? 'bg-raised text-ink' : 'text-body hover:bg-raised hover:text-ink'
                 }`}
                 onClick={() => setIsMenuOpen(false)}
               >

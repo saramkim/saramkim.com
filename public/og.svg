@@ -1,13 +1,22 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
-  <rect width="1200" height="630" fill="#f8f8f3"/>
-  <path d="M80 140h1040M80 510h1040" stroke="#d6d7cb"/>
-  <text x="80" y="95" font-family="Arial, sans-serif" font-size="32" font-weight="600" letter-spacing="-1" fill="#1c1917">saramkim<tspan fill="#31685b">.</tspan></text>
-  <text x="1120" y="95" text-anchor="end" font-family="Arial, sans-serif" font-size="15" letter-spacing="2" fill="#57534e">INDEPENDENT BROWSER TOOLS</text>
-  <g font-family="Malgun Gothic, sans-serif" font-weight="700" font-size="64" letter-spacing="-4">
-    <text x="80" y="268" fill="#1c1917">영상에 필요한 도구,</text>
-    <text x="80" y="362" fill="#31685b">브라우저 안에서.</text>
+  <defs>
+    <radialGradient id="amber"><stop offset="0" stop-color="#e8742c" stop-opacity=".55"/><stop offset="1" stop-color="#e8742c" stop-opacity="0"/></radialGradient>
+    <radialGradient id="teal"><stop offset="0" stop-color="#0f8f99" stop-opacity=".6"/><stop offset="1" stop-color="#0f8f99" stop-opacity="0"/></radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="#08090b"/>
+  <circle cx="860" cy="130" r="340" fill="url(#amber)"/>
+  <circle cx="1080" cy="380" r="380" fill="url(#teal)"/>
+  <circle cx="960" cy="150" r="44" fill="#ffc56b" fill-opacity=".6"/>
+  <circle cx="1100" cy="240" r="62" fill="#ff9a4d" fill-opacity=".32"/>
+  <circle cx="1020" cy="400" r="30" fill="#ffe9b0" fill-opacity=".5"/>
+  <text x="80" y="104" font-family="Arial, sans-serif" font-size="34" font-weight="700" letter-spacing="-1" fill="#f4f4ef">saramkim</text>
+  <g font-family="Malgun Gothic, sans-serif" font-weight="700" font-size="76" letter-spacing="-4">
+    <text x="80" y="290" fill="#f4f4ef">보던 영상 그대로,</text>
+    <rect x="70" y="322" width="668" height="100" fill="#ffe14a"/>
+    <text x="84" y="398" fill="#08090b">자막만 내 방식대로.</text>
   </g>
-  <text x="80" y="455" font-family="Arial, sans-serif" font-size="23" fill="#57534e">Play Plus  /  WebSubtitle</text>
-  <text x="80" y="564" font-family="Malgun Gothic, sans-serif" font-size="19" fill="#57534e">작은 도구로, 더 편한 일상.</text>
-  <text x="1120" y="564" text-anchor="end" font-family="Arial, sans-serif" font-size="18" fill="#57534e">www.saramkim.com</text>
+  <rect x="0" y="524" width="1200" height="3" fill="#ffffff33"/>
+  <rect x="408" y="524" width="336" height="3" fill="#ffe14a"/>
+  <text x="80" y="576" font-family="Consolas, monospace" font-size="22" fill="#f4f4ef">00:12:04.0</text>
+  <text x="1120" y="576" text-anchor="end" font-family="Arial, sans-serif" font-size="22" fill="#b9bcc2">Play Plus  /  WebSubtitle</text>
 </svg>

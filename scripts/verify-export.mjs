@@ -9,7 +9,7 @@ const home = readOutput('index.html');
 assert.match(home, /<html lang="ko"/, 'Home page must declare Korean as its primary language');
 assert.ok(home.includes('https://www.saramkim.com/'), 'Home page must use the www canonical URL');
 assert.ok(home.includes('https://www.saramkim.com/og.png'), 'Home page must expose the social preview image');
-assert.ok(home.includes('영상에 필요한 도구'), 'Home page must contain the product-focused message');
+assert.ok(home.includes('자막만 내 방식대로'), 'Home page must contain the product-focused message');
 assert.ok(home.includes('id="products"') && home.includes('id="help"'), 'Home must provide product and support anchors');
 assert.ok(home.includes('href="/play-plus"') && home.includes('href="https://websubtitle.com"'), 'Home must link to both product destinations');
 assert.ok(!home.includes('5,000') && !home.includes('44 ratings'), 'Home must not advertise historical statistics as current');

@@ -28,25 +28,25 @@ export default function BlogPage() {
         </p>
       </header>
 
-      <div className='divide-y divide-stone-200 border-y border-stone-200'>
+      <div className='divide-y divide-line border-y border-line'>
         {posts.map((post) => (
           <article key={post.slug}>
             <Link href={`/blog/${post.slug}`} className='article-row group'>
               <div>
-                <time className='text-sm tabular-nums text-stone-500' dateTime={post.date}>
+                <time className='text-sm tabular-nums text-muted' dateTime={post.date}>
                   {formatContentDate(post.date, post.locale)}
                 </time>
                 {post.updated && post.updated !== post.date && (
-                  <span className='ml-3 text-xs text-stone-400'>수정 {formatContentDate(post.updated, post.locale)}</span>
+                  <span className='ml-3 text-xs text-muted'>수정 {formatContentDate(post.updated, post.locale)}</span>
                 )}
               </div>
               <div>
                 <h2 className='text-2xl font-semibold tracking-tight group-hover:underline group-hover:decoration-1 group-hover:underline-offset-4'>
                   {post.title}
                 </h2>
-                <p className='mt-2 max-w-2xl leading-7 text-stone-600'>{post.excerpt}</p>
+                <p className='mt-2 max-w-2xl leading-7 text-body'>{post.excerpt}</p>
               </div>
-              <ArrowUpRight className='hidden text-stone-400 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 md:block' aria-hidden='true' size={20} />
+              <ArrowUpRight className='hidden text-muted transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 md:block' aria-hidden='true' size={20} />
             </Link>
           </article>
         ))}

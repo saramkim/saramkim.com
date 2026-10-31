@@ -107,15 +107,15 @@ export default function AboutPage() {
             모든 글 보기 <ArrowRight size={17} aria-hidden='true' />
           </Link>
         </div>
-        <div className='mt-8 divide-y divide-stone-200 border-y border-stone-200'>
+        <div className='mt-8 divide-y divide-line border-y border-line'>
           {posts.map((post) => (
             <Link key={post.slug} href={`/blog/${post.slug}`} className='article-row group'>
-              <time className='text-sm text-stone-500' dateTime={post.date}>
+              <time className='text-sm text-muted' dateTime={post.date}>
                 {formatContentDate(post.date, post.locale)}
               </time>
               <div>
                 <h3 className='text-xl font-semibold group-hover:underline'>{post.title}</h3>
-                <p className='mt-2 leading-7 text-stone-600'>{post.excerpt}</p>
+                <p className='mt-2 leading-7 text-body'>{post.excerpt}</p>
               </div>
               <ArrowRight className='hidden md:block' size={19} aria-hidden='true' />
             </Link>

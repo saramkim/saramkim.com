@@ -16,9 +16,9 @@ export default function RelayPrivacyPage() {
     <article lang='en' className='site-container article-shell'>
       <header className='article-header'>
         <h1 className='article-title'>Relay Privacy Policy</h1>
-        <p className='mt-7 text-sm text-stone-600'>Last updated: <time dateTime='2026-09-13'>September 13, 2026</time></p>
+        <p className='mt-7 text-sm text-body'>Last updated: <time dateTime='2026-09-13'>September 13, 2026</time></p>
       </header>
-      <div className='prose prose-stone prose-lg max-w-none'>
+      <div className='prose prose-lg max-w-none'>
         <h2>About Relay</h2>
         <p>
           <Link href='/relay'>Relay</Link> is a personal local automation tool used by the owner of saramkim.com

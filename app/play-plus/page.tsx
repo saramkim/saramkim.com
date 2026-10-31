@@ -25,18 +25,18 @@ const features = [
     icon: Repeat2,
     title: '이해할 때까지 다시',
     description:
-      '현재 자막이나 직접 지정한 구간을 반복하세요. 자막을 기준으로 이동하고 재생 속도를 조절할 수 있습니다.',
+      '현재 자막이나 직접 지정한 구간을 반복하세요. 자막 단위로 이동하고 재생 속도를 조절하며, 자주 쓰는 동작은 단축키로 지정할 수 있습니다.',
   },
   {
     icon: Bookmark,
-    title: '기억할 문장을 모아',
+    title: '훑어보고, 모아서 복습',
     description:
-      '다시 보고 싶은 자막을 저장하세요. 저장한 문장을 모아 복습하고 해당 장면으로 돌아갈 수 있습니다.',
+      '전체 자막을 시간 순으로 훑고, 클릭해 해당 장면으로 이동하세요. 다시 보고 싶은 자막은 저장해 따로 모아 복습할 수 있습니다.',
   },
   {
     icon: FileText,
     title: '내 자막 파일도 함께',
-    description: '가지고 있는 VTT, SRT, SMI 파일을 등록하세요. 영상에 맞춰 자막의 싱크를 조절할 수 있습니다.',
+    description: '자막이 없는 영상에도 가지고 있는 VTT, SRT, SMI 파일을 등록하세요. 0.1초 단위로 싱크를 맞출 수 있습니다.',
   },
 ];
 
@@ -54,9 +54,9 @@ export default function PlayPlusPage() {
               <p className='eyebrow'>Play Plus · Chrome extension</p>
             </div>
             <h1 className='product-page-title'>
-              보는 데서 한 걸음 더,
+              보던 쿠팡플레이가,
               <br />
-              <span>내 속도로 공부하세요.</span>
+              <span>언어 공부가 됩니다.</span>
             </h1>
             <p className='hero-description max-w-xl'>
               쿠팡플레이에 자막 학습 도구를 더합니다.
@@ -70,7 +70,7 @@ export default function PlayPlusPage() {
                 기능 살펴보기 <ArrowRight size={16} aria-hidden='true' />
               </a>
             </div>
-            <p className='mt-5 text-sm leading-6 text-stone-500'>데스크톱 Chrome · 쿠팡플레이 전용</p>
+            <p className='mt-5 text-sm leading-6 text-muted'>데스크톱 Chrome · 쿠팡플레이 전용</p>
           </div>
           <aside className='play-summary' aria-label='Play Plus 사용 흐름'>
             <p className='eyebrow'>A little more than watching</p>
@@ -155,11 +155,11 @@ export default function PlayPlusPage() {
           <h2 id='support-title' className='section-title'>
             잘 쓰실 수 있도록.
           </h2>
-          <p className='mt-5 max-w-lg leading-8 text-stone-600'>
+          <p className='mt-5 max-w-lg leading-8 text-body'>
             문제가 생겼거나 개선할 점이 있다면 이메일로 알려주세요. 설치한 확장 프로그램 버전과 문제가 생긴
             상황을 함께 적어주시면 확인에 도움이 됩니다.
           </p>
-          <p className='mt-3 max-w-lg text-sm leading-7 text-stone-500'>
+          <p className='mt-3 max-w-lg text-sm leading-7 text-muted'>
             계정 정보, 비밀번호나 민감한 개인정보는 보내지 마세요.
           </p>
           <a className='text-link mt-6' href={`mailto:${contactEmail}`}>

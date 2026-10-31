@@ -16,13 +16,13 @@ export default function WorktracePage() {
     <article className='site-container article-shell'>
       <header className='article-header'>
         <h1 className='article-title'>Worktrace Backup</h1>
-        <p className='mt-7 text-stone-600'>개인용 수동 백업 / Personal manual backup</p>
+        <p className='mt-7 text-body'>개인용 수동 백업 / Personal manual backup</p>
         <nav aria-label='문서 언어 / Document language' className='mt-5 flex flex-wrap gap-5'>
           <a className='text-link' href='#korean' lang='ko'>한국어</a>
           <a className='text-link' href='#english' lang='en'>English</a>
         </nav>
       </header>
-      <div className='prose prose-stone prose-lg max-w-none break-words'>
+      <div className='prose prose-lg max-w-none break-words'>
         <section id='korean' lang='ko' aria-labelledby='korean-title' className='scroll-mt-24'>
           <h2 id='korean-title'>작업을 마친 뒤, 직접 백업</h2>
           <p>Worktrace Backup은 김유준이 운영하는 개인용 로컬 백업 도구이자 Google OAuth 앱 이름입니다. Worktrace의 로컬 기록과 파일을 사용자의 개인 Google Drive에 암호화해 보관하기 위한 도구이며, 별도 회원가입이나 개발자 수집 서버가 없습니다.</p>

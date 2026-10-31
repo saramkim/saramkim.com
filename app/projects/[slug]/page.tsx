@@ -81,7 +81,7 @@ export default async function ProjectPage({ params }: Props) {
         <header className='article-header'>
           <p className='eyebrow'>Case study</p>
           <h1 className='article-title'>{project.title}</h1>
-          <p className='mt-5 max-w-2xl text-lg leading-8 text-stone-600'>{project.description}</p>
+          <p className='mt-5 max-w-2xl text-lg leading-8 text-body'>{project.description}</p>
           <div className='case-product-link'>
             <p>이 페이지는 제품의 제작 배경과 과정을 담은 기록입니다.</p>
             {project.slug === 'play-plus' ? (
@@ -90,10 +90,10 @@ export default async function ProjectPage({ params }: Props) {
               <a href={webSubtitleUrl} className='text-link'>WebSubtitle 소개·설치·도움말 <ArrowUpRight size={16} aria-hidden='true' /></a>
             ) : null}
           </div>
-          {project.statsAsOf && <p className='mt-8 text-sm leading-6 text-stone-500'>아래 사용자 수와 평점은 {formatContentDate(project.statsAsOf, project.locale)} 기준의 기록입니다. 현재 정보는 Chrome 웹 스토어에서 확인하세요.</p>}
+          {project.statsAsOf && <p className='mt-8 text-sm leading-6 text-muted'>아래 사용자 수와 평점은 {formatContentDate(project.statsAsOf, project.locale)} 기준의 기록입니다. 현재 정보는 Chrome 웹 스토어에서 확인하세요.</p>}
 
           {stats.length > 0 && (
-            <dl className='mt-9 grid gap-5 border-y border-stone-200 py-6 sm:grid-cols-3'>
+            <dl className='mt-9 grid gap-5 border-y border-line py-6 sm:grid-cols-3'>
               {stats.map((stat) => (
                 <div key={stat.label}>
                   <dt className='stat-label'>{stat.label}</dt>
@@ -121,7 +121,7 @@ export default async function ProjectPage({ params }: Props) {
           )}
         </header>
 
-        <div className='prose prose-stone prose-lg max-w-none'>
+        <div className='prose prose-lg max-w-none'>
           <MDXRemote
             source={project.content}
             components={MDXComponents}
