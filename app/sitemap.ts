@@ -12,7 +12,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const blogPosts = getBlogPosts();
   const latestProjectDate = newestDate(projects.map((project) => project.updated));
   const latestBlogDate = newestDate(blogPosts.map((post) => post.updated ?? post.date));
-  const productSiteUpdated = '2026-10-29';
+  const productSiteUpdated = '2026-11-01';
   const latestSiteDate = newestDate([latestProjectDate, latestBlogDate, productSiteUpdated]);
 
   const staticPages: MetadataRoute.Sitemap = [
@@ -43,18 +43,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {
       url: `${baseUrl}/play-plus/privacy`,
       lastModified: asDate('2026-10-16'),
-      changeFrequency: 'yearly',
-      priority: 0.3,
-    },
-    {
-      url: `${baseUrl}/relay`,
-      lastModified: asDate('2026-09-13'),
-      changeFrequency: 'yearly',
-      priority: 0.5,
-    },
-    {
-      url: `${baseUrl}/relay/privacy`,
-      lastModified: asDate('2026-09-13'),
       changeFrequency: 'yearly',
       priority: 0.3,
     },

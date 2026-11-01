@@ -7,7 +7,7 @@ import { contactEmail } from '@lib/products';
 import { BrandIcon } from '@components/brand';
 
 const description =
-  'Play Plus와 WebSubtitle을 만드는 프론트엔드 개발자 김사람. 제품을 만드는 생각과 과정, 글을 소개합니다.';
+  '일상에서 마주친 불편을 해결하는 제품과 도구를 만드는 김사람. 제품을 만드는 생각과 과정, 글을 소개합니다.';
 export const metadata: Metadata = {
   title: '만드는 사람',
   description,
@@ -34,8 +34,8 @@ export default function AboutPage() {
             김사람입니다.
           </h1>
           <p className='page-description'>
-            일상에서 마주친 불편을 웹 제품으로 풀어내는 프론트엔드 개발자입니다. 직접 사용하는 도구를 만들고,
-            쓰는 사람의 경험을 바탕으로 다듬습니다.
+            일상에서 마주친 불편을 해결하는 제품과 도구를 만듭니다. 직접 사용하고,
+            쓰는 사람의 경험을 바탕으로 꾸준히 다듬습니다.
           </p>
           <div className='mt-8 flex flex-wrap gap-6'>
             <a href='https://github.com/saramkim' className='text-link'>

@@ -15,7 +15,7 @@ import {
 import { HeroPlayer, ScreenBackdrop } from '@components/hero-player';
 import { ProductMark } from '@components/product-mark';
 import { BrandIcon } from '@components/brand';
-import { playPlusStoreUrl, webSubtitleUrl } from '@lib/products';
+import { playPlusStoreUrl, webSubtitleStoreUrl, webSubtitleUrl } from '@lib/products';
 
 export default function Home() {
   return (
@@ -192,7 +192,9 @@ export default function Home() {
               <a href={webSubtitleUrl} className='button-primary'>
                 WebSubtitle 사이트 <ArrowUpRight size={17} aria-hidden='true' />
               </a>
-              <span className='product-action-note'>설치와 사용 안내를 한곳에서</span>
+              <a href={webSubtitleStoreUrl} className='text-link'>
+                Chrome에 설치 <ArrowUpRight size={16} aria-hidden='true' />
+              </a>
             </div>
           </div>
         </article>
@@ -232,7 +234,7 @@ export default function Home() {
           <div className='maker-copy'>
             <p className='eyebrow'>Made by a person</p>
             <h2>안녕하세요, 김사람입니다.</h2>
-            <p>직접 겪은 불편에서 출발해, 계속 쓰고 싶은 웹 제품을 만듭니다.</p>
+            <p>직접 겪은 불편에서 출발해, 계속 쓰고 싶은 제품과 도구를 만듭니다.</p>
           </div>
           <Link href='/about' className='text-link'>
             만드는 사람과 기록 <ArrowRight size={17} aria-hidden='true' />

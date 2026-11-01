@@ -36,9 +36,6 @@ const Footer = () => (
         <nav aria-label='개인정보 및 앱 안내'>
           <h2 className='footer-heading'>개인정보·앱 안내</h2>
           <Link href='/play-plus/privacy'>Play Plus 개인정보</Link>
-          <Link href='/relay/privacy' lang='en'>
-            Relay Privacy
-          </Link>
           <Link href='/worktrace'>Worktrace Backup</Link>
           <Link href='/worktrace/privacy'>Worktrace Backup 개인정보</Link>
         </nav>

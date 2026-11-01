@@ -11,7 +11,7 @@ assert.ok(home.includes('https://www.saramkim.com/'), 'Home page must use the ww
 assert.ok(home.includes('https://www.saramkim.com/og.png'), 'Home page must expose the social preview image');
 assert.ok(home.includes('자막만 내 방식대로'), 'Home page must contain the product-focused message');
 assert.ok(home.includes('id="products"') && home.includes('id="help"'), 'Home must provide product and support anchors');
-assert.ok(home.includes('href="/play-plus"') && home.includes('href="https://websubtitle.com"'), 'Home must link to both product destinations');
+assert.ok(home.includes('href="/play-plus"') && home.includes('href="https://websubtitle.com/ko"'), 'Home must link to both product destinations');
 assert.ok(!home.includes('5,000') && !home.includes('44 ratings'), 'Home must not advertise historical statistics as current');
 
 const blogPost = readOutput(path.join('blog', 'language-still-matters.html'));
@@ -67,7 +67,7 @@ assert.ok(backupPolicy.includes('href="/worktrace"'), 'Backup policy must link t
 const requiredRoutes = [
   '', 'play-plus', 'about', 'projects', 'projects/play-plus', 'projects/websubtitle',
   'blog', 'blog/hello-world', 'blog/language-still-matters', 'blog/think-or-vanish',
-  'play-plus/privacy', 'relay', 'relay/privacy', 'worktrace', 'worktrace/privacy',
+  'play-plus/privacy', 'worktrace', 'worktrace/privacy',
 ];
 for (const route of requiredRoutes) {
   const html = readOutput(route ? `${route}.html` : 'index.html');
@@ -99,9 +99,8 @@ for (const route of ['play-plus/guide', 'play-plus/updates', 'play-plus/updates/
   assert.ok(!home.includes(`href="/${route}`) && !productHome.includes(`href="/${route}`), `Unfinished content must not be linked: ${route}`);
 }
 for (const route of ['relay', 'relay/privacy']) {
-  const page = readOutput(`${route}.html`);
-  const counterpart = route === 'relay' ? '/relay/privacy' : '/relay';
-  assert.ok(page.includes(`href="${counterpart}"`), `${route} must retain its related app/policy link`);
+  assert.ok(!fs.existsSync(path.join(outputDirectory, `${route}.html`)), `Retired page must not be exported: ${route}`);
+  assert.ok(!sitemap.includes(`<loc>https://www.saramkim.com/${route}</loc>`), `Retired page must not appear in sitemap: ${route}`);
 }
 assert.ok(feedbackPolicy.includes('id="online-subtitles"') && feedbackPolicy.includes('id="online-subtitles-en"'), 'Play Plus policy must preserve online-subtitle anchors');
 assert.ok(feedbackPolicy.includes('OpenSubtitles'), 'Play Plus policy must preserve its existing disclosure');
