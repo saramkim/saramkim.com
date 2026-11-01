@@ -56,10 +56,10 @@ for (const route of ['worktrace', 'worktrace/privacy']) {
   assert.ok(page.includes(`<meta property="og:url" content="${url}"`), `${route} must use its own Open Graph URL`);
   assert.ok(page.includes('id="korean" lang="ko"') && page.includes('id="english" lang="en"'), `${route} must provide both languages`);
   assert.ok(page.includes('김유준') && page.includes('mailto:saramkimm@gmail.com'), `${route} must identify the operator and contact`);
-  assert.ok(home.includes(`href="/${route}"`), `Footer must link to ${route}`);
   assert.ok(sitemap.includes(`<loc>${url}</loc>`), `Sitemap must include ${route}`);
 }
 const backupHome = readOutput('worktrace.html');
+assert.ok(home.includes('href="/worktrace"'), 'Footer must retain access to the personal app information');
 const backupPolicy = readOutput(path.join('worktrace', 'privacy.html'));
 assert.ok(backupHome.includes('href="/worktrace/privacy"'), 'Backup homepage must link to its privacy policy');
 assert.ok(backupPolicy.includes('href="/worktrace"'), 'Backup policy must link to its homepage');

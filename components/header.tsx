@@ -8,7 +8,6 @@ import { Wordmark } from '@components/brand';
 
 const navLinks = [
   { name: '제품', href: '/#products' },
-  { name: 'Play Plus', href: '/play-plus' },
   { name: '도움·문의', href: '/#help' },
   { name: '만드는 사람', href: '/about' },
 ];
