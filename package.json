@@ -23,7 +23,10 @@
   "scripts": {
     "brand:generate": "node scripts/generate-brand.mjs",
     "dev": "next dev",
+    "dev:guide": "PLAY_PLUS_GUIDE_PREVIEW=1 next dev",
     "build": "next build",
+    "build:guide": "PLAY_PLUS_GUIDE_PREVIEW=1 next build",
+    "verify:guide": "PLAY_PLUS_GUIDE_PREVIEW=1 node scripts/verify-export.mjs",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
     "test": "node --experimental-strip-types --test scripts/*.test.mjs",
