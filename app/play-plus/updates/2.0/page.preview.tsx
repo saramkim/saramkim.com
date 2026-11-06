@@ -111,7 +111,7 @@ export default function PlayPlusUpdate20Page() {
             <GuideSwitch current='updates' />
             <p className='guide-meta'>
               처음 쓰신다면{' '}
-              <Link className='underline underline-offset-4 hover:text-accent' href={guidePaths.guide}>
+              <Link className='underline underline-offset-4 hover:text-accent-text' href={guidePaths.guide}>
                 기본 사용법
               </Link>
               부터 보세요.

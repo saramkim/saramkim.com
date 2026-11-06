@@ -43,10 +43,6 @@ const Footer = () => (
         <span>© {new Date().getFullYear()} saramkim</span>
         <span>독립적으로 만들고, 꾸준히 다듬습니다.</span>
       </div>
-      <div className='footer-signature' aria-hidden='true'>
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src='/brand/wordmark.svg' alt='' width={807} height={138} loading='lazy' />
-      </div>
     </div>
   </footer>
 );

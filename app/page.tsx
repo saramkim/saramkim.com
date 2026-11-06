@@ -20,7 +20,7 @@ import { playPlusStoreUrl, webSubtitleStoreUrl, webSubtitleUrl } from '@lib/prod
 export default function Home() {
   return (
     <>
-      <section className='home-hero'>
+      <section className='home-hero' data-theme='dark'>
         <ScreenBackdrop />
         <div className='site-container hero-content'>
           <div className='hero-topline'>
@@ -43,32 +43,13 @@ export default function Home() {
         <HeroPlayer />
       </section>
 
-      <nav className='hero-index' aria-label='제품 바로가기'>
-        <Link href='/play-plus' className='hero-index-link'>
-          <span className='index-number'>01</span>
-          <div>
-            <strong>Play Plus</strong>
-            <span>쿠팡플레이로 언어를 공부할 때</span>
-          </div>
-          <ArrowUpRight size={24} aria-hidden='true' />
-        </Link>
-        <a href={webSubtitleUrl} className='hero-index-link'>
-          <span className='index-number'>02</span>
-          <div>
-            <strong>WebSubtitle</strong>
-            <span>웹 영상의 자막이 없거나 안 맞을 때</span>
-          </div>
-          <ArrowUpRight size={24} aria-hidden='true' />
-        </a>
-      </nav>
-
       <section id='products' className='site-container products-section' aria-labelledby='products-title'>
         <div className='product-section-heading'>
           <h2 id='products-title'>어떤 영상을 보고 있나요?</h2>
           <p>쿠팡플레이라면 Play Plus, 다른 웹 영상이라면 WebSubtitle.</p>
         </div>
         <article className='product-feature product-feature-play' aria-labelledby='play-title'>
-          <div className='product-identity'>
+          <div className='product-identity' data-theme='dark'>
             <div className='product-tile-top'>
               <span className='product-category'>COUPANG PLAY · CHROME EXTENSION</span>
               <span className='product-number'>01</span>
@@ -137,7 +118,7 @@ export default function Home() {
           </div>
         </article>
         <article className='product-feature product-feature-web' aria-labelledby='web-title'>
-          <div className='product-identity'>
+          <div className='product-identity' data-theme='dark'>
             <div className='product-tile-top'>
               <span className='product-category'>WEB VIDEO · CHROME EXTENSION</span>
               <span className='product-number'>02</span>
