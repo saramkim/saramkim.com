@@ -5,6 +5,7 @@ import { GeistMono } from 'geist/font/mono';
 import Header from '@components/header';
 import Footer from '@components/footer';
 import { SpeedInsights } from '@vercel/speed-insights/next';
+import { themeColors, themeInitScript } from '@lib/theme';
 
 const siteUrl = 'https://www.saramkim.com';
 const siteDescription = '보던 영상 그대로, 자막만 내 방식대로. Play Plus와 WebSubtitle의 제품 소개, 설치와 사용 지원을 만나보세요.';
@@ -60,12 +61,19 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: '#08090b',
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: themeColors.light },
+    { media: '(prefers-color-scheme: dark)', color: themeColors.dark },
+  ],
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang='ko' className={GeistMono.variable}>
+    // The head script sets data-theme before hydration, so React must not flag the attribute.
+    <html lang='ko' className={GeistMono.variable} suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+      </head>
       <body className='min-h-screen'>
         <div className='flex min-h-screen flex-col'>
           <Header />

@@ -2,6 +2,14 @@
 
 @config '../tailwind.config.mjs';
 
+/*
+ * Color tokens. These are the dark defaults that generate the utilities; the light palette and dark
+ * "screen" islands override the same names below. Roles:
+ *   accent       yellow fill (highlights, primary buttons, subtitles) — always paired with on-accent text
+ *   accent-text  accent used as text or a thin line, darkened in light mode to stay readable
+ *   focus        focus rings
+ *   line-strong  borders that must stay visible (secondary buttons, tracks)
+ */
 @theme {
   --color-canvas: #08090b;
   --color-surface: #101216;
@@ -10,7 +18,11 @@
   --color-body: #b9bcc2;
   --color-muted: #8f939a;
   --color-line: #ffffff1f;
+  --color-line-strong: #ffffff40;
   --color-accent: #ffe14a;
+  --color-on-accent: #08090b;
+  --color-accent-text: #ffe14a;
+  --color-focus: #ffe14a;
   --font-sans:
     'Pretendard Variable', Pretendard, 'Apple SD Gothic Neo', 'Malgun Gothic', system-ui, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, Consolas, monospace;
@@ -21,6 +33,45 @@
     color-scheme: dark;
     font-synthesis: none;
     text-rendering: optimizeLegibility;
+    --brand-filter: brightness(0) invert(1);
+    --brand-tile-filter: invert(1);
+  }
+
+  /* The theme script in the root layout always sets data-theme on <html>. */
+  :root[data-theme='light'] {
+    color-scheme: light;
+    --color-canvas: #fbfbf8;
+    --color-surface: #f3f3ee;
+    --color-raised: #e9e9e3;
+    --color-ink: #111214;
+    --color-body: #44474d;
+    --color-muted: #63676e;
+    --color-line: #0000001a;
+    --color-line-strong: #00000038;
+    --color-on-accent: #111214;
+    --color-accent-text: #7a5d00;
+    --color-focus: #7a5d00;
+    --brand-filter: none;
+    --brand-tile-filter: none;
+  }
+
+  /* Screen surfaces (the home hero, product vignettes) stay dark in either theme, like a video player. */
+  [data-theme='dark'] {
+    color-scheme: dark;
+    color: var(--color-ink);
+    --color-canvas: #08090b;
+    --color-surface: #101216;
+    --color-raised: #1a1d22;
+    --color-ink: #f4f4ef;
+    --color-body: #b9bcc2;
+    --color-muted: #8f939a;
+    --color-line: #ffffff1f;
+    --color-line-strong: #ffffff40;
+    --color-on-accent: #08090b;
+    --color-accent-text: #ffe14a;
+    --color-focus: #ffe14a;
+    --brand-filter: brightness(0) invert(1);
+    --brand-tile-filter: invert(1);
   }
 
   * {
@@ -37,11 +88,11 @@
   }
 
   ::selection {
-    @apply bg-accent text-canvas;
+    @apply bg-accent text-on-accent;
   }
 
   :focus-visible {
-    outline: 2px solid var(--color-accent);
+    outline: 2px solid var(--color-focus);
     outline-offset: 3px;
     scroll-margin-block: 6rem;
   }
@@ -82,7 +133,7 @@
     --tw-prose-bullets: var(--color-muted);
     --tw-prose-hr: var(--color-line);
     --tw-prose-quotes: var(--color-body);
-    --tw-prose-quote-borders: var(--color-accent);
+    --tw-prose-quote-borders: var(--color-accent-text);
     --tw-prose-captions: var(--color-muted);
     --tw-prose-code: var(--color-ink);
     --tw-prose-pre-code: var(--color-ink);
@@ -152,7 +203,7 @@
 
   .back-link,
   .text-link {
-    @apply inline-flex min-h-11 items-center gap-2 rounded-sm text-sm font-medium text-body underline-offset-4 transition-colors hover:text-accent;
+    @apply inline-flex min-h-11 items-center gap-2 rounded-sm text-sm font-medium text-body underline-offset-4 transition-colors hover:text-accent-text;
   }
 
   .back-link {
@@ -165,11 +216,11 @@
   }
 
   .button-primary {
-    @apply bg-accent text-canvas hover:bg-ink;
+    @apply bg-accent text-on-accent hover:bg-ink hover:text-canvas;
   }
 
   .button-secondary {
-    @apply border border-white/25 text-ink hover:border-accent hover:text-accent;
+    @apply border border-line-strong text-ink hover:border-accent-text hover:text-accent-text;
   }
 
   .stat-label {
@@ -181,11 +232,11 @@
   }
 
   .brand-light {
-    filter: brightness(0) invert(1);
+    filter: var(--brand-filter);
   }
 
   .brand-tile {
-    filter: invert(1);
+    filter: var(--brand-tile-filter);
   }
 
   .prose {
@@ -207,7 +258,7 @@
   }
 
   .prose :where(a:hover) {
-    text-decoration-color: var(--color-accent);
+    text-decoration-color: var(--color-accent-text);
   }
 
   .prose :where(img) {
@@ -216,7 +267,15 @@
 
   /* Header */
   .site-header {
-    background: rgb(8 9 11 / 72%);
+    background: color-mix(in srgb, var(--color-canvas) 72%, transparent);
+  }
+  /* Show the icon of the theme the button switches to. */
+  .theme-icon-moon,
+  :root[data-theme='light'] .theme-icon-sun {
+    display: none;
+  }
+  :root[data-theme='light'] .theme-icon-moon {
+    display: block;
   }
 
   /* Home hero: the whole first viewport is a screen. */
@@ -256,7 +315,7 @@
   .product-page-title > span {
     padding: 0 0.14em 0.04em;
     margin-left: -0.04em;
-    color: var(--color-canvas);
+    color: var(--color-on-accent);
     background: var(--color-accent);
     box-decoration-break: clone;
     -webkit-box-decoration-break: clone;
@@ -349,7 +408,7 @@
   .player-track {
     position: relative;
     height: 3px;
-    background: #ffffff33;
+    background: var(--color-line-strong);
   }
   .player-loop {
     position: absolute;
@@ -521,7 +580,7 @@
     padding: 1.25rem;
     border: 1px solid var(--color-line);
     border-radius: 0.375rem;
-    background: #08090bd9;
+    background: color-mix(in srgb, var(--color-canvas) 85%, transparent);
     font-family: var(--font-mono);
     font-size: 0.8125rem;
     line-height: 1.7;
@@ -653,7 +712,7 @@
   }
   .help-link:hover strong,
   .help-link:hover > svg {
-    color: var(--color-accent);
+    color: var(--color-accent-text);
   }
   .help-link:hover > svg {
     transform: translateX(3px);
@@ -732,7 +791,7 @@
     transition: color 150ms ease;
   }
   .site-footer nav > a:hover {
-    color: var(--color-accent);
+    color: var(--color-accent-text);
   }
   .footer-bottom {
     display: flex;

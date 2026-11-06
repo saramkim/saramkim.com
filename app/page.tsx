@@ -20,7 +20,7 @@ import { playPlusStoreUrl, webSubtitleStoreUrl, webSubtitleUrl } from '@lib/prod
 export default function Home() {
   return (
     <>
-      <section className='home-hero'>
+      <section className='home-hero' data-theme='dark'>
         <ScreenBackdrop />
         <div className='site-container hero-content'>
           <div className='hero-topline'>
@@ -49,7 +49,7 @@ export default function Home() {
           <p>쿠팡플레이라면 Play Plus, 다른 웹 영상이라면 WebSubtitle.</p>
         </div>
         <article className='product-feature product-feature-play' aria-labelledby='play-title'>
-          <div className='product-identity'>
+          <div className='product-identity' data-theme='dark'>
             <div className='product-tile-top'>
               <span className='product-category'>COUPANG PLAY · CHROME EXTENSION</span>
               <span className='product-number'>01</span>
@@ -118,7 +118,7 @@ export default function Home() {
           </div>
         </article>
         <article className='product-feature product-feature-web' aria-labelledby='web-title'>
-          <div className='product-identity'>
+          <div className='product-identity' data-theme='dark'>
             <div className='product-tile-top'>
               <span className='product-category'>WEB VIDEO · CHROME EXTENSION</span>
               <span className='product-number'>02</span>

@@ -84,7 +84,7 @@ export default function PlayPlusGuidePage() {
             <GuideSwitch current='guide' />
             <p className='guide-meta'>
               이전 버전을 쓰셨다면{' '}
-              <Link className='underline underline-offset-4 hover:text-accent' href={guidePaths.updates}>
+              <Link className='underline underline-offset-4 hover:text-accent-text' href={guidePaths.updates}>
                 2.0 변경 안내
               </Link>
               에서 달라진 점부터 확인하세요.
@@ -124,7 +124,7 @@ export default function PlayPlusGuidePage() {
               <Steps
                 items={[
                   <>
-                    <a className='underline underline-offset-4 hover:text-accent' href={playPlusStoreUrl}>
+                    <a className='underline underline-offset-4 hover:text-accent-text' href={playPlusStoreUrl}>
                       Chrome 웹 스토어
                     </a>
                     에서 Play Plus를 추가합니다.
@@ -403,7 +403,7 @@ export default function PlayPlusGuidePage() {
               <p>
                 로그인 없이 받을 수 있으며, 하루에 받을 수 있는 횟수가 정해져 있습니다. 받기에 실패하거나 취소해도 횟수가
                 차감될 수 있습니다. 전송하는 정보는{' '}
-                <Link className='underline underline-offset-4 hover:text-accent' href='/play-plus/privacy#online-subtitles'>
+                <Link className='underline underline-offset-4 hover:text-accent-text' href='/play-plus/privacy#online-subtitles'>
                   개인정보처리방침
                 </Link>
                 에서 확인할 수 있습니다.
@@ -432,7 +432,7 @@ export default function PlayPlusGuidePage() {
                 처음 설치하면 <Ui>기본</Ui> 프리셋의 다섯 가지 키가 준비되어 있습니다. 이동·반복·저장까지 키로 하고 싶다면{' '}
                 <Ui>프리셋</Ui>에서 <Ui>학습</Ui>을 불러오세요. 이전 버전에서 업데이트했다면 원래 쓰던 키를 이어서 쓰며,
                 일부 이동 단위가 바뀐 내용은{' '}
-                <Link className='underline underline-offset-4 hover:text-accent' href={`${guidePaths.updates}#changed`}>
+                <Link className='underline underline-offset-4 hover:text-accent-text' href={`${guidePaths.updates}#changed`}>
                   변경 안내
                 </Link>
                 에 있습니다.
