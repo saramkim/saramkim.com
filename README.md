@@ -12,7 +12,9 @@ Play Plus와 WebSubtitle의 제품 발견·설치·사용 지원을 중심으로
 
 Relay 안내와 개인정보처리방침은 사용 종료에 따라 제거했습니다. WebSubtitle 소개·도움말은 한국어 페이지로, 홈의 설치 링크는 Chrome 웹 스토어로 연결합니다.
 
-기본 사용법과 Play Plus 2.0 변경 안내는 출시 후속 범위입니다. 현재는 해당 경로·준비 중 페이지·링크를 만들지 않으며 정적 출력과 sitemap에도 포함하지 않습니다. 새 기능은 공개 여부와 실제 화면을 확인한 뒤 안내합니다. 제작 사례의 사용자 수·평점은 `statsAsOf` 기준의 과거 기록이며 홈·제품 소개에 최신 성과처럼 재사용하지 않습니다.
+기본 사용법(`/play-plus/guide`)과 Play Plus 2.0 변경 안내(`/play-plus/updates/2.0`)는 출시 전 미리보기 상태입니다. 아래 [미출시 안내 미리보기](#미출시-안내-미리보기)를 참고하세요. 기본 빌드는 두 경로를 만들지 않으며 sitemap·공개 페이지 링크에도 포함하지 않습니다.
+
+제작 사례의 사용자 수·평점은 `statsAsOf` 기준의 과거 기록이며 홈·제품 소개에 최신 성과처럼 재사용하지 않습니다.
 
 ## 로컬 실행
 
@@ -25,6 +27,24 @@ yarn dev
 ```
 
 개발 서버는 기본적으로 `http://localhost:3000`에서 실행됩니다.
+
+## 미출시 안내 미리보기
+
+Play Plus 기본 사용법과 2.0 변경 안내는 `app/play-plus/guide/page.preview.tsx`, `app/play-plus/updates/2.0/page.preview.tsx`에 있습니다. `page.preview.tsx`는 `PLAY_PLUS_GUIDE_PREVIEW=1`일 때만 경로가 되므로(`next.config.js`의 `pageExtensions`), 일반 `yarn build`·CI·Vercel 배포에는 페이지와 캡처 이미지가 포함되지 않습니다. `yarn verify:export`가 이를 검사합니다.
+
+```bash
+yarn dev:guide        # 미리보기 개발 서버
+yarn build:guide      # 미리보기 정적 빌드
+yarn verify:guide     # 미리보기 빌드의 noindex·미연결 검사
+```
+
+미리보기 페이지는 `noindex, nofollow`와 미리보기 안내를 표시합니다. 캡처는 `app/play-plus/_guide/shots/`의 실제 화면입니다. 패널 단독 화면은 play-plus `main` d7caa34, 쿠팡플레이 재생 화면은 2026-11-06 한국어 Chrome에서 c44a18e(d7caa34 + 음수 시각 표시 수정)로, 1.14.1 화면은 `v1.14.1` 태그 빌드로 찍었습니다. 필요한 영역만 잘라 WebP로 변환했고, 크기 변경·보정·합성은 하지 않았습니다. 원본 PNG와 촬영 기록(작품·시점, 촬영 후 데이터 복원 확인)은 저장소에 넣지 않고 로컬에 보관합니다. 새 화면을 아직 찍지 못했을 때는 `PendingShot`(점선 상자, `data-capture-pending`)으로 표시합니다. 현재 두 페이지에는 남아 있지 않습니다.
+
+공개 절차는 Play Plus 2.0의 Chrome 웹 스토어 게시를 확인한 뒤 진행합니다.
+
+1. 최종 후보가 캡처 시점과 달라졌다면 해당 화면을 다시 찍고, 문구를 최종 화면과 다시 대조합니다. `PendingShot`이 남아 있지 않아야 합니다.
+2. `page.preview.tsx`를 `page.tsx`로 바꾸고 `guide-status.ts`의 `guideReleased`를 `true`로 바꿉니다.
+3. sitemap, `/play-plus`의 안내 링크, `verify-export.mjs`의 미출시 검사를 공개 기준으로 갱신합니다.
 
 ## 콘텐츠 작성
 
