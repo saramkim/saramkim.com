@@ -16,6 +16,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const latestSiteDate = newestDate([latestProjectDate, latestBlogDate, productSiteUpdated]);
 
   const staticPages: MetadataRoute.Sitemap = [
+    { url: baseUrl + '/play-plus/guide', lastModified: asDate('2026-11-08'), changeFrequency: 'monthly', priority: 0.7 },
+    { url: baseUrl + '/play-plus/updates/2.0', lastModified: asDate('2026-11-08'), changeFrequency: 'yearly', priority: 0.6 },
     {
       url: `${baseUrl}/play-plus`,
       lastModified: asDate(productSiteUpdated),

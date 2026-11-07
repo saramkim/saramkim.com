@@ -66,6 +66,8 @@ export default function PlayPlusPage() {
               <a href={playPlusStoreUrl} className='button-primary'>
                 Chrome에 Play Plus 설치 <ArrowUpRight size={17} aria-hidden='true' />
               </a>
+              <Link href='/play-plus/guide' className='text-link'>기본 사용법 <ArrowRight size={16} aria-hidden='true' /></Link>
+              <Link href='/play-plus/updates/2.0' className='text-link'>2.0 변경 안내 <ArrowRight size={16} aria-hidden='true' /></Link>
               <a href='#features' className='text-link'>
                 기능 살펴보기 <ArrowRight size={16} aria-hidden='true' />
               </a>

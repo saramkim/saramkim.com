@@ -1,9 +1,7 @@
 import type { Metadata } from 'next';
 
-// Keep false until Play Plus 2.0 is published on the Chrome Web Store and every pending capture is replaced.
-// While false the pages are noindex/nofollow and show a preview notice. The routes themselves exist only
-// in a PLAY_PLUS_GUIDE_PREVIEW=1 build (see next.config.js).
-export const guideReleased = false;
+// Merge this release change only after confirming the Chrome Web Store publication.
+export const guideReleased = true;
 
 export const guidePaths = {
   guide: '/play-plus/guide',
