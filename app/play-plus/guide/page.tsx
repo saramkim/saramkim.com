@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ArrowLeft, ArrowRight, ArrowUpRight } from 'lucide-react';
 import { contactEmail, playPlusStoreUrl } from '@lib/products';
-import { guidePaths, guideRobots } from '../_guide/guide-status';
+import { guidePaths } from '../_guide/guide-status';
 import {
   GuideSwitch,
   Kbd,
@@ -24,7 +24,6 @@ const description =
 export const metadata: Metadata = {
   title,
   description,
-  robots: guideRobots,
   alternates: { canonical: guidePaths.guide },
   openGraph: { title, description, url: guidePaths.guide },
   twitter: { title, description },

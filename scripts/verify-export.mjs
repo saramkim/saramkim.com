@@ -67,7 +67,7 @@ assert.ok(backupPolicy.includes('href="/worktrace"'), 'Backup policy must link t
 const requiredRoutes = [
   '', 'play-plus', 'about', 'projects', 'projects/play-plus', 'projects/websubtitle',
   'blog', 'blog/hello-world', 'blog/language-still-matters', 'blog/think-or-vanish',
-  'play-plus/privacy', 'worktrace', 'worktrace/privacy',
+  'play-plus/privacy', 'play-plus/guide', 'play-plus/updates/2.0', 'worktrace', 'worktrace/privacy',
 ];
 for (const route of requiredRoutes) {
   const html = readOutput(route ? `${route}.html` : 'index.html');
@@ -93,36 +93,19 @@ const productHome = readOutput('play-plus.html');
 assert.ok(productHome.includes('id="support"') && productHome.includes('id="features"'), 'Product page must provide its section destinations');
 assert.ok(productHome.includes('href="/projects/play-plus"'), 'Product page must retain access to the case study');
 assert.ok(productHome.includes('href="/play-plus/privacy"'), 'Product page must link to its existing privacy policy');
-// The Play Plus guide pages are unreleased. A default build must not export them at all; a
-// PLAY_PLUS_GUIDE_PREVIEW=1 build exports them for local review only, marked noindex and unlinked.
-const guidePreview = process.env.PLAY_PLUS_GUIDE_PREVIEW === '1';
+// Guide pages must be exported, linked, and indexable in the default build.
 const guideRoutes = ['play-plus/guide', 'play-plus/updates/2.0'];
-for (const route of ['play-plus/updates', ...guideRoutes]) {
-  assert.ok(!sitemap.includes(`https://www.saramkim.com/${route}`), `Unreleased content must not appear in sitemap: ${route}`);
-  assert.ok(!home.includes(`href="/${route}`) && !productHome.includes(`href="/${route}`), `Unfinished content must not be linked: ${route}`);
+const [guidePage, updatePage] = guideRoutes.map((route) => readOutput(route + '.html'));
+for (const route of guideRoutes) {
+  const page = readOutput(route + '.html');
+  assert.ok(productHome.includes('href="/' + route + '"'), 'Product page must link to ' + route);
+  assert.doesNotMatch(page, /<meta[^>]+(?:noindex|nofollow|noimageindex)/i, 'Public guide must allow indexing: ' + route);
+  assert.ok(!page.includes('data-capture-pending'), 'Public guide must have all captures: ' + route);
+  assert.ok(!page.includes('검색엔진 비공개'), 'Public guide must not claim to be private: ' + route);
 }
+assert.ok(guidePage.includes('href="/play-plus/updates/2.0"'), 'Guide must link to the update notes');
+assert.ok(updatePage.includes('href="/play-plus/guide"'), 'Update notes must link to the guide');
 assert.ok(!fs.existsSync(path.join(outputDirectory, 'play-plus', 'updates.html')), 'No version index page exists yet');
-if (guidePreview) {
-  const [guidePage, updatePage] = guideRoutes.map((route) => readOutput(`${route}.html`));
-  for (const [route, page] of [[guideRoutes[0], guidePage], [guideRoutes[1], updatePage]]) {
-    assert.match(page, /<meta name="robots" content="noindex, nofollow/, `Preview page must be noindex: ${route}`);
-    assert.ok(page.includes('출시 전 미리보기'), `Preview page must show the preview notice: ${route}`);
-  }
-  assert.ok(guidePage.includes('href="/play-plus/updates/2.0"'), 'Guide must link to the 2.0 update notes');
-  assert.ok(updatePage.includes('href="/play-plus/guide"'), 'Update notes must link to the guide');
-} else {
-  for (const route of guideRoutes) {
-    assert.ok(!fs.existsSync(path.join(outputDirectory, `${route}.html`)), `Unreleased content must not be exported: ${route}`);
-  }
-  const exportedText = fs
-    .readdirSync(outputDirectory, { recursive: true })
-    .filter((file) => /\.(html|txt|js)$/.test(file))
-    .map((file) => fs.readFileSync(path.join(outputDirectory, file), 'utf8'));
-  assert.ok(
-    exportedText.every((text) => !text.includes('data-capture-pending') && !text.includes('Play Plus 2.0 변경 안내')),
-    'Unreleased guide content must not be bundled into a default build',
-  );
-}
 for (const route of ['relay', 'relay/privacy']) {
   assert.ok(!fs.existsSync(path.join(outputDirectory, `${route}.html`)), `Retired page must not be exported: ${route}`);
   assert.ok(!sitemap.includes(`<loc>https://www.saramkim.com/${route}</loc>`), `Retired page must not appear in sitemap: ${route}`);

@@ -2,16 +2,15 @@ import Image from 'next/image';
 import Link from 'next/link';
 import type { ReactNode } from 'react';
 import { Camera, Eye } from 'lucide-react';
-import { guidePaths, guideReleased } from './guide-status';
+import { guidePaths } from './guide-status';
 import type { Shot } from './shots';
 
 export function PreviewNotice() {
-  if (guideReleased) return null;
   return (
     <div className='guide-preview-notice' role='note'>
       <Eye size={16} aria-hidden='true' />
       <p>
-        <strong>출시 전 미리보기</strong> · 검색엔진 비공개, 공개 페이지에 연결되지 않은 검토용 화면입니다.
+        <strong>Play Plus 2.0 출시 예정</strong> · 현재 Chrome 웹 스토어 버전과 화면·기능이 다를 수 있습니다.
       </p>
     </div>
   );

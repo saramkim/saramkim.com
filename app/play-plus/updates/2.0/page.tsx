@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ArrowLeft, ArrowRight, Bookmark, Globe, LayoutGrid, MonitorPlay, Repeat2, SlidersHorizontal } from 'lucide-react';
-import { guidePaths, guideRobots } from '../../_guide/guide-status';
+import { guidePaths } from '../../_guide/guide-status';
 import { GuideSwitch, Note, PreviewNotice, SectionHeader, ShotFigure, ShotRow, Ui } from '../../_guide/guide-ui';
 import { shots } from '../../_guide/shots';
 import '../../_guide/guide.css';
@@ -13,7 +13,6 @@ const description =
 export const metadata: Metadata = {
   title,
   description,
-  robots: guideRobots,
   alternates: { canonical: guidePaths.updates },
   openGraph: { title, description, url: guidePaths.updates },
   twitter: { title, description },
