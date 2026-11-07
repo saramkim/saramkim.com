@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ArrowLeft, ArrowRight, Bookmark, Globe, LayoutGrid, MonitorPlay, Repeat2, SlidersHorizontal } from 'lucide-react';
 import { guidePaths } from '../../_guide/guide-status';
-import { GuideSwitch, Note, PreviewNotice, SectionHeader, ShotFigure, ShotRow, Ui } from '../../_guide/guide-ui';
+import { GuideSwitch, Note, SectionHeader, ShotFigure, ShotRow, Ui } from '../../_guide/guide-ui';
 import { shots } from '../../_guide/shots';
 import '../../_guide/guide.css';
 
@@ -91,7 +91,6 @@ export default function PlayPlusUpdate20Page() {
         <Link href='/play-plus' className='back-link'>
           <ArrowLeft size={16} aria-hidden='true' /> Play Plus
         </Link>
-        <PreviewNotice />
         <div className='guide-hero-grid'>
           <div>
             <p className='eyebrow'>Play Plus 2.0 · Update notes</p>
@@ -165,7 +164,7 @@ export default function PlayPlusUpdate20Page() {
             <ShotFigure shot={shots.v1141Settings} badge='1.14.1' caption='1.14.1: 자막 설정·영상 설정·복습·자막 분석·자막 업로드.' />
             <ShotFigure shot={shots.settings} badge='2.0' caption='2.0: 자막·보관함·파일·설정·단축키. 같은 자막 설정이 설정 탭에 있습니다.' />
           </ShotRow>
-          <div className='guide-table-wrap'>
+          <div className='guide-table-wrap guide-table-stack'>
             <table className='guide-table'>
               <caption className='sr-only'>1.14.1과 2.0의 기능 위치</caption>
               <thead>
@@ -179,8 +178,8 @@ export default function PlayPlusUpdate20Page() {
                 {locations.map(([before, after, note]) => (
                   <tr key={before}>
                     <th scope='row'>{before}</th>
-                    <td className='is-new'>{after}</td>
-                    <td>{note}</td>
+                    <td className='is-new' data-label='2.0'>{after}</td>
+                    <td data-label='참고'>{note}</td>
                   </tr>
                 ))}
               </tbody>

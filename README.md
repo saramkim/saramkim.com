@@ -30,11 +30,11 @@ yarn dev
 
 ## Play Plus 안내
 
-기본 사용법과 2.0 변경 안내는 각각 `app/play-plus/guide/page.tsx`, `app/play-plus/updates/2.0/page.tsx`에 있습니다. `yarn dev`와 `yarn build`로 확인하며, `yarn verify:export`는 공개 링크·사이트맵·검색 허용 상태를 검사합니다. 스토어 출시 전에도 공개하며 현재 스토어 버전과 다를 수 있다는 안내를 표시합니다.
+기본 사용법과 2.0 변경 안내는 각각 `app/play-plus/guide/page.tsx`, `app/play-plus/updates/2.0/page.tsx`에 있습니다. `yarn dev`와 `yarn build`로 확인하며, `yarn verify:export`는 공개 링크·사이트맵·검색 허용 상태를 검사합니다. 스토어 출시 전에도 공개합니다.
 
 캡처는 `app/play-plus/_guide/shots/`의 실제 화면입니다. 패널 단독 화면은 play-plus `main` d7caa34, 쿠팡플레이 재생 화면은 2026-11-06 한국어 Chrome에서 c44a18e(d7caa34 + 음수 시각 표시 수정)로, 1.14.1 화면은 `v1.14.1` 태그 빌드로 찍었습니다. 필요한 영역만 잘라 WebP로 변환했고, 크기 변경·보정·합성은 하지 않았습니다. 원본 PNG와 촬영 기록(작품·시점, 촬영 후 데이터 복원 확인)은 저장소에 넣지 않고 로컬에 보관합니다. 새 화면을 아직 찍지 못했을 때는 `PendingShot`(점선 상자, `data-capture-pending`)으로 표시합니다. 현재 두 페이지에는 남아 있지 않습니다.
 
-스토어에 2.0이 게시되면 `guide-ui.tsx`의 출시 예정 안내를 제거합니다. 최종 화면이 캡처 시점과 달라지면 캡처와 문구를 갱신합니다.
+최종 화면이 캡처 시점과 달라지면 캡처와 문구를 갱신합니다.
 
 ## 콘텐츠 작성
 
