@@ -168,6 +168,20 @@ export default function PlayPlusPage() {
           </a>
         </div>
         <div className='support-resources'>
+          <Link href='/play-plus/guide' className='help-link'>
+            <div>
+              <strong>기본 사용법</strong>
+              <span>패널 열기부터 자막 조절·반복·문장 저장까지</span>
+            </div>
+            <ArrowRight size={19} aria-hidden='true' />
+          </Link>
+          <Link href='/play-plus/updates/2.0' className='help-link'>
+            <div>
+              <strong>2.0 변경 안내</strong>
+              <span>달라진 화면과 기능, 기존 설정·자료 안내</span>
+            </div>
+            <ArrowRight size={19} aria-hidden='true' />
+          </Link>
           <a href={playPlusStoreUrl} className='help-link'>
             <div>
               <strong>Chrome 웹 스토어</strong>
