@@ -1,20 +1,9 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import type { ReactNode } from 'react';
-import { Camera, Eye } from 'lucide-react';
+import { Camera } from 'lucide-react';
 import { guidePaths } from './guide-status';
 import type { Shot } from './shots';
-
-export function PreviewNotice() {
-  return (
-    <div className='guide-preview-notice' role='note'>
-      <Eye size={16} aria-hidden='true' />
-      <p>
-        <strong>Play Plus 2.0 출시 예정</strong> · 현재 Chrome 웹 스토어 버전과 화면·기능이 다를 수 있습니다.
-      </p>
-    </div>
-  );
-}
 
 export function GuideSwitch({ current }: { current: 'guide' | 'updates' }) {
   const items = [

@@ -7,7 +7,6 @@ import {
   GuideSwitch,
   Kbd,
   Note,
-  PreviewNotice,
   SectionHeader,
   ShotFigure,
   ShotRow,
@@ -64,7 +63,6 @@ export default function PlayPlusGuidePage() {
         <Link href='/play-plus' className='back-link'>
           <ArrowLeft size={16} aria-hidden='true' /> Play Plus
         </Link>
-        <PreviewNotice />
         <div className='guide-hero-grid'>
           <div>
             <p className='eyebrow'>Play Plus 2.0 · Guide</p>
@@ -441,7 +439,7 @@ export default function PlayPlusGuidePage() {
                 기존 단축키가 그대로 동작합니다.
               </p>
               <div className='guide-table-wrap'>
-                <table className='guide-table'>
+                <table className='guide-table guide-shortcuts-table'>
                   <caption className='sr-only'>학습 프리셋의 단축키</caption>
                   <thead>
                     <tr>

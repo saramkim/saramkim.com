@@ -1,28 +1,5 @@
 /* Play Plus guide and 2.0 update pages. Imported only by those routes. */
 
-.guide-preview-notice {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.625rem;
-  margin-bottom: 2rem;
-  padding: 0.75rem 1rem;
-  border: 1px dashed color-mix(in srgb, var(--color-accent-text) 55%, transparent);
-  border-radius: 0.375rem;
-  background: color-mix(in srgb, var(--color-accent) 7%, transparent);
-  font-size: 0.8125rem;
-  line-height: 1.7;
-  color: var(--color-body);
-  word-break: keep-all;
-}
-.guide-preview-notice svg {
-  flex: none;
-  margin-top: 0.25rem;
-  color: var(--color-accent-text);
-}
-.guide-preview-notice strong {
-  color: var(--color-ink);
-}
-
 .guide-hero {
   padding-top: 2.25rem;
   padding-bottom: 4rem;
@@ -103,7 +80,7 @@
   color: var(--color-on-accent);
 }
 .guide-switch a[aria-current='page'] span {
-  color: color-mix(in srgb, var(--color-canvas) 70%, transparent);
+  color: var(--color-on-accent);
 }
 
 /* Jump list */
@@ -435,6 +412,23 @@
   color: var(--color-ink);
 }
 
+/* The two-column shortcut table must fit its grid column, including on mobile. */
+.guide-shortcuts-table {
+  min-width: 0;
+  table-layout: fixed;
+  overflow-wrap: anywhere;
+}
+.guide-shortcuts-table th:first-child {
+  width: 30%;
+}
+.guide-shortcuts-table tbody th {
+  white-space: normal;
+}
+
+.guide-table-stack {
+  container-type: inline-size;
+}
+
 /* Update highlights */
 .guide-highlights {
   display: grid;
@@ -571,10 +565,10 @@
     padding-bottom: 4rem;
   }
 
-  /* Narrow screens: show each row as "item / 1.14.1 → 2.0" instead of a scrolling table. */
-  .guide-table-stack {
-    overflow-x: visible;
-  }
+}
+
+/* Stack comparison rows when their own container is narrow. */
+@container (max-width: 36rem) {
   .guide-table-stack .guide-table {
     min-width: 0;
   }
@@ -606,6 +600,8 @@
   }
   .guide-table-stack tbody th {
     margin-bottom: 0.375rem;
+    white-space: normal;
+    overflow-wrap: anywhere;
   }
   .guide-table-stack td {
     display: flex;
