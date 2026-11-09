@@ -1,0 +1,196 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-10T00:00:00Z",
+  "title": "Design System: saramkim",
+  "extensions": {
+    "colorMeta": {
+      "accent": {
+        "role": "primary",
+        "displayName": "Subtitle Yellow",
+        "canonical": "#ffe14a",
+        "tonalRamp": ["oklch(15% 0.025 97.6)", "oklch(25% 0.034 97.6)", "oklch(35% 0.054 97.6)", "oklch(45% 0.074 97.6)", "oklch(55% 0.094 97.6)", "oklch(65% 0.113 97.6)", "oklch(80% 0.143 97.6)", "oklch(95% 0.157 97.6)"]
+      },
+      "accent-text-light": {
+        "role": "primary",
+        "displayName": "Readable Yellow (light theme)",
+        "canonical": "#7a5d00",
+        "tonalRamp": ["oklch(15% 0.059 87.4)", "oklch(25% 0.071 87.4)", "oklch(35% 0.084 87.4)", "oklch(45% 0.096 87.4)", "oklch(55% 0.094 87.4)", "oklch(65% 0.082 87.4)", "oklch(80% 0.064 87.4)", "oklch(95% 0.046 87.4)"]
+      },
+      "play-plus": {
+        "role": "secondary",
+        "displayName": "Play Plus Teal",
+        "canonical": "#2bb5bd",
+        "tonalRamp": ["oklch(15% 0.037 201.0)", "oklch(25% 0.050 201.0)", "oklch(35% 0.064 201.0)", "oklch(45% 0.077 201.0)", "oklch(55% 0.090 201.0)", "oklch(65% 0.104 201.0)", "oklch(80% 0.099 201.0)", "oklch(95% 0.079 201.0)"]
+      },
+      "websubtitle": {
+        "role": "secondary",
+        "displayName": "WebSubtitle Violet",
+        "canonical": "#7778f0",
+        "tonalRamp": ["oklch(15% 0.074 279.7)", "oklch(25% 0.095 279.7)", "oklch(35% 0.117 279.7)", "oklch(45% 0.138 279.7)", "oklch(55% 0.159 279.7)", "oklch(65% 0.172 279.7)", "oklch(80% 0.140 279.7)", "oklch(95% 0.108 279.7)"]
+      },
+      "canvas": {
+        "role": "neutral",
+        "displayName": "Screen Black",
+        "canonical": "#08090b",
+        "tonalRamp": ["#08090b", "#101216", "#1a1d22", "#44474d", "#63676e", "#8f939a", "#b9bcc2", "#f4f4ef"]
+      },
+      "canvas-light": {
+        "role": "neutral",
+        "displayName": "Warm Paper",
+        "canonical": "#fbfbf8",
+        "tonalRamp": ["#111214", "#44474d", "#63676e", "#8f939a", "#b9bcc2", "#e9e9e3", "#f3f3ee", "#fbfbf8"]
+      },
+      "ink": { "role": "neutral", "displayName": "Ink", "canonical": "#f4f4ef" },
+      "body": { "role": "neutral", "displayName": "Body", "canonical": "#b9bcc2" },
+      "muted": { "role": "neutral", "displayName": "Muted", "canonical": "#8f939a" },
+      "line": { "role": "neutral", "displayName": "Hairline", "canonical": "#ffffff1f" },
+      "line-strong": { "role": "neutral", "displayName": "Strong Hairline", "canonical": "#ffffff40" },
+      "screen-black": { "role": "neutral", "displayName": "Backdrop Black", "canonical": "#050608" },
+      "tile-screen": { "role": "neutral", "displayName": "Tile Screen", "canonical": "#0b0c0f" }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "The home hero headline only; its last phrase carries the yellow highlight bar." },
+      "headline": { "displayName": "Headline", "purpose": "Page titles and product page titles." },
+      "section": { "displayName": "Section", "purpose": "Section headings, often with a muted line aligned on the right." },
+      "title": { "displayName": "Title", "purpose": "Row, capability, step and principle headings." },
+      "subtitle": { "displayName": "Subtitle", "purpose": "The yellow subtitle line in the hero player." },
+      "lead": { "displayName": "Lead", "purpose": "Hero and page descriptions." },
+      "body": { "displayName": "Body", "purpose": "Product copy and prose." },
+      "ui": { "displayName": "UI", "purpose": "Buttons, nav links and text links." },
+      "label": { "displayName": "Label", "purpose": "Geist Mono labels: eyebrows that carry facts, product categories, stat labels, timecodes." }
+    },
+    "themes": [
+      { "name": "dark", "selector": ":root, [data-theme='dark']", "purpose": "Default theme, and the re-scope for screen islands in either theme." },
+      { "name": "light", "selector": ":root[data-theme='light']", "purpose": "Light theme; overrides canvas, surface, raised, ink, body, muted, line, line-strong, on-accent, accent-text and focus. The accent fill does not change." }
+    ],
+    "shadows": [
+      { "name": "subtitle-shadow", "value": "0 2px 10px #000", "purpose": "text-shadow under hero subtitle lines." },
+      { "name": "playhead-glow", "value": "0 0 10px #fff9", "purpose": "Glow on the hero timeline playhead." },
+      { "name": "screenshot-drop", "value": "0 1.5rem 3rem -1.5rem #000", "purpose": "Under guide screenshot frames only." }
+    ],
+    "motion": [
+      { "name": "state-fast", "value": "150ms ease", "purpose": "Colour changes on links, prose underlines and the player toggle." },
+      { "name": "state-row", "value": "180ms ease", "purpose": "Help-row indent, title colour and arrow slide; capability hover." },
+      { "name": "subtitle-in", "value": "320ms ease-out", "purpose": "Each new hero subtitle fades in from 0.35rem below." },
+      { "name": "bokeh-drift", "value": "17s–34s ease-in-out infinite alternate", "purpose": "Slow drift of the hero backdrop lights; paused off screen, on toggle, and for reduced motion." }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" },
+      { "name": "touch", "value": "(hover: none) and (pointer: coarse)" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The one filled yellow action per view; inverts to ink on hover.",
+      "html": "<a class=\"ds-btn-primary\" href=\"#\">Play Plus 알아보기 <svg width=\"17\" height=\"17\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M5 12h14\"/><path d=\"m12 5 7 7-7 7\"/></svg></a>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; min-height: 3rem; padding: 0 1.5rem; border-radius: 0.25rem; background: var(--color-accent, #ffe14a); color: var(--color-on-accent, #08090b); font-family: 'Pretendard Variable', Pretendard, system-ui, sans-serif; font-size: 0.875rem; font-weight: 600; text-decoration: none; transition: background-color 150ms, color 150ms, transform 150ms; } .ds-btn-primary:hover { background: var(--color-ink, #f4f4ef); color: var(--color-canvas, #08090b); } .ds-btn-primary:active { transform: translateY(1px); } .ds-btn-primary:focus-visible { outline: 2px solid var(--color-focus, #ffe14a); outline-offset: 3px; }"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Bordered cross-link between the Play Plus guide and update notes.",
+      "html": "<a class=\"ds-btn-secondary\" href=\"#\">2.0 업데이트 노트</a>",
+      "css": ".ds-btn-secondary { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; min-height: 3rem; padding: 0 1.5rem; border: 1px solid var(--color-line-strong, #ffffff40); border-radius: 0.25rem; background: transparent; color: var(--color-ink, #f4f4ef); font-family: 'Pretendard Variable', Pretendard, system-ui, sans-serif; font-size: 0.875rem; font-weight: 600; text-decoration: none; transition: border-color 150ms, color 150ms, transform 150ms; } .ds-btn-secondary:hover { border-color: var(--color-accent-text, #ffe14a); color: var(--color-accent-text, #ffe14a); } .ds-btn-secondary:active { transform: translateY(1px); } .ds-btn-secondary:focus-visible { outline: 2px solid var(--color-focus, #ffe14a); outline-offset: 3px; }"
+    },
+    {
+      "name": "Text Link",
+      "kind": "custom",
+      "refersTo": "text-link",
+      "description": "Secondary action beside a primary button, or a back link above a title.",
+      "html": "<a class=\"ds-text-link\" href=\"#\">Chrome에 설치 <svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M7 7h10v10\"/><path d=\"M7 17 17 7\"/></svg></a>",
+      "css": ".ds-text-link { display: inline-flex; align-items: center; gap: 0.5rem; min-height: 2.75rem; border-radius: 0.25rem; color: var(--color-body, #b9bcc2); font-family: 'Pretendard Variable', Pretendard, system-ui, sans-serif; font-size: 0.875rem; font-weight: 500; text-decoration: none; transition: color 150ms; } .ds-text-link:hover { color: var(--color-accent-text, #ffe14a); } .ds-text-link:focus-visible { outline: 2px solid var(--color-focus, #ffe14a); outline-offset: 3px; }"
+    },
+    {
+      "name": "Help Row",
+      "kind": "custom",
+      "refersTo": "help-link",
+      "description": "Full-width link row for support paths; indents and turns yellow on hover.",
+      "html": "<div class=\"ds-help-list\"><a class=\"ds-help-link\" href=\"#\"><div><strong>Play Plus 문의</strong><span>사용 중 겪은 문제나 개선 의견을 알려주세요.</span></div><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M5 12h14\"/><path d=\"m12 5 7 7-7 7\"/></svg></a><a class=\"ds-help-link\" href=\"#\"><div><strong>WebSubtitle 도움말</strong><span>전용 사이트에서 사용법과 문제 해결을 확인하세요.</span></div><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M7 7h10v10\"/><path d=\"M7 17 17 7\"/></svg></a></div>",
+      "css": ".ds-help-link { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.625rem 0; border-bottom: 1px solid var(--color-line, #ffffff1f); color: var(--color-ink, #f4f4ef); font-family: 'Pretendard Variable', Pretendard, system-ui, sans-serif; text-decoration: none; transition: padding-left 180ms ease; } .ds-help-link:first-child { border-top: 1px solid var(--color-line, #ffffff1f); } .ds-help-link strong { display: block; font-size: 1.25rem; font-weight: 650; letter-spacing: -0.02em; transition: color 180ms ease; } .ds-help-link span { display: block; margin-top: 0.35rem; font-size: 0.9375rem; line-height: 1.7; color: var(--color-muted, #8f939a); } .ds-help-link > svg { flex: none; color: var(--color-muted, #8f939a); transition: color 180ms ease, transform 180ms ease; } .ds-help-link:hover { padding-left: 0.5rem; } .ds-help-link:hover strong, .ds-help-link:hover > svg { color: var(--color-accent-text, #ffe14a); } .ds-help-link:hover > svg { transform: translateX(3px); } .ds-help-link:focus-visible { outline: 2px solid var(--color-focus, #ffe14a); outline-offset: 3px; }"
+    },
+    {
+      "name": "Navigation",
+      "kind": "nav",
+      "refersTo": "nav-link",
+      "description": "Header nav links; hover and current page share the raised background.",
+      "html": "<nav class=\"ds-nav\" aria-label=\"주요 탐색\"><a class=\"ds-nav-link\" href=\"#\">제품</a><a class=\"ds-nav-link\" href=\"#\">도움·문의</a><a class=\"ds-nav-link\" aria-current=\"page\" href=\"#\">만드는 사람</a></nav>",
+      "css": ".ds-nav { display: flex; align-items: center; gap: 0.25rem; } .ds-nav-link { padding: 0.5rem 0.75rem; border-radius: 0.5rem; color: var(--color-body, #b9bcc2); font-family: 'Pretendard Variable', Pretendard, system-ui, sans-serif; font-size: 0.875rem; font-weight: 500; text-decoration: none; transition: background-color 150ms, color 150ms; } .ds-nav-link:hover, .ds-nav-link[aria-current='page'] { background: var(--color-raised, #1a1d22); color: var(--color-ink, #f4f4ef); } .ds-nav-link:focus-visible { outline: 2px solid var(--color-focus, #ffe14a); outline-offset: 3px; }"
+    },
+    {
+      "name": "Highlight Title",
+      "kind": "custom",
+      "refersTo": "hero-subtitle",
+      "description": "Headline with its last phrase on a Subtitle Yellow bar; once per page.",
+      "html": "<h1 class=\"ds-highlight-title\">보던 영상 그대로,<br><span>자막만 내 방식대로.</span></h1>",
+      "css": ".ds-highlight-title { margin: 0; font-family: 'Pretendard Variable', Pretendard, system-ui, sans-serif; font-size: 3.5rem; font-weight: 750; line-height: 1.3; letter-spacing: -0.055em; color: var(--color-ink, #f4f4ef); word-break: keep-all; } .ds-highlight-title > span { padding: 0 0.14em 0.04em; margin-left: -0.04em; background: var(--color-accent, #ffe14a); color: var(--color-on-accent, #08090b); box-decoration-break: clone; -webkit-box-decoration-break: clone; }"
+    },
+    {
+      "name": "Hero Player",
+      "kind": "custom",
+      "refersTo": "hero-subtitle",
+      "description": "Signature subtitle-player preview: subtitle pair, A–B loop timeline, mono controls.",
+      "html": "<div class=\"ds-player\" data-theme=\"dark\"><div class=\"ds-player-subs\"><p class=\"ds-player-sub1\" lang=\"en\">Play it again. Slower this time.</p><p class=\"ds-player-sub2\">다시 한 번, 이번엔 더 천천히.</p></div><div class=\"ds-player-track\"><span class=\"ds-player-loop\"></span><span class=\"ds-player-head\"></span></div><div class=\"ds-player-controls\"><div><button class=\"ds-player-toggle\" type=\"button\" aria-label=\"일시정지\" aria-pressed=\"false\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"currentColor\" aria-hidden=\"true\"><rect x=\"6\" y=\"4\" width=\"4\" height=\"16\" rx=\"1\"/><rect x=\"14\" y=\"4\" width=\"4\" height=\"16\" rx=\"1\"/></svg></button><span class=\"ds-player-time\">00:12:06.4</span><span>0.75×</span></div><div><span class=\"ds-player-on\">A–B</span><span class=\"ds-player-on\">EN·KO</span></div></div></div>",
+      "css": ".ds-player { background: #050608; color: #f4f4ef; padding-top: 1.5rem; } .ds-player-subs { padding: 0 1rem 1.5rem; text-align: center; font-family: 'Pretendard Variable', Pretendard, system-ui, sans-serif; } .ds-player-sub1 { margin: 0; font-size: 1.5rem; font-weight: 650; line-height: 1.35; color: #ffe14a; text-shadow: 0 2px 10px #000; } .ds-player-sub2 { margin: 0.25rem 0 0; font-size: 1rem; line-height: 1.4; color: #f4f4ef; text-shadow: 0 2px 10px #000; } .ds-player-track { position: relative; height: 3px; background: #ffffff40; } .ds-player-loop { position: absolute; top: 0; bottom: 0; left: 34%; width: 28%; background: #ffe14a; } .ds-player-head { position: absolute; top: 50%; left: 44%; width: 3px; height: 13px; margin-top: -6.5px; background: #f4f4ef; box-shadow: 0 0 10px #fff9; } .ds-player-controls { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 3.25rem; padding: 0 1rem; font-family: 'Geist Mono', ui-monospace, Consolas, monospace; font-size: 0.75rem; color: #b9bcc2; } .ds-player-controls > div { display: flex; align-items: center; gap: 1rem; } .ds-player-toggle { display: inline-grid; place-items: center; width: 2.75rem; height: 2.75rem; margin: 0 -0.875rem; border: 0; border-radius: 0.25rem; background: transparent; color: #f4f4ef; cursor: pointer; transition: background-color 150ms ease-out; } .ds-player-toggle:hover { background: #ffffff1a; } .ds-player-toggle:active { transform: translateY(1px); } .ds-player-toggle:focus-visible { outline: 2px solid #ffe14a; outline-offset: 3px; } .ds-player-time { font-variant-numeric: tabular-nums; color: #f4f4ef; } .ds-player-on { color: #f4f4ef; }"
+    },
+    {
+      "name": "Product Tile",
+      "kind": "card",
+      "refersTo": "product-tile",
+      "description": "Two-column product article: dark identity panel with product-colour glow and vignette, then description and actions.",
+      "html": "<article class=\"ds-product\" style=\"--product: #2bb5bd\"><div class=\"ds-product-identity\"><span class=\"ds-product-category\">COUPANG PLAY · CHROME EXTENSION</span><div class=\"ds-product-visual\"><div class=\"ds-product-visual-bar\"><span>00:12:04 — 00:12:11</span><b>A–B ×3</b></div><div class=\"ds-visual-track\"><span></span></div><p class=\"ds-visual-line\" lang=\"en\">One more time, slowly.</p><p class=\"ds-visual-line ds-visual-line-2\">한 번만 더, 천천히.</p></div><p class=\"ds-product-name\">Play Plus</p></div><div class=\"ds-product-desc\"><h3>놓친 한 문장까지,<br>내 속도로.</h3><p>쿠팡플레이에서 두 언어의 자막을 함께 보고, 필요한 구간을 반복하세요.</p></div></article>",
+      "css": ".ds-product { display: grid; grid-template-columns: 1fr 1fr; border: 1px solid var(--color-line, #ffffff1f); border-radius: 0.5rem; overflow: hidden; background: var(--color-surface, #101216); font-family: 'Pretendard Variable', Pretendard, system-ui, sans-serif; } .ds-product-identity { display: flex; flex-direction: column; justify-content: space-between; gap: 2rem; padding: 2rem; color: #f4f4ef; background: radial-gradient(90% 70% at 15% 100%, color-mix(in srgb, var(--product) 26%, transparent), transparent), #0b0c0f; border-right: 1px solid #ffffff1f; } .ds-product-category { font-family: 'Geist Mono', ui-monospace, Consolas, monospace; font-size: 0.75rem; font-weight: 500; letter-spacing: 0.06em; color: #8f939a; } .ds-product-visual { padding: 1.25rem; border: 1px solid #ffffff1f; border-radius: 0.375rem; background: #08090bd9; font-family: 'Geist Mono', ui-monospace, Consolas, monospace; font-size: 0.8125rem; line-height: 1.7; color: #8f939a; } .ds-product-visual-bar { display: flex; justify-content: space-between; gap: 1rem; margin-bottom: 1rem; } .ds-product-visual-bar b { font-weight: 500; color: var(--product); } .ds-visual-track { position: relative; height: 2rem; margin-bottom: 1rem; background: repeating-linear-gradient(90deg, #ffffff2e 0 2px, transparent 2px 7px); } .ds-visual-track > span { position: absolute; top: 0; bottom: 0; left: 34%; right: 26%; border-inline: 2px solid var(--product); background: color-mix(in srgb, var(--product) 22%, transparent); } .ds-visual-line { margin: 0; font-family: 'Pretendard Variable', Pretendard, system-ui, sans-serif; font-size: 1rem; font-weight: 600; line-height: 1.45; color: #ffe14a; } .ds-visual-line-2 { font-size: 0.875rem; font-weight: 400; color: #f4f4ef; } .ds-product-name { margin: 0; font-size: 2rem; font-weight: 700; line-height: 1.1; letter-spacing: -0.05em; } .ds-product-desc { display: flex; flex-direction: column; justify-content: center; padding: 2.25rem; color: var(--color-ink, #f4f4ef); } .ds-product-desc h3 { margin: 0; font-size: 2rem; font-weight: 700; line-height: 1.22; letter-spacing: -0.045em; word-break: keep-all; } .ds-product-desc p { margin: 1.25rem 0 0; font-size: 1rem; line-height: 1.8; color: var(--color-body, #b9bcc2); word-break: keep-all; }"
+    },
+    {
+      "name": "Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "Project listing card; the border and detail line turn yellow on hover.",
+      "html": "<a class=\"ds-card\" href=\"#\"><h2>프로젝트 이름</h2><p>한 줄 설명</p><span class=\"ds-card-meta\">META</span><span class=\"ds-card-more\">View details →</span></a>",
+      "css": ".ds-card { display: flex; flex-direction: column; gap: 0.75rem; padding: 1.75rem; border: 1px solid var(--color-line, #ffffff1f); border-radius: 0.5rem; background: var(--color-surface, #101216); color: var(--color-ink, #f4f4ef); font-family: 'Pretendard Variable', Pretendard, system-ui, sans-serif; text-decoration: none; transition: border-color 200ms; } .ds-card:hover { border-color: var(--color-accent-text, #ffe14a); } .ds-card:focus-visible { outline: 2px solid var(--color-focus, #ffe14a); outline-offset: 3px; } .ds-card h2 { margin: 0; font-size: 1.5rem; font-weight: 700; letter-spacing: -0.03em; } .ds-card p { margin: 0; font-size: 0.95rem; line-height: 1.75; color: var(--color-body, #b9bcc2); } .ds-card-meta { font-family: 'Geist Mono', ui-monospace, Consolas, monospace; font-size: 0.75rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-muted, #8f939a); } .ds-card-more { padding-top: 0.75rem; font-size: 0.875rem; font-weight: 500; color: var(--color-muted, #8f939a); transition: transform 200ms, color 200ms; } .ds-card:hover .ds-card-more { transform: translateX(0.25rem); color: var(--color-accent-text, #ffe14a); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Subtitle Line",
+    "overview": "The site is a video screen, and the yellow subtitle is its one voice. Play Plus and WebSubtitle are tools that put subtitles on video someone is already watching, so the site borrows that scene directly: the home hero is a dark player with an out-of-focus night shot behind it, two subtitle lines, and an A–B loop timeline. Headlines carry the same yellow as a subtitle bar laid behind one phrase. Everything else stays quiet so that line reads.\n\nThe rest of the site is a calm reading and support surface around that screen. It ships in a dark default and a light theme, but the \"screen\" pieces (the home hero, the product tiles' identity panels) stay dark in both themes, the way a video player stays dark on a white page. Density is moderate: generous section spacing, short Korean copy set with `keep-all` line breaking, and few elements per row. Ornament comes from the product's own vocabulary (timecodes, SRT cue lines, loop brackets), never from generic decoration.\n\nComponents are plain, like player controls: small radii, flat surfaces, no shadows on UI, and state shown as a colour change, a 1px press, or a short slide.",
+    "keyCharacteristics": [
+      "One accent, Subtitle Yellow, used as a fill (always with its on-accent text) or as text/thin line (through the darker accent-text in light mode).",
+      "Dark \"screen\" islands inside either theme, set with `data-theme=\"dark\"` on the element.",
+      "Pretendard for everything readable; Geist Mono only for timecodes, labels and numbers.",
+      "Tight negative tracking on large Korean headlines; `word-break: keep-all` on all Korean copy.",
+      "Flat, bordered surfaces; depth comes from tone steps (canvas, surface, raised), not shadows.",
+      "Each product has its own colour, used only inside its own tile and vignette."
+    ],
+    "rules": [
+      { "name": "The Paired Fill Rule", "body": "Subtitle Yellow as a background always carries `on-accent` text. Never put body, ink or white text on it, and never use the fill value as text on the light theme; use `accent-text` there.", "section": "colors" },
+      { "name": "The One Voice Rule", "body": "Yellow marks one thing per view: the headline phrase, the primary action, or the active subtitle. Product colours never leave their tiles, and no third accent is introduced.", "section": "colors" },
+      { "name": "The Screen Island Rule", "body": "Surfaces that represent a video screen stay dark in both themes by setting `data-theme=\"dark\"` on the element, which re-scopes every colour token inside it. Do not hand-pick dark colours inside a light page.", "section": "colors" },
+      { "name": "The Keep-All Rule", "body": "Every block of Korean copy sets `word-break: keep-all`, and large headings use `text-balance` or manual `<br>` breaks, so words never split mid-syllable-block.", "section": "typography" },
+      { "name": "The Labels Carry Facts Rule", "body": "A small mono label above a heading (kicker/eyebrow) is allowed only when it states a fact the visitor needs: the product and platform (\"Play Plus · Chrome extension\"), the document and version (\"Play Plus 2.0 · Guide\"), an error code (\"404 · Not found\"), or who makes the tools. Slogans and mood lines do not get a label; if a heading needs one to make sense, rewrite the heading.", "section": "typography" },
+      { "name": "The Flat Controls Rule", "body": "Buttons, links, tiles, cards and rows never take a shadow. They show state through colour, a 1px downward press, a 3px arrow slide, or an 8px row indent.", "section": "elevation" }
+    ],
+    "dos": [
+      "**Do** pair every Subtitle Yellow fill with `on-accent` text, and use `accent-text` for yellow text or thin yellow lines.",
+      "**Do** mark screen surfaces with `data-theme=\"dark\"` so they stay dark in the light theme.",
+      "**Do** keep one yellow focal point per view: the highlight bar, the primary button, or the active subtitle.",
+      "**Do** build decoration from the products' own vocabulary: timecodes, A–B brackets, SRT cue lines, subtitle pairs.",
+      "**Do** use Geist Mono only for timecodes, labels, categories and numbers; set everything readable in Pretendard.",
+      "**Do** set `word-break: keep-all` on Korean copy and give large headings tight negative tracking (-0.04 to -0.055em).",
+      "**Do** keep touch targets at least 44px (text links, toggles, mobile nav rows).",
+      "**Do** add a kicker/eyebrow label only when it carries a fact: product and platform, document and version, an error code, or the maker."
+    ],
+    "donts": [
+      "**Don't** add slogan or mood kickers above headings; English taglines that repeat or decorate the heading were removed site-wide.",
+      "**Don't** use Play Plus Teal or WebSubtitle Violet outside their own product tile, or add another accent colour.",
+      "**Don't** put shadows on buttons, cards, tiles or rows.",
+      "**Don't** style non-interactive lists as chips or pills; feature lists are plain icon lists.",
+      "**Don't** add hover borders or lift to containers that are not links, such as the product tiles.",
+      "**Don't** darken Subtitle Yellow for the light theme's fills; the fill stays the same and only `accent-text` changes."
+    ]
+  }
+}
