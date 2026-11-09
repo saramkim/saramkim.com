@@ -1,7 +1,7 @@
 'use client';
 
-import { Bookmark, Captions, Pause, Repeat2 } from 'lucide-react';
-import { useEffect, useRef, useState } from 'react';
+import { Bookmark, Captions, Pause, Play, Repeat2 } from 'lucide-react';
+import { useEffect, useRef, useState, useSyncExternalStore } from 'react';
 
 const cues = [
   { primary: 'Play it again. Slower this time.', secondary: '다시 한 번, 이번엔 더 천천히.' },
@@ -14,6 +14,14 @@ const loopSeconds = cueSeconds * cues.length;
 const startSeconds = 12 * 60 + 4;
 const loopStart = 34;
 const loopWidth = 28;
+
+const reducedMotionQuery = '(prefers-reduced-motion: reduce)';
+const getReducedMotion = () => window.matchMedia(reducedMotionQuery).matches;
+const subscribeReducedMotion = (onChange: () => void) => {
+  const query = window.matchMedia(reducedMotionQuery);
+  query.addEventListener('change', onChange);
+  return () => query.removeEventListener('change', onChange);
+};
 
 const formatTime = (seconds: number) => {
   const minutes = Math.floor(seconds / 60);
@@ -46,30 +54,38 @@ const bokeh = [
 
 export function HeroPlayer() {
   const [cue, setCue] = useState(0);
+  // Reduced-motion visitors start paused; the toggle lets anyone stop or resume the preview.
+  const reducedMotion = useSyncExternalStore(subscribeReducedMotion, getReducedMotion, () => false);
+  const [userPaused, setUserPaused] = useState<boolean | null>(null);
+  const isPaused = userPaused ?? reducedMotion;
   const playerRef = useRef<HTMLDivElement>(null);
   const timeRef = useRef<HTMLSpanElement>(null);
   const headRef = useRef<HTMLSpanElement>(null);
+  const elapsedRef = useRef(0);
 
   useEffect(() => {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const hero = playerRef.current?.closest('.home-hero');
+    if (!hero) return;
 
-    const startedAt = performance.now();
     let frame = 0;
+    let last = 0;
     const tick = (now: number) => {
-      const elapsed = ((now - startedAt) / 1000) % loopSeconds;
+      if (last) elapsedRef.current = (elapsedRef.current + (now - last) / 1000) % loopSeconds;
+      last = now;
+      const elapsed = elapsedRef.current;
       setCue(Math.floor(elapsed / cueSeconds));
       if (timeRef.current) timeRef.current.textContent = formatTime(startSeconds + elapsed);
       if (headRef.current) headRef.current.style.left = `${loopStart + (elapsed / loopSeconds) * loopWidth}%`;
       frame = requestAnimationFrame(tick);
     };
 
-    // The hero only plays while it is on screen.
-    const hero = playerRef.current?.closest('.home-hero');
-    if (!hero) return;
+    // The hero only plays while it is on screen and the visitor has not paused it.
     const observer = new IntersectionObserver(([entry]) => {
       cancelAnimationFrame(frame);
-      hero.toggleAttribute('data-paused', !entry.isIntersecting);
-      if (entry.isIntersecting) frame = requestAnimationFrame(tick);
+      last = 0;
+      const running = entry.isIntersecting && !isPaused;
+      hero.toggleAttribute('data-paused', !running);
+      if (running) frame = requestAnimationFrame(tick);
     });
     observer.observe(hero);
 
@@ -77,17 +93,17 @@ export function HeroPlayer() {
       observer.disconnect();
       cancelAnimationFrame(frame);
     };
-  }, []);
+  }, [isPaused]);
 
   return (
-    <div ref={playerRef} className='hero-player' aria-hidden='true'>
-      <div key={cue} className='hero-subtitles'>
+    <div ref={playerRef} className='hero-player'>
+      <div key={cue} className='hero-subtitles' aria-hidden='true'>
         <p className='hero-subtitle-primary' lang='en'>
           {cues[cue].primary}
         </p>
         <p className='hero-subtitle-secondary'>{cues[cue].secondary}</p>
       </div>
-      <div className='player-track'>
+      <div className='player-track' aria-hidden='true'>
         <span
           className='player-loop'
           style={{ '--loop-start': `${loopStart}%`, '--loop-width': `${loopWidth}%` } as React.CSSProperties}
@@ -96,13 +112,23 @@ export function HeroPlayer() {
       </div>
       <div className='site-container player-controls'>
         <div>
-          <Pause size={16} fill='currentColor' />
-          <span ref={timeRef} className='player-time'>
+          <button
+            type='button'
+            className='player-toggle'
+            aria-label='배경 미리보기 일시정지'
+            aria-pressed={isPaused}
+            onClick={() => setUserPaused(!isPaused)}
+          >
+            {isPaused ? <Play size={16} fill='currentColor' /> : <Pause size={16} fill='currentColor' />}
+          </button>
+          <span ref={timeRef} className='player-time' aria-hidden='true'>
             {formatTime(startSeconds)}
           </span>
-          <span className='player-hide-sm'>0.75×</span>
+          <span className='player-hide-sm' aria-hidden='true'>
+            0.75×
+          </span>
         </div>
-        <div>
+        <div aria-hidden='true'>
           <span className='player-on inline-flex items-center gap-1.5'>
             <Repeat2 size={16} /> A–B
           </span>
