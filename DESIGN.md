@@ -165,7 +165,7 @@ components:
 
 The site is a video screen, and the yellow subtitle is its one voice. Play Plus and WebSubtitle are tools that put subtitles on video someone is already watching, so the site borrows that scene directly: the home hero is a dark player with an out-of-focus night shot behind it, two subtitle lines, and an A–B loop timeline. Headlines carry the same yellow as a subtitle bar laid behind one phrase. Everything else stays quiet so that line reads.
 
-The rest of the site is a calm reading and support surface around that screen. It ships in a dark default and a light theme, but the "screen" pieces (the home hero, the product tiles' identity panels) stay dark in both themes, the way a video player stays dark on a white page. Density is moderate: generous section spacing, short Korean copy set with `keep-all` line breaking, and few elements per row. Ornament comes from the product's own vocabulary (timecodes, SRT cue lines, loop brackets), never from generic decoration.
+The rest of the site is a calm reading and support surface around that screen. It ships in a dark default and a light theme, but the "screen" pieces (the home hero, the Play Plus hero screen, the product tiles' identity panels) stay dark in both themes, the way a video player stays dark on a white page. Density is moderate: generous section spacing, short Korean copy set with `keep-all` line breaking, and few elements per row. Ornament comes from the product's own vocabulary (timecodes, SRT cue lines, loop brackets), never from generic decoration.
 
 Components are plain, like player controls: small radii, flat surfaces, no shadows on UI, and state shown as a colour change, a 1px press, or a short slide.
 
@@ -193,7 +193,7 @@ A near-black and warm-white neutral ramp with a single yellow voice and two prod
 ### Neutral
 - **Screen Black** (`canvas`): the dark page background and browser theme colour.
 - **Warm Paper** (`canvas-light`): the light page background and browser theme colour.
-- **Surface / Raised** (`surface`, `raised`, and their `-light` pairs): one and two tone steps above the canvas. Surface backs tiles, summaries, the maker band and code blocks; raised backs the active and hovered nav items.
+- **Surface / Raised** (`surface`, `raised`, and their `-light` pairs): one and two tone steps above the canvas. Surface backs tiles, the maker band and code blocks; raised backs the active and hovered nav items.
 - **Ink** (`ink`, `ink-light`): headings, strong text, primary-button hover fill.
 - **Body** (`body`, `body-light`): paragraph text and resting links.
 - **Muted** (`muted`, `muted-light`): captions, labels, meta, icons at rest.
@@ -219,7 +219,7 @@ A near-black and warm-white neutral ramp with a single yellow voice and two prod
 - **Display** (750, `min(11vw, 7.25rem)`, 1.3): the home hero headline only. The tall line height leaves room for the yellow highlight bar on the second line.
 - **Headline** (700–750, 3rem rising to 4.5rem, 1.12; product pages use `min(8.4vw, 4.75rem)` at 1.3): page titles and product page titles. Product and guide titles carry the same highlight bar.
 - **Section** (700, `clamp(2.25rem, 5vw, 3.75rem)`, 1.15; the simpler section title steps 2.25rem to 3rem): section headings, often paired with a short muted line aligned to the baseline on the right.
-- **Title** (650–700, 1.25rem, tracking -0.02 to -0.03em): row titles (help links), capability and step headings, maker band heading (1.5rem).
+- **Title** (650–700, 1.25rem, tracking -0.02 to -0.03em): row titles (help links), feature and step headings, maker band heading (1.5rem).
 - **Subtitle** (650, `clamp(1.125rem, 2.2vw, 1.75rem)`, 1.35): the yellow line in the hero player, with a secondary line in ink beneath it at roughly two-thirds size. Both carry a soft black text shadow.
 - **Lead** (400, 1.125rem, 1.75): hero and page descriptions, capped near 42rem.
 - **Body** (400, 1rem, 1.8, -0.008em page-wide tracking): product copy and prose. Prose links underline in muted, turning Readable Yellow on hover.
@@ -233,7 +233,7 @@ A near-black and warm-white neutral ramp with a single yellow voice and two prod
 
 ## Layout
 
-A single centred container (max 1280px) with side gutters of 16px, 24px from 640px and 32px from 1024px. Pages stack full-width bands; inside them, two-column grids split at 1:1 (product tiles, help, about stories) or asymmetric ratios such as 1.6:1 (product hero) and 1.1:1 (support). Capability grids run four across, two below 1024px, one below 768px; step and principle grids run three across, one on phones.
+A single centred container (max 1280px) with side gutters of 16px, 24px from 640px and 32px from 1024px. Pages stack full-width bands; inside them, two-column grids split at 1:1 (product tiles, help, about stories) or asymmetric ratios such as 1.15:1 (product hero) and 1.1:1 (support). Feature lists run two across, one below 768px; step and principle grids run three across, one on phones.
 
 Vertical rhythm is set per section rather than from a strict scale: product sections open with about 112px above, help and support sections run 80px above and 112px below, and page shells use 64px rising to 96px. Phones roughly halve these. Two breakpoints drive most changes (1023px and 767px); a third, `(hover: none) and (pointer: coarse)`, swaps "install in Chrome" links for a note that the extensions install from desktop Chrome.
 
@@ -257,9 +257,9 @@ The only shadows sit on things that imitate the physical world, not on UI: the s
 
 ## Shapes
 
-Corners are small and squared-off, like player chrome. Buttons and text links use a 4px radius; vignettes 6px; tiles, cards, summaries and prose images 8px; guide screenshots 12px. Product marks are app icons and keep their 14px squircle-like radius. The only fully round shapes are the bokeh lights in the hero backdrop and the pill badges on guide screenshots.
+Corners are small and squared-off, like player chrome. Buttons and text links use a 4px radius; vignettes 6px; tiles, cards, screens and prose images 8px; guide screenshots 12px. Product marks are app icons and keep their 14px squircle-like radius. The only fully round shapes are the bokeh lights in the hero backdrop and the pill badges on guide screenshots.
 
-Borders are 1px hairlines throughout. Grids of cells (the capability grid) are drawn with a 1px gap over a line-coloured background, so cells share single dividers. Help rows have only top and bottom rules, no box.
+Borders are 1px hairlines throughout. Feature lists and help rows are separated by hairline rules only, never boxed.
 
 ## Components
 

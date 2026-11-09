@@ -52,7 +52,7 @@
       "display": { "displayName": "Display", "purpose": "The home hero headline only; its last phrase carries the yellow highlight bar." },
       "headline": { "displayName": "Headline", "purpose": "Page titles and product page titles." },
       "section": { "displayName": "Section", "purpose": "Section headings, often with a muted line aligned on the right." },
-      "title": { "displayName": "Title", "purpose": "Row, capability, step and principle headings." },
+      "title": { "displayName": "Title", "purpose": "Row, feature, step and principle headings." },
       "subtitle": { "displayName": "Subtitle", "purpose": "The yellow subtitle line in the hero player." },
       "lead": { "displayName": "Lead", "purpose": "Hero and page descriptions." },
       "body": { "displayName": "Body", "purpose": "Product copy and prose." },
@@ -70,7 +70,7 @@
     ],
     "motion": [
       { "name": "state-fast", "value": "150ms ease", "purpose": "Colour changes on links, prose underlines and the player toggle." },
-      { "name": "state-row", "value": "180ms ease", "purpose": "Help-row indent, title colour and arrow slide; capability hover." },
+      { "name": "state-row", "value": "180ms ease", "purpose": "Help-row indent, title colour and arrow slide." },
       { "name": "subtitle-in", "value": "320ms ease-out", "purpose": "Each new hero subtitle fades in from 0.35rem below." },
       { "name": "bokeh-drift", "value": "17s–34s ease-in-out infinite alternate", "purpose": "Slow drift of the hero backdrop lights; paused off screen, on toggle, and for reduced motion." }
     ],
