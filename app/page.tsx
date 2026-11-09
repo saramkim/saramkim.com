@@ -53,7 +53,6 @@ export default function Home() {
           <div className='product-identity' data-theme='dark'>
             <div className='product-tile-top'>
               <span className='product-category'>COUPANG PLAY · CHROME EXTENSION</span>
-              <span className='product-number'>01</span>
             </div>
             <div className='product-visual' aria-hidden='true'>
               <div className='product-visual-bar'>
@@ -125,7 +124,6 @@ export default function Home() {
           <div className='product-identity' data-theme='dark'>
             <div className='product-tile-top'>
               <span className='product-category'>WEB VIDEO · CHROME EXTENSION</span>
-              <span className='product-number'>02</span>
             </div>
             <div className='product-visual' aria-hidden='true'>
               <div className='product-visual-bar'>
@@ -190,7 +188,7 @@ export default function Home() {
 
       <section id='help' className='site-container help-section' aria-labelledby='help-title'>
         <div>
-          <h2 id='help-title' className='section-title mt-0'>
+          <h2 id='help-title' className='section-title'>
             사용하다 막히셨나요?
           </h2>
           <p className='mt-4 max-w-md leading-7 text-body'>제품에 맞는 문의 경로를 안내해 드릴게요.</p>

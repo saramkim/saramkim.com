@@ -21,7 +21,6 @@ export default function BlogPage() {
   return (
     <div className='site-container page-shell'>
       <header className='page-intro'>
-        <p className='eyebrow'>Writing</p>
         <h1 className='page-title'>생각을 더 선명하게 만드는 글</h1>
         <p className='page-description'>
           개발과 AI, 언어 그리고 스스로 생각하는 일에 관해 씁니다. 이미 충분히 있는 정보보다 직접 관찰하고 고민한 것을 남깁니다.

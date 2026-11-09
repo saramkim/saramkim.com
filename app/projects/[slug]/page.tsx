@@ -79,8 +79,7 @@ export default async function ProjectPage({ params }: Props) {
 
       <article lang={project.locale}>
         <header className='article-header'>
-          <p className='eyebrow'>Case study</p>
-          <h1 className='article-title'>{project.title}</h1>
+          <h1 className='article-title mt-0'>{project.title}</h1>
           <p className='mt-5 max-w-2xl text-lg leading-8 text-body'>{project.description}</p>
           <div className='case-product-link'>
             <p>이 페이지는 제품의 제작 배경과 과정을 담은 기록입니다.</p>

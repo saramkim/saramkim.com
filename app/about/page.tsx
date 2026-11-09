@@ -27,7 +27,6 @@ export default function AboutPage() {
     <div className='site-container page-shell'>
       <header className='about-intro'>
         <div>
-          <p className='eyebrow'>The person behind the tools</p>
           <h1 className='page-title'>
             안녕하세요,
             <br />
@@ -52,7 +51,6 @@ export default function AboutPage() {
         </div>
       </header>
       <section className='about-section' aria-labelledby='principles-title'>
-        <p className='eyebrow'>How I work</p>
         <h2 id='principles-title' className='section-title'>
           만들 때 지키려는 세 가지
         </h2>
@@ -69,7 +67,6 @@ export default function AboutPage() {
       <section className='about-section' aria-labelledby='stories-title'>
         <div className='section-heading'>
           <div>
-            <p className='eyebrow'>Behind the products</p>
             <h2 id='stories-title' className='section-title'>
               제품 뒤의 이야기
             </h2>
@@ -98,7 +95,6 @@ export default function AboutPage() {
       <section className='about-section' aria-labelledby='writing-title'>
         <div className='section-heading'>
           <div>
-            <p className='eyebrow'>Notes & writing</p>
             <h2 id='writing-title' className='section-title'>
               생각을 남기는 곳
             </h2>
