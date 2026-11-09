@@ -1,6 +1,7 @@
 import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 
 const imageDimensions: Record<string, { width: number; height: number }> = {
+  '/images/beyond-the-answer/blank-page.webp': { width: 1672, height: 941 },
   '/images/language-still-matters/flowers.webp': { width: 1024, height: 1024 },
   '/images/think-or-vanish/develop_pre.webp': { width: 1050, height: 500 },
   '/images/think-or-vanish/develop_post.webp': { width: 1050, height: 500 },
