@@ -67,8 +67,7 @@ export default async function BlogPostPage({ params }: Props) {
 
       <article lang={post.locale}>
         <header className='article-header'>
-          <p className='eyebrow'>Writing</p>
-          <h1 className='article-title'>{post.title}</h1>
+          <h1 className='article-title mt-0'>{post.title}</h1>
           <p className='mt-5 max-w-2xl text-lg leading-8 text-body'>{post.excerpt}</p>
           <div className='mt-7 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-muted'>
             <time dateTime={post.date}>발행 {formatContentDate(post.date, post.locale)}</time>

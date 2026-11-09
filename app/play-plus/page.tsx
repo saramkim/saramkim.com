@@ -124,7 +124,6 @@ export default function PlayPlusPage() {
       </section>
       <section className='getting-started'>
         <div className='site-container py-16 md:py-20'>
-          <p className='eyebrow'>Start with a video</p>
           <h2 className='section-title'>설치하고, 보던 영상을 열어보세요.</h2>
           <ol className='start-steps'>
             <li>
@@ -151,7 +150,6 @@ export default function PlayPlusPage() {
       </section>
       <section id='support' className='site-container support-section' aria-labelledby='support-title'>
         <div>
-          <p className='eyebrow'>Support</p>
           <h2 id='support-title' className='section-title'>
             잘 쓰실 수 있도록.
           </h2>

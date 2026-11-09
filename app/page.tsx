@@ -7,6 +7,7 @@ import {
   Captions,
   FileText,
   Languages,
+  Monitor,
   Repeat2,
   ScrollText,
   Search,
@@ -52,7 +53,6 @@ export default function Home() {
           <div className='product-identity' data-theme='dark'>
             <div className='product-tile-top'>
               <span className='product-category'>COUPANG PLAY · CHROME EXTENSION</span>
-              <span className='product-number'>01</span>
             </div>
             <div className='product-visual' aria-hidden='true'>
               <div className='product-visual-bar'>
@@ -76,7 +76,6 @@ export default function Home() {
             </div>
           </div>
           <div className='product-description'>
-            <p className='eyebrow'>Watch. Repeat. Remember.</p>
             <h3 id='play-title'>
               놓친 한 문장까지,
               <br />내 속도로.
@@ -111,9 +110,13 @@ export default function Home() {
               <Link href='/play-plus' className='button-primary'>
                 Play Plus 알아보기 <ArrowRight size={17} aria-hidden='true' />
               </Link>
-              <a href={playPlusStoreUrl} className='text-link'>
+              <a href={playPlusStoreUrl} className='text-link install-link'>
                 Chrome에 설치 <ArrowUpRight size={16} aria-hidden='true' />
               </a>
+              <p className='install-note'>
+                <Monitor size={16} aria-hidden='true' />
+                PC의 Chrome에서 설치할 수 있어요
+              </p>
             </div>
           </div>
         </article>
@@ -121,7 +124,6 @@ export default function Home() {
           <div className='product-identity' data-theme='dark'>
             <div className='product-tile-top'>
               <span className='product-category'>WEB VIDEO · CHROME EXTENSION</span>
-              <span className='product-number'>02</span>
             </div>
             <div className='product-visual' aria-hidden='true'>
               <div className='product-visual-bar'>
@@ -141,7 +143,6 @@ export default function Home() {
             </div>
           </div>
           <div className='product-description'>
-            <p className='eyebrow'>Your video. Your subtitles.</p>
             <h3 id='web-title'>
               자막이 없거나 안 맞을 때,
               <br />
@@ -173,9 +174,13 @@ export default function Home() {
               <a href={webSubtitleUrl} className='button-primary'>
                 WebSubtitle 사이트 <ArrowUpRight size={17} aria-hidden='true' />
               </a>
-              <a href={webSubtitleStoreUrl} className='text-link'>
+              <a href={webSubtitleStoreUrl} className='text-link install-link'>
                 Chrome에 설치 <ArrowUpRight size={16} aria-hidden='true' />
               </a>
+              <p className='install-note'>
+                <Monitor size={16} aria-hidden='true' />
+                PC의 Chrome에서 설치할 수 있어요
+              </p>
             </div>
           </div>
         </article>
@@ -183,7 +188,6 @@ export default function Home() {
 
       <section id='help' className='site-container help-section' aria-labelledby='help-title'>
         <div>
-          <p className='eyebrow'>Here to help</p>
           <h2 id='help-title' className='section-title'>
             사용하다 막히셨나요?
           </h2>
@@ -213,7 +217,6 @@ export default function Home() {
             <BrandIcon />
           </div>
           <div className='maker-copy'>
-            <p className='eyebrow'>Made by a person</p>
             <h2>안녕하세요, 김사람입니다.</h2>
             <p>직접 겪은 불편에서 출발해, 계속 쓰고 싶은 제품과 도구를 만듭니다.</p>
           </div>

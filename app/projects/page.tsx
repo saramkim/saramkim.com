@@ -19,7 +19,6 @@ export default function ProjectsPage() {
   return (
     <div className='site-container page-shell'>
       <header className='page-intro'>
-        <p className='eyebrow'>Behind the products</p>
         <h1 className='page-title'>제품을 만든 과정</h1>
         <p className='page-description'>
           기능을 더하는 데서 끝내지 않고, 실제로 사용되는 제품이 되기까지 관찰하고 개선한 과정을 기록합니다.
