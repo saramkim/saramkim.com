@@ -689,7 +689,8 @@
     color: var(--color-muted);
   }
   @media (hover: none) and (pointer: coarse) {
-    .install-link {
+    .install-link,
+    .help-link.install-link {
       display: none;
     }
     .install-note {
@@ -841,7 +842,7 @@
   }
   .product-hero-grid {
     display: grid;
-    grid-template-columns: 1.6fr 1fr;
+    grid-template-columns: 1.15fr 1fr;
     align-items: center;
     gap: 4rem;
   }
@@ -853,80 +854,81 @@
     letter-spacing: -0.05em;
     word-break: keep-all;
   }
-  .play-summary {
-    border: 1px solid var(--color-line);
-    background: var(--color-surface);
-    border-radius: 0.5rem;
-    padding: 2rem;
-  }
-  .play-summary ol {
-    margin-top: 1.25rem;
-  }
-  .play-summary li {
+  /* A drawn screen in the site's dark "screen" language: a still, out-of-focus night picture with Play Plus's two
+     subtitle lines (yellow primary, white secondary) where a player puts them. Static on purpose: nothing to pause. */
+  .play-screen {
+    position: relative;
     display: flex;
-    align-items: center;
-    gap: 1rem;
-    padding: 1.25rem 0;
-    border-bottom: 1px solid var(--color-line);
-  }
-  .play-summary li > span {
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
-    color: var(--color-muted);
-  }
-  .play-summary li > div {
-    flex: 1;
-  }
-  .play-summary strong {
-    display: block;
-    font-size: 1.375rem;
-    font-weight: 700;
-    letter-spacing: -0.03em;
-  }
-  .play-summary li p {
-    font-size: 0.875rem;
-    margin-top: 0.25rem;
-    color: var(--color-muted);
-  }
-  .play-summary svg {
-    color: var(--color-muted);
-  }
-  .summary-caption {
-    margin-top: 1.25rem;
-    font-size: 0.875rem;
-    color: var(--color-muted);
-  }
-  .capability-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1px;
+    align-items: flex-end;
+    justify-content: center;
+    aspect-ratio: 16 / 11;
+    overflow: hidden;
     border: 1px solid var(--color-line);
     border-radius: 0.5rem;
-    overflow: hidden;
-    background: var(--color-line);
+    background:
+      radial-gradient(28% 36% at 74% 26%, #0f8f9966, transparent),
+      radial-gradient(22% 30% at 30% 18%, #e8742c40, transparent),
+      radial-gradient(40% 46% at 52% 44%, #1b4fa84d, transparent),
+      linear-gradient(0deg, #050608 0%, #05060800 55%),
+      #050608;
+    box-shadow: 0 2rem 3rem -2rem #000c;
   }
-  .capability {
-    padding: 1.75rem;
-    background: var(--color-canvas);
-    transition: background-color 180ms ease;
+  .play-screen::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    opacity: 0.07;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)'/%3E%3C/svg%3E");
   }
-  .capability:hover {
-    background: var(--color-surface);
+  .play-screen-subtitles {
+    position: relative;
+    z-index: 1;
+    padding: 0 1.5rem 2.25rem;
+    text-align: center;
+    word-break: keep-all;
   }
-  .capability svg {
+  .play-screen-primary {
+    font-size: clamp(1.125rem, 2vw, 1.625rem);
+    font-weight: 650;
+    line-height: 1.35;
+    color: var(--color-accent);
+    text-shadow: 0 2px 10px #000;
+  }
+  .play-screen-secondary {
+    margin-top: 0.3rem;
+    font-size: clamp(0.9375rem, 1.4vw, 1.125rem);
+    line-height: 1.4;
     color: var(--color-ink);
+    text-shadow: 0 2px 10px #000;
   }
-  .capability h3 {
+  .feature-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 4rem;
+  }
+  .feature-list > li {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: 1rem;
+    padding: 2rem 0;
+    border-top: 1px solid var(--color-line);
+  }
+  .feature-list svg {
+    margin-top: 0.15rem;
+    color: var(--color-accent-text);
+  }
+  .feature-list h3 {
     font-size: 1.25rem;
     font-weight: 700;
-    margin-top: 3rem;
     letter-spacing: -0.03em;
   }
-  .capability > p {
+  .feature-list p {
+    grid-column: 2;
+    max-width: 34rem;
+    margin-top: 0.5rem;
     color: var(--color-body);
     font-size: 0.9375rem;
     line-height: 1.75;
-    margin-top: 0.75rem;
     word-break: keep-all;
   }
   .getting-started {
@@ -939,19 +941,15 @@
     gap: 3rem;
     margin-top: 3.5rem;
   }
-  .start-steps li > span {
-    display: block;
-    font-family: var(--font-mono);
-    font-size: 3.5rem;
-    font-weight: 500;
-    line-height: 1;
-    color: var(--color-muted);
-  }
   .start-steps h3 {
     font-weight: 700;
-    margin-top: 1.25rem;
     font-size: 1.25rem;
     letter-spacing: -0.02em;
+  }
+  .start-steps h3 > span {
+    margin-right: 0.5rem;
+    color: var(--color-accent-text);
+    font-variant-numeric: tabular-nums;
   }
   .start-steps p {
     color: var(--color-body);
@@ -960,9 +958,24 @@
     margin-top: 0.625rem;
     word-break: keep-all;
   }
+  .start-tip {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.625rem;
+    margin-top: 2.5rem;
+    color: var(--color-ink);
+    font-size: 0.9375rem;
+    line-height: 1.75;
+    word-break: keep-all;
+  }
+  .start-tip > svg {
+    flex: none;
+    margin-top: 0.2rem;
+    color: var(--color-accent-text);
+  }
   .product-compatibility {
     border-top: 1px solid var(--color-line);
-    margin-top: 3rem;
+    margin-top: 2.5rem;
     padding-top: 1.5rem;
     font-size: 0.875rem;
     line-height: 1.8;
@@ -1039,9 +1052,6 @@
     }
     .product-identity {
       padding: 1.5rem;
-    }
-    .capability-grid {
-      grid-template-columns: 1fr 1fr;
     }
     .product-hero-grid {
       grid-template-columns: 1fr;
@@ -1157,14 +1167,11 @@
     .product-hero .back-link {
       margin-bottom: 2rem;
     }
-    .play-summary {
-      padding: 1.5rem;
-    }
-    .capability-grid {
+    .feature-list {
       grid-template-columns: 1fr;
     }
-    .capability h3 {
-      margin-top: 1.5rem;
+    .feature-list > li {
+      padding: 1.5rem 0;
     }
     .start-steps {
       grid-template-columns: 1fr;
