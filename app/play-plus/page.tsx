@@ -1,6 +1,16 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { ArrowLeft, ArrowRight, ArrowUpRight, Bookmark, Captions, FileText, Repeat2 } from 'lucide-react';
+import {
+  ArrowLeft,
+  ArrowRight,
+  ArrowUpRight,
+  Bookmark,
+  Captions,
+  FileText,
+  Info,
+  Monitor,
+  Repeat2,
+} from 'lucide-react';
 import { ProductMark } from '@components/product-mark';
 import { contactEmail, playPlusStoreUrl } from '@lib/products';
 
@@ -36,7 +46,8 @@ const features = [
   {
     icon: FileText,
     title: '내 자막 파일도 함께',
-    description: '자막이 없는 영상에도 가지고 있는 VTT, SRT, SMI 파일을 등록하세요. 0.1초 단위로 싱크를 맞출 수 있습니다.',
+    description:
+      '자막이 없는 영상에는 가지고 있는 자막 파일(SRT, SMI, VTT)을 등록하세요. 자막이 영상과 어긋나면 0.1초 단위로 타이밍(싱크)을 맞출 수 있습니다.',
   },
 ];
 
@@ -58,50 +69,30 @@ export default function PlayPlusPage() {
               <br />
               <span>언어 공부가 됩니다.</span>
             </h1>
-            <p className='hero-description max-w-xl'>
-              쿠팡플레이에 자막 학습 도구를 더합니다.
-              <br />두 언어로 이해하고, 반복해서 듣고, 문장을 저장하세요.
-            </p>
-            <div className='mt-8 flex flex-wrap items-center gap-5'>
-              <a href={playPlusStoreUrl} className='button-primary'>
+            <p className='hero-description max-w-xl'>두 언어로 이해하고, 반복해서 듣고, 문장을 저장하세요.</p>
+            <div className='product-actions'>
+              <a href={playPlusStoreUrl} className='button-primary install-link'>
                 Chrome에 Play Plus 설치 <ArrowUpRight size={17} aria-hidden='true' />
               </a>
+              <p className='install-note'>
+                <Monitor size={16} aria-hidden='true' />
+                PC의 Chrome에서 설치할 수 있어요
+              </p>
               <a href='#features' className='text-link'>
                 기능 살펴보기 <ArrowRight size={16} aria-hidden='true' />
               </a>
             </div>
             <p className='mt-5 text-sm leading-6 text-muted'>데스크톱 Chrome · 쿠팡플레이 전용</p>
           </div>
-          <aside className='play-summary' aria-label='Play Plus 사용 흐름'>
-            <p className='eyebrow'>A little more than watching</p>
-            <ol>
-              <li>
-                <span>01</span>
-                <div>
-                  <strong>이해하고</strong>
-                  <p>두 언어의 자막을 함께</p>
-                </div>
-                <Captions size={25} aria-hidden='true' />
-              </li>
-              <li>
-                <span>02</span>
-                <div>
-                  <strong>반복하고</strong>
-                  <p>필요한 구간을 다시</p>
-                </div>
-                <Repeat2 size={25} aria-hidden='true' />
-              </li>
-              <li>
-                <span>03</span>
-                <div>
-                  <strong>기억하세요</strong>
-                  <p>저장한 문장으로 복습</p>
-                </div>
-                <Bookmark size={25} aria-hidden='true' />
-              </li>
-            </ol>
-            <p className='summary-caption'>익숙한 시청 환경에서 이어지는 학습</p>
-          </aside>
+          {/* A drawn screen, not a capture: the site's dark "screen" with Play Plus's two subtitle lines. */}
+          <div className='play-screen' data-theme='dark' aria-hidden='true'>
+            <div className='play-screen-subtitles'>
+              <p className='play-screen-primary' lang='en'>
+                I finally caught that line.
+              </p>
+              <p className='play-screen-secondary'>이제야 그 문장이 들렸어.</p>
+            </div>
+          </div>
         </div>
       </section>
       <section id='features' className='site-container py-16 md:py-24' aria-labelledby='features-title'>
@@ -109,39 +100,43 @@ export default function PlayPlusPage() {
           <h2 id='features-title'>필요한 만큼, 내 방식대로</h2>
           <p>시청과 복습 사이를 연결합니다.</p>
         </div>
-        <div className='capability-grid'>
-          {features.map(({ icon: Icon, title, description: body }, index) => (
-            <article key={title} className='capability'>
-              <div className='flex items-center justify-between'>
-                <Icon size={25} aria-hidden='true' />
-                <span className='index-number'>0{index + 1}</span>
-              </div>
+        <ul className='feature-list'>
+          {features.map(({ icon: Icon, title, description: body }) => (
+            <li key={title}>
+              <Icon size={22} aria-hidden='true' />
               <h3>{title}</h3>
               <p>{body}</p>
-            </article>
+            </li>
           ))}
-        </div>
+        </ul>
       </section>
       <section className='getting-started'>
         <div className='site-container py-16 md:py-20'>
           <h2 className='section-title'>설치하고, 보던 영상을 열어보세요.</h2>
           <ol className='start-steps'>
             <li>
-              <span>1</span>
-              <h3>Chrome에 설치</h3>
+              <h3>
+                <span aria-hidden='true'>1</span>Chrome에 설치
+              </h3>
               <p>Chrome 웹 스토어에서 Play Plus를 추가합니다.</p>
             </li>
             <li>
-              <span>2</span>
-              <h3>쿠팡플레이에서 재생</h3>
+              <h3>
+                <span aria-hidden='true'>2</span>쿠팡플레이에서 재생
+              </h3>
               <p>영상을 열고 브라우저의 Play Plus 아이콘을 눌러 시작합니다.</p>
             </li>
             <li>
-              <span>3</span>
-              <h3>내게 맞게 조절</h3>
-              <p>자막과 재생 설정을 조절하며 시청하세요. 기본 자막과 겹치면 쿠팡플레이 자막을 꺼주세요.</p>
+              <h3>
+                <span aria-hidden='true'>3</span>내게 맞게 조절
+              </h3>
+              <p>자막과 재생 설정을 조절하며 시청하세요.</p>
             </li>
           </ol>
+          <p className='start-tip'>
+            <Info size={18} aria-hidden='true' />
+            <span>자막이 두 번 겹쳐 보이면 쿠팡플레이의 기본 자막을 꺼주세요.</span>
+          </p>
           <p className='product-compatibility'>
             쿠팡플레이 이용에는 해당 서비스의 계정과 이용 조건이 적용됩니다. Play Plus는 쿠팡플레이와 공식적인
             관계가 없는 독립 확장 프로그램입니다.
@@ -180,7 +175,7 @@ export default function PlayPlusPage() {
             </div>
             <ArrowRight size={19} aria-hidden='true' />
           </Link>
-          <a href={playPlusStoreUrl} className='help-link'>
+          <a href={playPlusStoreUrl} className='help-link install-link'>
             <div>
               <strong>Chrome 웹 스토어</strong>
               <span>설치와 공개 버전 정보</span>
