@@ -1,15 +1,9 @@
-import type { Metadata } from 'next';
 import Link from 'next/link';
+import { pageMetadata } from '@lib/metadata';
 
 const description = 'Worktrace Backup은 작업을 마친 뒤 로컬에서 백업을 검증·암호화하고 개인 Google Drive에 저장하는 개인용 수동 백업 도구입니다.';
 
-export const metadata: Metadata = {
-  title: 'Worktrace Backup',
-  description,
-  alternates: { canonical: '/worktrace' },
-  openGraph: { title: 'Worktrace Backup', description, url: '/worktrace', locale: 'ko_KR' },
-  twitter: { title: 'Worktrace Backup', description },
-};
+export const metadata = pageMetadata({ title: 'Worktrace Backup', description, path: '/worktrace' });
 
 export default function WorktracePage() {
   return (

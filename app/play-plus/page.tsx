@@ -1,4 +1,3 @@
-import type { Metadata } from 'next';
 import Link from 'next/link';
 import {
   ArrowLeft,
@@ -12,17 +11,18 @@ import {
   Repeat2,
 } from 'lucide-react';
 import { ProductMark } from '@components/product-mark';
+import { pageMetadata, playPlusOgImage } from '@lib/metadata';
 import { contactEmail, playPlusStoreUrl } from '@lib/products';
 
 const description =
   '쿠팡플레이에서 이중 자막, 구간 반복, 자막 저장으로 내 속도에 맞춰 언어를 공부하세요. Play Plus 소개, 설치와 문의 안내.';
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: 'Play Plus — 쿠팡플레이로 언어 공부',
   description,
-  alternates: { canonical: '/play-plus' },
-  openGraph: { title: 'Play Plus — 쿠팡플레이로 언어 공부', description, url: '/play-plus' },
-  twitter: { title: 'Play Plus — 쿠팡플레이로 언어 공부', description },
-};
+  path: '/play-plus',
+  image: playPlusOgImage,
+  imageAlt: 'Play Plus — 보던 쿠팡플레이가, 언어 공부가 됩니다.',
+});
 
 const features = [
   {

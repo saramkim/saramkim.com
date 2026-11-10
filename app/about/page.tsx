@@ -1,20 +1,19 @@
-import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import { getBlogPosts } from '@lib/mdx';
 import { formatContentDate } from '@lib/format';
+import { pageMetadata } from '@lib/metadata';
 import { contactEmail } from '@lib/products';
 import { BrandIcon } from '@components/brand';
 
 const description =
   '일상에서 마주친 불편을 해결하는 제품과 도구를 만드는 김사람. 제품을 만드는 생각과 과정, 글을 소개합니다.';
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: '만드는 사람',
+  socialTitle: '만드는 사람 | saramkim',
   description,
-  alternates: { canonical: '/about' },
-  openGraph: { title: '만드는 사람 | saramkim', description, url: '/about' },
-  twitter: { title: '만드는 사람 | saramkim', description },
-};
+  path: '/about',
+});
 const principles = [
   { name: '문제부터 봅니다', description: '기능보다 먼저, 사용자가 실제로 해결하려는 문제를 찾습니다.' },
   { name: '이유를 갖고 만듭니다', description: '관성으로 만들지 않고 모든 선택에 분명한 이유를 둡니다.' },

@@ -1,19 +1,15 @@
-import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ArrowUpRight } from 'lucide-react';
 import { formatContentDate } from '@lib/format';
+import { pageMetadata } from '@lib/metadata';
 import { getBlogPosts } from '@lib/mdx';
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: '글',
+  socialTitle: '글 | saramkim',
   description: '개발, AI, 언어와 생각하는 일에 관해 김사람이 쓴 글.',
-  alternates: { canonical: '/blog' },
-  openGraph: {
-    title: '글 | saramkim',
-    description: '개발, AI, 언어와 생각하는 일에 관해 김사람이 쓴 글.',
-    url: '/blog',
-  },
-};
+  path: '/blog',
+});
 
 export default function BlogPage() {
   const posts = getBlogPosts();

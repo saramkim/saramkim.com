@@ -1,6 +1,6 @@
-import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ArrowLeft, ArrowRight, ArrowUpRight } from 'lucide-react';
+import { pageMetadata, playPlusOgImage } from '@lib/metadata';
 import { contactEmail, playPlusStoreUrl } from '@lib/products';
 import { guidePaths } from '../_guide/guide-status';
 import {
@@ -20,13 +20,13 @@ const title = 'Play Plus 기본 사용법';
 const description =
   '쿠팡플레이에서 Play Plus 패널을 열고, 자막을 조절하고, 구간을 반복하고, 문장을 저장하는 방법을 실제 화면으로 안내합니다.';
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title,
   description,
-  alternates: { canonical: guidePaths.guide },
-  openGraph: { title, description, url: guidePaths.guide },
-  twitter: { title, description },
-};
+  path: guidePaths.guide,
+  image: playPlusOgImage,
+  imageAlt: 'Play Plus — 보던 쿠팡플레이가, 언어 공부가 됩니다.',
+});
 
 const toc = [
   { id: 'start', index: '01', title: '시작하기', body: '영상을 열고 Play Plus 패널을 엽니다.' },

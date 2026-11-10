@@ -1,17 +1,13 @@
-import type { Metadata } from 'next';
 import { Card } from '@components/card';
+import { pageMetadata } from '@lib/metadata';
 import { getProjects } from '@lib/mdx';
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: '제작 사례',
+  socialTitle: '제작 사례 | saramkim',
   description: 'Play Plus와 WebSubtitle을 만들며 고민한 문제와 제작 과정의 기록.',
-  alternates: { canonical: '/projects' },
-  openGraph: {
-    title: '제작 사례 | saramkim',
-    description: 'Play Plus와 WebSubtitle을 만들며 고민한 문제와 제작 과정의 기록.',
-    url: '/projects',
-  },
-};
+  path: '/projects',
+});
 
 export default function ProjectsPage() {
   const projects = getProjects();
