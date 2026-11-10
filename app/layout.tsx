@@ -24,6 +24,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: '/',
   },
+  verification: {
+    other: { 'naver-site-verification': '5cbeb6a183147dfcb62f46586b3778446cf87bfb' },
+  },
   openGraph: {
     title: 'saramkim — 일상에서 쓰는 브라우저 도구',
     description: siteDescription,
