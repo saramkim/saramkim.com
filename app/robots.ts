@@ -8,7 +8,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: '*',
       allow: '/',
     },
-    host: 'https://www.saramkim.com',
     sitemap: 'https://www.saramkim.com/sitemap.xml',
   };
 }

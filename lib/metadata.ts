@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 
 export const siteName = 'saramkim';
+export const siteUrl = 'https://www.saramkim.com';
 export const defaultOgImage = '/og.png';
 export const playPlusOgImage = '/og/play-plus.png';
 

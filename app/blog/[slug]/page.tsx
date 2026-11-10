@@ -4,10 +4,12 @@ import { notFound } from 'next/navigation';
 import { ArrowLeft } from 'lucide-react';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import remarkGfm from 'remark-gfm';
+import { JsonLd } from '@components/json-ld';
 import MDXComponents from '@components/mdx-components';
 import { formatContentDate } from '@lib/format';
 import { pageMetadata } from '@lib/metadata';
 import { getBlogPost, getBlogPosts } from '@lib/mdx';
+import { articleSchema } from '@lib/structured-data';
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -48,6 +50,7 @@ export default async function BlogPostPage({ params }: Props) {
 
   return (
     <div className='site-container article-shell'>
+      <JsonLd data={articleSchema(post)} />
       <Link href='/blog' className='back-link'>
         <ArrowLeft aria-hidden='true' size={16} />
         모든 글

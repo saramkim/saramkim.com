@@ -167,4 +167,18 @@ for (const page of exportedPages) {
 }
 assert.ok(productHome.includes('https://www.saramkim.com/og/play-plus.png'), 'Play Plus page must use its own preview image');
 
+// Structured data: every JSON-LD block must parse, and the key pages must declare the expected type.
+const jsonLdTypes = (html) =>
+  [...html.matchAll(/<script type="application\/ld\+json">(.*?)<\/script>/gs)].map(([, json]) => {
+    const data = JSON.parse(json);
+    assert.equal(data['@context'], 'https://schema.org', 'JSON-LD must use the schema.org context');
+    return data['@type'];
+  });
+for (const page of exportedPages) jsonLdTypes(readOutput(page));
+assert.deepEqual(jsonLdTypes(home), ['WebSite'], 'Home must declare WebSite structured data');
+assert.deepEqual(jsonLdTypes(productHome), ['SoftwareApplication'], 'Play Plus page must declare SoftwareApplication data');
+assert.deepEqual(jsonLdTypes(blogPost), ['BlogPosting'], 'Blog posts must declare BlogPosting data');
+assert.ok(!/ratingValue|aggregateRating|"offers"/.test(productHome), 'Structured data must not claim ratings or prices');
+assert.ok(!robots.includes('Host:'), 'robots.txt must not carry the Yandex-only Host directive');
+
 console.log('Static export verification passed.');

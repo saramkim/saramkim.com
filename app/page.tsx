@@ -16,11 +16,14 @@ import {
 import { HeroPlayer, ScreenBackdrop } from '@components/hero-player';
 import { ProductMark } from '@components/product-mark';
 import { BrandIcon } from '@components/brand';
+import { JsonLd } from '@components/json-ld';
 import { playPlusStoreUrl, webSubtitleStoreUrl, webSubtitleUrl } from '@lib/products';
+import { websiteSchema } from '@lib/structured-data';
 
 export default function Home() {
   return (
     <>
+      <JsonLd data={websiteSchema} />
       <section className='home-hero' data-theme='dark'>
         <ScreenBackdrop />
         <div className='site-container hero-content'>
