@@ -1,15 +1,14 @@
-import type { Metadata } from 'next';
 import Link from 'next/link';
+import { pageMetadata } from '@lib/metadata';
 
 const description = 'Worktrace Backup 수동 백업의 Google Drive 접근, 로컬 암호화와 평문 복사본, 토큰 보관, 연결 해제·삭제 및 복구키 관리를 안내합니다.';
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: 'Worktrace Backup 개인정보처리방침',
+  socialTitle: 'Worktrace Backup Privacy',
   description,
-  alternates: { canonical: '/worktrace/privacy' },
-  openGraph: { title: 'Worktrace Backup Privacy', description, url: '/worktrace/privacy', locale: 'ko_KR' },
-  twitter: { title: 'Worktrace Backup Privacy', description },
-};
+  path: '/worktrace/privacy',
+});
 
 export default function WorktracePrivacyPage() {
   return (

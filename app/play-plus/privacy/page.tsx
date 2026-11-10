@@ -1,14 +1,15 @@
-import type { Metadata } from 'next';
+import { pageMetadata, playPlusOgImage } from '@lib/metadata';
 
 const description = 'Play Plus의 설정 동기화, 자막·저장한 문장, 선택적 OpenSubtitles 검색·다운로드와 의견 전송에서 처리하는 정보와 보관·삭제 방법을 안내합니다.';
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: 'Play Plus 개인정보처리방침',
+  socialTitle: 'Play Plus Privacy',
   description,
-  alternates: { canonical: '/play-plus/privacy' },
-  openGraph: { title: 'Play Plus Privacy', description, url: '/play-plus/privacy', locale: 'ko_KR' },
-  twitter: { title: 'Play Plus Privacy', description },
-};
+  path: '/play-plus/privacy',
+  image: playPlusOgImage,
+  imageAlt: 'Play Plus — 보던 쿠팡플레이가, 언어 공부가 됩니다.',
+});
 
 export default function PlayPlusPrivacyPage() {
   return (

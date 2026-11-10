@@ -6,6 +6,7 @@ import { MDXRemote } from 'next-mdx-remote/rsc';
 import remarkGfm from 'remark-gfm';
 import MDXComponents from '@components/mdx-components';
 import { formatContentDate } from '@lib/format';
+import { pageMetadata } from '@lib/metadata';
 import { getProjectBySlug, getProjects } from '@lib/mdx';
 import { webSubtitleUrl } from '@lib/products';
 
@@ -21,28 +22,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     return {};
   }
 
-  const canonical = `/projects/${project.slug}`;
-  const image = project.ogImage ?? '/og.png';
-
-  return {
+  return pageMetadata({
     title: project.title,
     description: project.description,
-    alternates: { canonical },
-    openGraph: {
-      title: project.title,
-      description: project.description,
-      url: canonical,
-      type: 'website',
-      locale: project.locale === 'ko' ? 'ko_KR' : 'en_US',
-      images: [{ url: image, alt: project.title }],
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: project.title,
-      description: project.description,
-      images: [image],
-    },
-  };
+    path: `/projects/${project.slug}`,
+    image: project.ogImage,
+    locale: project.locale === 'ko' ? 'ko_KR' : 'en_US',
+  });
 }
 
 export function generateStaticParams() {

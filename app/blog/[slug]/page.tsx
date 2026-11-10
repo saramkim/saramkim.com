@@ -6,6 +6,7 @@ import { MDXRemote } from 'next-mdx-remote/rsc';
 import remarkGfm from 'remark-gfm';
 import MDXComponents from '@components/mdx-components';
 import { formatContentDate } from '@lib/format';
+import { pageMetadata } from '@lib/metadata';
 import { getBlogPost, getBlogPosts } from '@lib/mdx';
 
 type Props = {
@@ -24,30 +25,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     return {};
   }
 
-  const canonical = `/blog/${post.slug}`;
-  const image = post.ogImage ?? '/og.png';
-
-  return {
+  return pageMetadata({
     title: post.title,
     description: post.excerpt,
-    alternates: { canonical },
-    openGraph: {
-      title: post.title,
-      description: post.excerpt,
-      url: canonical,
-      type: 'article',
-      locale: post.locale === 'ko' ? 'ko_KR' : 'en_US',
+    path: `/blog/${post.slug}`,
+    image: post.ogImage,
+    locale: post.locale === 'ko' ? 'ko_KR' : 'en_US',
+    article: {
       publishedTime: `${post.date}T00:00:00Z`,
       modifiedTime: `${post.updated ?? post.date}T00:00:00Z`,
-      images: [{ url: image, alt: post.title }],
     },
-    twitter: {
-      card: 'summary_large_image',
-      title: post.title,
-      description: post.excerpt,
-      images: [image],
-    },
-  };
+  });
 }
 
 export default async function BlogPostPage({ params }: Props) {

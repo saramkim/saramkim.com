@@ -113,4 +113,58 @@ for (const route of ['relay', 'relay/privacy']) {
 assert.ok(feedbackPolicy.includes('id="online-subtitles"') && feedbackPolicy.includes('id="online-subtitles-en"'), 'Play Plus policy must preserve online-subtitle anchors');
 assert.ok(feedbackPolicy.includes('OpenSubtitles'), 'Play Plus policy must preserve its existing disclosure');
 
+// Link previews: Next.js replaces a layout's openGraph/twitter objects wholesale when a page sets its own, so every
+// page is checked for the image, its size and the large card. The image must exist and really be 1200x630 PNG/JPEG
+// (WebP is unreliable in Kakao and some other crawlers).
+function imageSize(file) {
+  const bytes = fs.readFileSync(file);
+  if (bytes.subarray(1, 4).toString('latin1') === 'PNG') {
+    return { type: 'png', width: bytes.readUInt32BE(16), height: bytes.readUInt32BE(20) };
+  }
+  if (bytes[0] === 0xff && bytes[1] === 0xd8) {
+    let offset = 2;
+    while (offset + 9 < bytes.length) {
+      if (bytes[offset] !== 0xff) { offset += 1; continue; }
+      const marker = bytes[offset + 1];
+      if (marker >= 0xc0 && marker <= 0xcf && ![0xc4, 0xc8, 0xcc].includes(marker)) {
+        return { type: 'jpeg', width: bytes.readUInt16BE(offset + 7), height: bytes.readUInt16BE(offset + 5) };
+      }
+      offset += 2 + bytes.readUInt16BE(offset + 2);
+    }
+  }
+  return { type: 'unknown', width: 0, height: 0 };
+}
+const exportedPages = [];
+const collectPages = (directory) => {
+  for (const entry of fs.readdirSync(directory, { withFileTypes: true })) {
+    const full = path.join(directory, entry.name);
+    if (entry.isDirectory()) {
+      if (!['_next', '_not-found'].includes(entry.name)) collectPages(full);
+    } else if (entry.name.endsWith('.html') && entry.name !== '404.html' && entry.name !== '_not-found.html') {
+      exportedPages.push(path.relative(outputDirectory, full));
+    }
+  }
+};
+collectPages(outputDirectory);
+assert.ok(exportedPages.length >= requiredRoutes.length, 'Social preview check must cover every exported page');
+const metaContent = (html, attribute, name) =>
+  html.match(new RegExp(`<meta ${attribute}="${name}" content="([^"]*)"`))?.[1];
+for (const page of exportedPages) {
+  const html = readOutput(page);
+  const image = metaContent(html, 'property', 'og:image');
+  assert.ok(image?.startsWith('https://www.saramkim.com/'), `${page} must set an absolute og:image`);
+  assert.equal(metaContent(html, 'property', 'og:image:width'), '1200', `${page} must declare og:image width`);
+  assert.equal(metaContent(html, 'property', 'og:image:height'), '630', `${page} must declare og:image height`);
+  assert.equal(metaContent(html, 'name', 'twitter:card'), 'summary_large_image', `${page} must use the large Twitter card`);
+  assert.equal(metaContent(html, 'name', 'twitter:image'), image, `${page} must reuse og:image for Twitter`);
+  assert.ok(metaContent(html, 'property', 'og:site_name'), `${page} must keep og:site_name`);
+  const file = path.join(outputDirectory, new URL(image).pathname);
+  assert.ok(fs.existsSync(file), `${page} og:image is missing from the export: ${image}`);
+  const size = imageSize(file);
+  assert.ok(['png', 'jpeg'].includes(size.type), `${page} og:image must be PNG or JPEG: ${image}`);
+  assert.deepEqual([size.width, size.height], [1200, 630], `${page} og:image must be 1200x630: ${image}`);
+  assert.ok(fs.statSync(file).size < 400_000, `${page} og:image should stay under 400 KB: ${image}`);
+}
+assert.ok(productHome.includes('https://www.saramkim.com/og/play-plus.png'), 'Play Plus page must use its own preview image');
+
 console.log('Static export verification passed.');

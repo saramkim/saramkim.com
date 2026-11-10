@@ -1,6 +1,6 @@
-import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ArrowLeft, ArrowRight, Bookmark, Globe, LayoutGrid, MonitorPlay, Repeat2, SlidersHorizontal } from 'lucide-react';
+import { pageMetadata, playPlusOgImage } from '@lib/metadata';
 import { guidePaths } from '../../_guide/guide-status';
 import { GuideSwitch, Note, SectionHeader, ShotFigure, ShotRow, Ui } from '../../_guide/guide-ui';
 import { shots } from '../../_guide/shots';
@@ -10,13 +10,13 @@ const title = 'Play Plus 2.0 변경 안내';
 const description =
   'Play Plus 1.14에서 2.0으로 업데이트하면 무엇이 달라지는지, 기능을 찾는 위치와 바뀐 동작, 새 기능과 기존 설정·자료를 정리했습니다.';
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title,
   description,
-  alternates: { canonical: guidePaths.updates },
-  openGraph: { title, description, url: guidePaths.updates },
-  twitter: { title, description },
-};
+  path: guidePaths.updates,
+  image: playPlusOgImage,
+  imageAlt: 'Play Plus — 보던 쿠팡플레이가, 언어 공부가 됩니다.',
+});
 
 const guide = (hash: string) => `${guidePaths.guide}#${hash}`;
 

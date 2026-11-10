@@ -22,6 +22,7 @@
   },
   "scripts": {
     "brand:generate": "node scripts/generate-brand.mjs",
+    "og:generate": "node scripts/generate-og.mjs",
     "dev": "next dev",
     "build": "next build",
     "lint": "eslint .",
