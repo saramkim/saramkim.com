@@ -180,5 +180,10 @@ assert.deepEqual(jsonLdTypes(productHome), ['SoftwareApplication'], 'Play Plus p
 assert.deepEqual(jsonLdTypes(blogPost), ['BlogPosting'], 'Blog posts must declare BlogPosting data');
 assert.ok(!/ratingValue|aggregateRating|"offers"/.test(productHome), 'Structured data must not claim ratings or prices');
 assert.ok(!robots.includes('Host:'), 'robots.txt must not carry the Yandex-only Host directive');
+assert.equal(
+  metaContent(home, 'name', 'naver-site-verification'),
+  '5cbeb6a183147dfcb62f46586b3778446cf87bfb',
+  'Home must keep the Naver Search Advisor ownership tag',
+);
 
 console.log('Static export verification passed.');
