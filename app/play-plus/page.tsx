@@ -10,9 +10,11 @@ import {
   Monitor,
   Repeat2,
 } from 'lucide-react';
+import { JsonLd } from '@components/json-ld';
 import { ProductMark } from '@components/product-mark';
 import { pageMetadata, playPlusOgImage } from '@lib/metadata';
 import { contactEmail, playPlusStoreUrl } from '@lib/products';
+import { playPlusSchema } from '@lib/structured-data';
 
 const description =
   '쿠팡플레이에서 이중 자막, 구간 반복, 자막 저장으로 내 속도에 맞춰 언어를 공부하세요. Play Plus 소개, 설치와 문의 안내.';
@@ -54,6 +56,7 @@ const features = [
 export default function PlayPlusPage() {
   return (
     <>
+      <JsonLd data={playPlusSchema} />
       <section className='product-hero site-container'>
         <Link href='/#products' className='back-link'>
           <ArrowLeft size={16} aria-hidden='true' /> 제품 살펴보기
