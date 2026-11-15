@@ -58,10 +58,10 @@ const highlights = [
   },
   {
     icon: MonitorPlay,
-    title: '이름이 보이는 영상 위 메뉴',
+    title: '이름이 보이는 영상 도구',
     body: '세로로 펼쳐지는 메뉴에 버튼 이름과 단축키가 함께 보입니다. 자주 쓰지 않는 조작은 더보기에 있습니다.',
     href: guide('watch'),
-    link: '영상 위 메뉴 사용법',
+    link: '영상 도구 사용법',
   },
 ];
 
@@ -254,8 +254,8 @@ export default function PlayPlusUpdate20Page() {
             <div className='guide-text'>
               <h3>자막 간격 건너뛰기</h3>
               <p>
-                영상 위 메뉴에 있던 자막 간격 건너뛰기 버튼과 기능을 제공하지 않습니다. 다음 문장으로 넘어가려면 영상 위
-                메뉴의 <Ui>다음 자막</Ui>이나 이동 단축키를 쓰세요.
+                영상 위 메뉴에 있던 자막 간격 건너뛰기 버튼과 기능을 제공하지 않습니다. 다음 문장으로 넘어가려면 영상
+                도구의 <Ui>다음 자막</Ui>이나 이동 단축키를 쓰세요.
               </p>
               <h3 className='pt-4'>집중 모드 (2.0.1부터)</h3>
               <p>
@@ -281,7 +281,7 @@ export default function PlayPlusUpdate20Page() {
               </ul>
               <h3 className='pt-4'>별도의 영상 설정 화면</h3>
               <p>
-                재생 속도 같은 조작은 영상 위 메뉴와 단축키로 하고, 키 설정은 <Ui>단축키</Ui> 탭에서 합니다.
+                재생 속도 같은 조작은 영상 도구와 단축키로 하고, 키 설정은 <Ui>단축키</Ui> 탭에서 합니다.
               </p>
             </div>
             <ShotRow>
@@ -290,7 +290,7 @@ export default function PlayPlusUpdate20Page() {
                 badge='1.14.1'
                 caption='1.14.1의 더보기 메뉴. 설정 초기화와 학습 최적화가 2.0에서는 프리셋으로 바뀌었습니다.'
               />
-              <ShotFigure shot={shots.videoMenuMore} badge='2.0' size='compact' caption='집중 모드 제거 전의 더보기 화면입니다. 2.0.1부터는 집중 모드 버튼이 표시되지 않습니다.' />
+              <ShotFigure shot={shots.videoMenuMore} badge='2.0.1' size='compact' caption='영상 도구의 추가 조작 메뉴입니다.' />
             </ShotRow>
           </div>
         </section>
