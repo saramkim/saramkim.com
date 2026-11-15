@@ -257,6 +257,10 @@ export default function PlayPlusUpdate20Page() {
                 영상 위 메뉴에 있던 자막 간격 건너뛰기 버튼과 기능을 제공하지 않습니다. 다음 문장으로 넘어가려면 영상 위
                 메뉴의 <Ui>다음 자막</Ui>이나 이동 단축키를 쓰세요.
               </p>
+              <h3 className='pt-4'>집중 모드 (2.0.1부터)</h3>
+              <p>
+                별도의 집중 모드 화면과 진입 버튼은 2.0.1부터 제공하지 않습니다.
+              </p>
               <h3 className='pt-4'>설정 초기화</h3>
               <p>
                 1.14.1의 더보기 메뉴에 있던 <strong>설정 초기화</strong>(자막 설정과 단축키를 한꺼번에 되돌리기)가
@@ -286,7 +290,7 @@ export default function PlayPlusUpdate20Page() {
                 badge='1.14.1'
                 caption='1.14.1의 더보기 메뉴. 설정 초기화와 학습 최적화가 2.0에서는 프리셋으로 바뀌었습니다.'
               />
-              <ShotFigure shot={shots.videoMenuMore} badge='2.0' size='compact' caption='2.0 영상 위 메뉴의 더보기. 자막 간격 건너뛰기는 없습니다.' />
+              <ShotFigure shot={shots.videoMenuMore} badge='2.0' size='compact' caption='집중 모드 제거 전의 더보기 화면입니다. 2.0.1부터는 집중 모드 버튼이 표시되지 않습니다.' />
             </ShotRow>
           </div>
         </section>
@@ -351,7 +355,7 @@ export default function PlayPlusUpdate20Page() {
             index='그대로'
             id='same'
             title='계속 쓸 수 있는 기능'
-            lead='두 언어 자막, 25단계 자막 크기, 자막 목록 검색과 따라가기, 현재 문장 반복·한 번 재생, A/B 구간 반복, 집중 모드는 1.14에서처럼 쓸 수 있습니다. 위치와 이름만 일부 달라졌습니다.'
+            lead='두 언어 자막, 25단계 자막 크기, 자막 목록 검색과 따라가기, 현재 문장 반복·한 번 재생, A/B 구간 반복은 1.14에서처럼 쓸 수 있습니다. 위치와 이름만 일부 달라졌습니다.'
           />
         </section>
       </div>
