@@ -220,7 +220,7 @@ export default function PlayPlusGuidePage() {
                 </li>
                 <li>
                   <Ui>더보기</Ui>: <Ui>구간 반복 재생</Ui>, <Ui>현재 자막 한 번 재생</Ui>, <Ui>A 시작점 지정</Ui>·
-                  <Ui>B 끝점 지정</Ui>, 주 자막·보조 자막 켜기·끄기, <Ui>자막 끝 자동 일시정지</Ui>, <Ui>집중 모드</Ui>
+                  <Ui>B 끝점 지정</Ui>, 주 자막·보조 자막 켜기·끄기, <Ui>자막 끝 자동 일시정지</Ui>
                 </li>
                 <li>
                   <Ui>자막 끝 자동 일시정지</Ui>를 켜면 주 자막 한 문장이 끝날 때마다 영상이 멈춥니다. 처음에는 꺼져
@@ -234,7 +234,7 @@ export default function PlayPlusGuidePage() {
                 size='compact'
                 caption='기본 메뉴. 패널이 열려 있어 첫 버튼이 패널 닫기로 보입니다. 단축키가 지정된 버튼에는 키가 함께 표시됩니다.'
               />
-              <ShotFigure shot={shots.videoMenuMore} size='compact' caption='더보기를 누른 화면. 기본 조작으로를 누르면 돌아갑니다.' />
+              <ShotFigure shot={shots.videoMenuMore} size='compact' caption='기본 조작으로를 누르면 돌아갑니다. 캡처의 집중 모드 버튼은 2.0.1부터 표시되지 않습니다.' />
               <ShotFigure
                 shot={shots.videoDualSubtitles}
                 size='wide'

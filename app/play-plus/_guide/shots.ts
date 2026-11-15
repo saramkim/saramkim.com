@@ -44,7 +44,7 @@ export const shots = {
   },
   videoMenuMore: {
     src: videoMenuMore,
-    alt: '영상 위 조작 메뉴의 더보기 화면. 기본 조작으로, 구간 반복 재생, 현재 자막 한 번 재생, A 시작점 지정, B 끝점 지정, 주 자막 끄기(Q), 보조 자막 켜기(W), 자막 끝 자동 일시정지, 집중 모드가 있습니다.',
+    alt: '집중 모드 제거 전의 영상 위 조작 메뉴 더보기 화면. 기본 조작으로, 구간 반복 재생, 현재 자막 한 번 재생, A 시작점 지정, B 끝점 지정, 주 자막 끄기(Q), 보조 자막 켜기(W), 자막 끝 자동 일시정지, 집중 모드가 있습니다.',
   },
   rangeSelected: {
     src: panelRangeSelected,
