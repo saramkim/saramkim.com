@@ -30,7 +30,7 @@ export const metadata = pageMetadata({
 
 const toc = [
   { id: 'start', index: '01', title: '시작하기', body: '영상을 열고 Play Plus 패널을 엽니다.' },
-  { id: 'watch', index: '02', title: '자막과 시청 조절', body: '주·보조 자막과 영상 위 조작 메뉴.' },
+  { id: 'watch', index: '02', title: '자막과 시청 조절', body: '주·보조 자막과 영상 도구.' },
   { id: 'repeat', index: '03', title: '구간 반복', body: '원하는 문장을 골라 반복해서 듣습니다.' },
   { id: 'save', index: '04', title: '문장 저장', body: '저장한 문장을 보관함에서 다시 듣습니다.' },
 ];
@@ -114,7 +114,7 @@ export default function PlayPlusGuidePage() {
             index='01'
             id='start'
             title='시작하기'
-            lead='Play Plus는 Chrome 옆에 열리는 패널과, 쿠팡플레이 영상 위에 나타나는 조작 메뉴로 이루어져 있습니다.'
+            lead='Play Plus는 Chrome 옆에 열리는 패널과, 쿠팡플레이 영상 위에 나타나는 영상 도구로 이루어져 있습니다.'
           />
           <div className='guide-block'>
             <div className='guide-text'>
@@ -171,7 +171,7 @@ export default function PlayPlusGuidePage() {
             index='02'
             id='watch'
             title='자막과 시청 조절'
-            lead='자막 모양은 설정 탭에서, 재생 조작은 영상 위 메뉴에서 합니다.'
+            lead='자막 모양은 설정 탭에서, 재생 조작은 영상 도구에서 합니다.'
           />
           <div className='guide-block'>
             <div className='guide-text'>
@@ -207,9 +207,9 @@ export default function PlayPlusGuidePage() {
           </div>
           <div className='guide-block'>
             <div className='guide-text'>
-              <h3>영상 위 조작 메뉴</h3>
+              <h3>영상 도구</h3>
               <p>
-                영상 위로 마우스를 움직이면 오른쪽에 조작 메뉴가 나타납니다. <Ui>영상 도구 펼치기</Ui>를 누르면 버튼이
+                영상 위로 마우스를 움직이면 오른쪽에 영상 도구가 나타납니다. <Ui>영상 도구 펼치기</Ui>를 누르면 버튼이
                 세로로 펼쳐지고, 버튼마다 이름과 지정된 단축키가 함께 표시됩니다.
               </p>
               <ul>
@@ -232,9 +232,9 @@ export default function PlayPlusGuidePage() {
               <ShotFigure
                 shot={shots.videoMenuBasic}
                 size='compact'
-                caption='기본 메뉴. 패널이 열려 있어 첫 버튼이 패널 닫기로 보입니다. 단축키가 지정된 버튼에는 키가 함께 표시됩니다.'
+                caption='영상 도구의 기본 조작 메뉴. 패널이 열려 있어 첫 버튼이 패널 닫기로 보입니다. 단축키가 지정된 버튼에는 키가 함께 표시됩니다.'
               />
-              <ShotFigure shot={shots.videoMenuMore} size='compact' caption='기본 조작으로를 누르면 돌아갑니다. 캡처의 집중 모드 버튼은 2.0.1부터 표시되지 않습니다.' />
+              <ShotFigure shot={shots.videoMenuMore} size='compact' caption='영상 도구의 추가 조작 메뉴. 기본 조작으로를 누르면 돌아갑니다.' />
               <ShotFigure
                 shot={shots.videoDualSubtitles}
                 size='wide'
@@ -274,7 +274,7 @@ export default function PlayPlusGuidePage() {
               />
               <Note title='선택 해제는 반복 중지가 아닙니다'>
                 X 버튼이나 <Kbd>Esc</Kbd>로 선택을 지워도 반복은 계속될 수 있습니다. 이때는 패널 아래쪽에{' '}
-                <Ui>반복 중</Ui>과 구간 시각, <Ui>반복 중지</Ui> 버튼이 남아 있으니 이 버튼으로 끝내세요. 영상 위 메뉴의{' '}
+                <Ui>반복 중</Ui>과 구간 시각, <Ui>반복 중지</Ui> 버튼이 남아 있으니 이 버튼으로 끝내세요. 영상 도구의{' '}
                 <Ui>반복 중지</Ui>를 눌러도 됩니다.
               </Note>
               <p>
@@ -282,7 +282,7 @@ export default function PlayPlusGuidePage() {
                 저장하고, <Ui>복사</Ui>는 자막 글자를 복사합니다.
               </p>
               <p>
-                지금 나오는 한 문장만 반복하려면 영상 위 메뉴의 <Ui>현재 자막 반복</Ui>을, 원하는 두 지점 사이를 반복하려면{' '}
+                지금 나오는 한 문장만 반복하려면 영상 도구의 <Ui>현재 자막 반복</Ui>을, 원하는 두 지점 사이를 반복하려면{' '}
                 <Ui>A 시작점 지정</Ui>·<Ui>B 끝점 지정</Ui> 뒤 <Ui>구간 반복 재생</Ui>을 쓰세요.
               </p>
             </div>

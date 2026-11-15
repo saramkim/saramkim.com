@@ -29,6 +29,7 @@ export type Shot = { src: StaticImageData; alt: string };
 // Panel-only 2.0 screens: play-plus main d7caa34 production build, Korean UI, no video connected.
 // Playback screens (playPanelOpen … panelOnlineResults, settings, filesList): Korean Chrome on Coupang Play,
 // 2026-11-06, play-plus c44a18e (= d7caa34 + negative-time display fix). 1.14.1: tag v1.14.1 build.
+// videoMenuMore: Korean Chrome on Coupang Play, 2026-11-15, play-plus v2.0.1 (e94701b).
 export const shots = {
   playPanelOpen: {
     src: playPanelOpen,
@@ -40,11 +41,11 @@ export const shots = {
   },
   videoMenuBasic: {
     src: videoMenuBasic,
-    alt: '영상 위 조작 메뉴의 기본 화면. Play Plus 패널 닫기, 더보기, 이전 자막, 다음 자막, 현재 자막 반복, 속도 증가, 속도 감소가 세로로 나열되고 속도 버튼 아래에 단축키가 표시됩니다.',
+    alt: '영상 도구의 기본 조작 메뉴. Play Plus 패널 닫기, 더보기, 이전 자막, 다음 자막, 현재 자막 반복, 속도 증가, 속도 감소가 세로로 나열되고 속도 버튼 아래에 단축키가 표시됩니다.',
   },
   videoMenuMore: {
     src: videoMenuMore,
-    alt: '집중 모드 제거 전의 영상 위 조작 메뉴 더보기 화면. 기본 조작으로, 구간 반복 재생, 현재 자막 한 번 재생, A 시작점 지정, B 끝점 지정, 주 자막 끄기(Q), 보조 자막 켜기(W), 자막 끝 자동 일시정지, 집중 모드가 있습니다.',
+    alt: 'Play Plus 2.0.1 영상 도구의 추가 조작 메뉴. Play Plus 패널 열기, 기본 조작으로, 구간 반복 재생(L), 현재 자막 한 번 재생(C), A 시작점 지정([), B 끝점 지정(]), 주 자막 끄기(Q), 보조 자막 끄기(W), 자막 끝 자동 일시정지(T)가 있습니다.',
   },
   rangeSelected: {
     src: panelRangeSelected,
