@@ -1,8 +1,15 @@
 import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 
-const imageDimensions: Record<string, { width: number; height: number }> = {
+type ArticleImage = { width: number; height: number; blendWithCanvas?: boolean };
+
+const articleImages: Record<string, ArticleImage> = {
   '/images/beyond-the-answer/blank-page.webp': { width: 1672, height: 941 },
   '/images/language-still-matters/flowers.webp': { width: 1024, height: 1024 },
+  '/images/the-thinking-i-took-for-granted/mind-progress-profile.webp': {
+    width: 1672,
+    height: 941,
+    blendWithCanvas: true,
+  },
   '/images/think-or-vanish/develop_pre.webp': { width: 1050, height: 500 },
   '/images/think-or-vanish/develop_post.webp': { width: 1050, height: 500 },
 };
@@ -79,7 +86,8 @@ const MDXComponents = {
     </td>
   ),
   img: ({ src, alt, width, height, ...props }: ComponentPropsWithoutRef<'img'>) => {
-    const dimensions = typeof src === 'string' ? imageDimensions[src] : undefined;
+    const image = typeof src === 'string' ? articleImages[src] : undefined;
+    const appearance = image?.blendWithCanvas ? 'article-illustration' : 'rounded-xl border border-line bg-raised';
 
     return (
       // MDX can reference arbitrary local or remote sources, while static export
@@ -88,11 +96,11 @@ const MDXComponents = {
       <img
         src={src}
         alt={alt ?? ''}
-        width={width ?? dimensions?.width}
-        height={height ?? dimensions?.height}
+        width={width ?? image?.width}
+        height={height ?? image?.height}
         loading='lazy'
         decoding='async'
-        className='my-8 h-auto max-w-full rounded-xl border border-line bg-raised'
+        className={`my-8 h-auto max-w-full ${appearance}`}
         {...props}
       />
     );
