@@ -265,6 +265,17 @@
     border-radius: 0.5rem;
   }
 
+  /* White paper becomes neutral when multiplied, or when inverted and screened. */
+  .article-illustration {
+    filter: brightness(1.04) invert(1);
+    mix-blend-mode: screen;
+  }
+
+  :root[data-theme='light'] .article-illustration {
+    filter: brightness(1.04);
+    mix-blend-mode: multiply;
+  }
+
   /* Header */
   .site-header {
     background: color-mix(in srgb, var(--color-canvas) 72%, transparent);
